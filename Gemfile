@@ -19,6 +19,7 @@ gem 'figaro'
 
 
 group :development, :test do
+  gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'awesome_print'
