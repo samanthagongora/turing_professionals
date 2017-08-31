@@ -1,20 +1,21 @@
 class User < ApplicationRecord
+  has_secure_password
 
   enum role: ["default", "admin"]
 
-  belongs_to :location
+  # belongs_to :location
 
-  validates_presence_of :auth_token_linkedin,
-                        :uid,
-                        :first_name,
-                        :last_name,
-                        :email,
-                        :summary,
-                        :linkedin_url,
-                        :image_url,
-                        :slack,
-                        :github,
-                        :cohort
+  # validates_presence_of :auth_token_linkedin,
+  #                       :uid,
+  #                       :first_name,
+  #                       :last_name,
+  #                       :email,
+  #                       :summary,
+  #                       :linkedin_url,
+  #                       :image_url,
+  #                       :slack,
+  #                       :github,
+  #                       :cohort
 
   # validates_uniqueness_of :auth_token_linkedin,
   #                         :uid,
