@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'figaro'
 gem 'omniauth-linkedin-oauth2'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'pry'
