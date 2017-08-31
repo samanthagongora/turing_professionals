@@ -1,3 +1,10 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+body {
+  font-family: 'Roboto Slab', 'Roboto';
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+}
