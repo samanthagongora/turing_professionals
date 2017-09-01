@@ -13,7 +13,7 @@ RSpec.feature "User visits company index" do
     co_2.locations << [city_1, city_2]
 
     visit companies_path
-    save_and_open_page
+
     within(".company-#{co_1.id}") do
       expect(page).to have_content(co_1.name)
       expect(page).to have_xpath("//img[@src='#{co_1.image_url}']")
@@ -22,12 +22,14 @@ RSpec.feature "User visits company index" do
       expect(page).to have_content("#{city_3.city}, #{city_3.state}")
       # number of members associated - need user table
     end
-    expect(page).to have_content(co_2.name)
-    expect(page).to have_xpath("//img[@src='#{co_2.image_url}']")
-    expect(page).to have_content(ind_1.name)
-    expect(page).to have_content(ind_3.name)
-    expect(page).to have_content("#{city_1.city}, #{city_1.state}")
-    expect(page).to have_content("#{city_2.city}, #{city_2.state}")
-    # number of members associated - need user table
+    within(".company-#{co_2.id}") do
+      expect(page).to have_content(co_2.name)
+      expect(page).to have_xpath("//img[@src='#{co_2.image_url}']")
+      expect(page).to have_content(ind_1.name)
+      expect(page).to have_content(ind_3.name)
+      expect(page).to have_content("#{city_1.city}, #{city_1.state}")
+      expect(page).to have_content("#{city_2.city}, #{city_2.state}")
+      # number of members associated - need user table
+    end
   end
 end

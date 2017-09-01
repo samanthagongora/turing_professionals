@@ -4,8 +4,12 @@
   <div class="row company-<%= company.id %>">
       <%= company.name %>
       <img src="<%= company.image_url %>" alt="company picture">
-      <%= company.industries %>
-      <%= company.locations %>
+      <% company.industries.each do |industry| %>
+        <%= industry.name %>
+      <% end %>
+      <% company.locations.each do |location| %>
+        <%= location.city %>, <%= location.state %>
+      <% end %>
   </div>
   <% end %>
 </div>
