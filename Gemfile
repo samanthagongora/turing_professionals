@@ -21,6 +21,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'omniauth-linkedin-oauth2'
 gem 'bcrypt'
+gem 'faker'
 
 group :development, :test do
   gem 'pry'
