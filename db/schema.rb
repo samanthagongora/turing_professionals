@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901031405) do
+
+ActiveRecord::Schema.define(version: 20170831225908) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -58,4 +61,29 @@ ActiveRecord::Schema.define(version: 20170901031405) do
   add_foreign_key "company_industries", "industries"
   add_foreign_key "office_locations", "companies"
   add_foreign_key "office_locations", "locations"
+
+  create_table "users", force: :cascade do |t|
+    t.integer "role", default: 0
+    t.string "auth_token_linkedin"
+    t.integer "uid", default: 0
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "headline"
+    t.text "summary"
+    t.string "linkedin_url"
+    t.text "image_url"
+    t.string "resume"
+    t.integer "location", default: 0
+    t.string "twitter"
+    t.string "slack"
+    t.string "github"
+    t.string "cohort"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "password_digest"
+  end
+
+
 end
