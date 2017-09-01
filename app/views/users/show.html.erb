@@ -1,6 +1,6 @@
 <div class="container center-text">
 
-  <p><%= image_tag @user.image_url %></p>
+  <p><%= image_tag @user.image_url if !@user.image_url.nil? %></p>
 <p>Username: <%= @user.username %></p>
 <p>First Name: <%= @user.first_name %></p>
 <p>Last Name: <%= @user.last_name %></p>
