@@ -9,5 +9,7 @@ RSpec.describe Company, type: :model do
   describe "relationships" do
     it {should have_many(:company_industries)}
     it {should have_many(:industries)}
+    it {should have_many(:office_locations)}
+    it {should have_many(:locations)}
   end
 end

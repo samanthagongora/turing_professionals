@@ -3,4 +3,6 @@ class Company < ApplicationRecord
 
   has_many :company_industries
   has_many :industries, through: :company_industries
+  has_many :office_locations
+  has_many :locations, through: :office_locations
 end
