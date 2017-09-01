@@ -1,7 +1,7 @@
 <h3>All Companies</h3>
 <div class="container">
   <% @companies.each do |company| %>
-  <div class="row">
+  <div class="row company-<%= company.id %>">
       <%= company.name %>
       <img src="<%= company.image_url %>" alt="company picture">
       <%= company.industries %>

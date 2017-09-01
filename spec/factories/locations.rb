@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :location do
-    city "MyString"
-    state "MyString"
+    sequence :city {|n| "City #{n}"}
+    sequence :state {|n| "State#{n}"}
   end
 end
