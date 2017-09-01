@@ -1,6 +1,11 @@
 <div class="container center-text">
 
+  <p><%= image_tag @user.image_url %></p>
 <p>Username: <%= @user.username %></p>
+<p>First Name: <%= @user.first_name %></p>
+<p>Last Name: <%= @user.last_name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Linkedin: <%= @user.linkedin_url %></p>
 <p>Current Position: <%= @user.headline %></p>
 <p>Industry: <%= @user.summary %></p>
 
