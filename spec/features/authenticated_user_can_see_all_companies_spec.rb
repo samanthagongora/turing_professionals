@@ -16,5 +16,7 @@ RSpec.feature "User views all companies" do
     expect(page).to have_xpath("//img[@src='#{co_2.image_url}']")
     expect(page).to have_content(co_2.industry)
     expect(page).to have_content(co_2.locations)
+    # number of members associated - need user table
+    
   end
 end
