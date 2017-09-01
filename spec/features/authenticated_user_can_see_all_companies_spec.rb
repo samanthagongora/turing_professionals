@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "User visits company index" do
   scenario "they see all companies" do
-    # user = create(:user)
-    # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     co_1, co_2 = create_list(:company, 2)
     ind_1, ind_2, ind_3 = create_list(:industry, 3)
     city_1, city_2, city_3 = create_list(:location, 3)

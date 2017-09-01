@@ -10,13 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170831225908) do
-
+ActiveRecord::Schema.define(version: 20170901031405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -57,11 +54,6 @@ ActiveRecord::Schema.define(version: 20170831225908) do
     t.index ["location_id"], name: "index_office_locations_on_location_id"
   end
 
-  add_foreign_key "company_industries", "companies"
-  add_foreign_key "company_industries", "industries"
-  add_foreign_key "office_locations", "companies"
-  add_foreign_key "office_locations", "locations"
-
   create_table "users", force: :cascade do |t|
     t.integer "role", default: 0
     t.string "auth_token_linkedin"
@@ -85,5 +77,8 @@ ActiveRecord::Schema.define(version: 20170831225908) do
     t.string "password_digest"
   end
 
-
+  add_foreign_key "company_industries", "companies"
+  add_foreign_key "company_industries", "industries"
+  add_foreign_key "office_locations", "companies"
+  add_foreign_key "office_locations", "locations"
 end

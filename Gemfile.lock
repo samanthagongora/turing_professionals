@@ -251,10 +251,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   awesome_print
-<<<<<<< HEAD
-=======
   bcrypt
->>>>>>> development
   bootstrap-sass (~> 3.2.0)
   byebug
   capybara
@@ -264,11 +261,8 @@ DEPENDENCIES
   faraday
   figaro
   jbuilder (~> 2.5)
-<<<<<<< HEAD
-  launchy
-=======
   jquery-rails
->>>>>>> development
+  launchy
   listen (>= 3.0.5, < 3.2)
   omniauth-linkedin-oauth2
   pg (~> 0.18)

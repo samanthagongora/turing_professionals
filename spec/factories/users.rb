@@ -28,5 +28,7 @@ FactoryGirl.define do
     slack "@spongebob"
     github "spongebob"
     cohort "1705 BE"
+    password "password"
+    sequence :username {|n| "username#{n}"}
   end
 end
