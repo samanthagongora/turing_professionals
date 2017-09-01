@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901031405) do
+ActiveRecord::Schema.define(version: 20170901170527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,8 +77,21 @@ ActiveRecord::Schema.define(version: 20170901031405) do
     t.string "password_digest"
   end
 
+  create_table "workplaces", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "company_id"
+    t.string "position"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_workplaces_on_company_id"
+    t.index ["user_id"], name: "index_workplaces_on_user_id"
+  end
+
   add_foreign_key "company_industries", "companies"
   add_foreign_key "company_industries", "industries"
   add_foreign_key "office_locations", "companies"
   add_foreign_key "office_locations", "locations"
+  add_foreign_key "workplaces", "companies"
+  add_foreign_key "workplaces", "users"
 end

@@ -11,5 +11,7 @@ RSpec.describe Company, type: :model do
     it {should have_many(:industries)}
     it {should have_many(:office_locations)}
     it {should have_many(:locations)}
+    it {should have_many(:workplaces)}
+    it {should have_many(:users)}
   end
 end
