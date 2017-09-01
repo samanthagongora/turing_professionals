@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :workplace do
-    user nil
-    company nil
+    user
+    company
     position "MyString"
     status 1
   end

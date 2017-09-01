@@ -12,6 +12,6 @@ RSpec.describe Company, type: :model do
     it {should have_many(:office_locations)}
     it {should have_many(:locations)}
     it {should have_many(:workplaces)}
-    it {should have_many(:members_through_work)}
+    it {should have_many(:employed_users)}
   end
 end

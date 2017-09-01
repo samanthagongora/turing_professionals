@@ -6,5 +6,5 @@ class Company < ApplicationRecord
   has_many :office_locations
   has_many :locations, through: :office_locations
   has_many :workplaces
-  has_many :members_through_work, class_name: "User", through: :workplaces
+  has_many :employed_users, class_name: "User", through: :workplaces
 end

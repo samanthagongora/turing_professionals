@@ -10,6 +10,7 @@
       <% company.locations.each do |location| %>
         <%= location.city %>, <%= location.state %>
       <% end %>
+      <p>Turing Grads Who Have Worked Here: <%= company.employed_users.count %></p>
   </div>
   <% end %>
 </div>
