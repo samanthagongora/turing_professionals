@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   get '/auth/linkedin', as: :linkedin_login
   get '/auth/linkedin/callback', to: "sessions#create"
+
   root 'welcome#index'
 end
