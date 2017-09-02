@@ -22,6 +22,8 @@
               </div>
               <div class="modal-body">
                 <%=	form_for @user do |f|   %>
+                    <%= f.label :image_url %>
+                    <%= f.file_field :image_url %>
                     <%= f.label :first_name %> <br>
                     <%= f.text_field :first_name %>  <br>
                     <%= f.label :last_name %>  <br>
@@ -41,14 +43,12 @@
                     <%= f.label :github %> <br>
                     <%= f.text_field :github %> <br>
 
-                    <%= f.submit %>
-
-                <%	end  %>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary"><%= f.submit %></button>
               </div>
+                <%	end  %>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
   <div id="bio">
     <div id="about">
       <div id="photo-bg">
-        <%= image_tag @user.image_url if !@user.image_url.nil? %>
+        <%= image_tag @user.image_url, size: '170x170' if !@user.image_url.nil? %>
         <!--<img src="man.jpg" alt="" width="180" height="180">-->
       </div>
       <h3>About Me</h3>
