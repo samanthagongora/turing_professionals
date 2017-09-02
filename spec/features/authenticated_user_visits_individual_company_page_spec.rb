@@ -32,8 +32,9 @@ RSpec.feature "User visits company show page" do
     expect(page).to have_content(co_1.name)
     expect(page).to have_selector(:css, "a[href='#{co_1.linkedin_url}']")
     expect(page).to have_selector(:css, "a[href='#{co_1.twitter}']")
+    expect(page).to have_link("Website", href: co_1.website)
+    
     within(".overview") do
-      expect(page).to have_link("Website", href: co_1.website)
       expect(page).to have_content("#{city_3.city}, #{city_3.state}")
       expect(page).to_not have_content(city_2.city)
       expect(page).to have_content(ind_1.name)

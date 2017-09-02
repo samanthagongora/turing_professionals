@@ -1,45 +1,54 @@
-<h1><%= @company.name %></h1>
+<div class="text-center row">
+
+<h1><%= @company.name %></h1><br>
+<div class="col-md-4">
 <a href="<%= @company.linkedin_url %>">
-  <img src="app/assets/images/linkedin_logo.png" alt="linkedin-logo">
+  <img class = "social-media-logo" src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" alt="linkedin-logo">
 </a>
+</div>
+<div class="col-md-4">
 <a href="<%= @company.twitter %>">
-  <img src="app/assets/images/twitter_logo.svg" alt="twitter-logo">
+  <img class = "social-media-logo" src="https://1.bp.blogspot.com/-fYzEVSAoYpo/V1BbBMPg7EI/AAAAAAAAAHw/8mUCv6Jzs2MZtFXkwpdLdBFUVrr7FFh9ACLcB/s1600/twitter%2Blogo%2Btransparent%2B234.png" alt="twitter-logo">
 </a>
-<div class="overview">
+</div>
+<div class="col-md-4">
+<h3><a href="<%= @company.website %>">Website</a></h3>
+</div>
+</div>
+<div class="overview col-md-3">
   <h4>Company Overview</h4>
-  <a href="<%= @company.website %>">Website</a>
   <p>
-    Industries:
+    Industries:<br>
     <% @company.industries.each do |industry| %>
-      <%= industry.name %>
-      <%= "|" unless industry == @company.industries.last %>
+      <%= industry.name %> <br>
     <% end %>
   </p>
   <p>
-    Locations:
+    Locations: <br>
     <% @company.locations.each do |location| %>
-      <%= location.city %>, <%= location.state %>
-      <%= "|" unless location == @company.locations.last %>
+      <%= location.city %>, <%= location.state %> <br>
     <% end %>
   </p>
   <p>
-    Tech Stack:
+    Tech Stack: <br>
     <% @company.technologies.each do |technology| %>
-      <%= technology.name %>
-      <%= "|" unless technology == @company.technologies.last %>
+      <span class="label label-primary"><%= technology.name %></span>
     <% end %>
   </p>
   <p>
-    Contacts:
+    Contacts:<br>
     <% @company.contacts.each do |contact| %>
-      <%= contact.name %>
-      <%= contact.title %>
+    <span class="badge text-center">
+      <%= contact.name %><br>
+      <%= contact.title %><br>
       <%= contact.email %><br>
+    </span>
     <% end %>
   </p>
 </div>
 
-<div>
+
+<div class = 'col-md-8 tabs'>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#co-members-<%= @company.id %>" aria-controls="home" role="tab" data-toggle="tab">Members Who Have Worked Here</a></li>
@@ -50,12 +59,12 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active row" id="co-members-<%= @company.id %>">
       <% @company.employed_users.each do |user| %>
-      <div class="panel panel-default col-md-4">
+      <div class="col-md-4 text-center">
         <div class="panel-body">
           <img class = "img-responsive" src="<%= user.image_url %>" alt="user-image">
           <%= "#{user.first_name} #{user.last_name}" %>
-          <%= user.location.city %>, <%= user.location.state %>
-          <%= user.cohort %>
+          <p><%= user.location.city %>, <%= user.location.state %></p>
+          <p><%= user.cohort %></p>
         </div>
       </div>
       <% end %>
