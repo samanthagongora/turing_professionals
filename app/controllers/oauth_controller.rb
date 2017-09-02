@@ -1,6 +1,6 @@
 class OauthController < ApplicationController
 
-  def callback
+  def update
     oauth = OauthService.new(request.env['omniauth.auth'], current_user)
 
      if current_user = oauth.create_oauth_information
@@ -9,7 +9,12 @@ class OauthController < ApplicationController
       flash[:alert] = "There was an error"
       redirect_to root_path
     end
-
   end
+
+  def failure
+   flash[:alert] = "There was an error while trying to authenticate your account."
+   redirect_to register_path
+  end
+
 
 end

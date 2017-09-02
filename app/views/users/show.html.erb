@@ -1,6 +1,6 @@
 <div class="container center-text">
 
-  <p><%= image_tag @user.image_url if !@user.image_url.nil? %></p>
+<p><%= image_tag @user.image_url if !@user.image_url.nil? %></p>
 <p>Username: <%= @user.username %></p>
 <p>First Name: <%= @user.first_name %></p>
 <p>Last Name: <%= @user.last_name %></p>
@@ -9,6 +9,6 @@
 <p>Current Position: <%= @user.headline %></p>
 <p>Industry: <%= @user.summary %></p>
 
-<p><%= link_to 'Authorize this app to use your Linkedin information',
+<p><%= link_to 'Authorize app to use your Linkedin information',
                '/auth/linkedin', class: "btn btn-primary"  %></p>
 </div>

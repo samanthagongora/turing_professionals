@@ -5,15 +5,17 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  resources :users, except: [:index]
+  resources :users, only: [:new, :create, :edit, :update]
+  #
+  # get '/auth/linkedin', as: :linkedin_login
+  # get '/auth/linkedin/callback', to: "sessions#create"
 
-  get '/auth/linkedin', as: :linkedin_login
-  get '/auth/linkedin/callback', to: "sessions#create"
-
-  root 'welcome#index'
   resources :companies, only: [:index]
 
-  get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'
+  get '/auth/:provider/callback', to: 'sessions#create', as: 'oauth_callback'
   get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'
+
+  get '/dashboard', to: 'users#show'
+
 
 end
