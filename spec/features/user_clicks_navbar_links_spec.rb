@@ -17,13 +17,21 @@ RSpec.feature "User clicks navbar links and" do
       # I am sent to the members index page
       expect(current_path).to eq users_path
       # And I click “Companies” in the navbar
+      click_link("Companies")
       # I am sent to the companies index page
+      expect(current_path).to eq companies_path
       # And I click my username in the navbar
+      click_link("#{user_1.first_name}" + " " + "#{user_1.last_name}")
       # And I click “Dashboard”
+      click_link("Dashboard")
       # I am sent to my personal dashboard
+      expect(current_path).to eq dashboard_path
       # And I click my username in the navbar
+      click_link("#{user_1.first_name}" + " " + "#{user_1.last_name}")
       # And I click “My Profile”
+      click_link("My Profile")
       # I am sent to my personal profile page
+      expect(current_path).to eq user_path(user_1)
     end
   end
 
