@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  resources :users
+  resources :users, only: [:new, :create, :edit, :update]
 
   get '/dashboard', to: "dashboard#show"
-
 
   resources :companies, only: [:index]
 
@@ -15,6 +14,3 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 end
-
-# get '/auth/linkedin', as: :linkedin_login
-# get '/auth/linkedin/callback', to: "sessions#create"
