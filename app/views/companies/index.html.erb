@@ -1,16 +1,34 @@
-<h3>All Companies</h3>
 <div class="container">
+<h1 class = "page-header">All Companies</h1>
+
   <% @companies.each do |company| %>
-  <div class="row company-<%= company.id %>">
-      <%= company.name %>
-      <img src="<%= company.image_url %>" alt="company picture">
+  <div class="panel panel-default company-<%= company.id %>">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+    <img class = "img-responsive company-index-picture" src="<%= company.image_url %>" alt="company picture">
+      </div>
+      <div class="col-md-8 text-center">
+      <h2 class = "page-header"><%= company.name %></h2>
+      <h4>
       <% company.industries.each do |industry| %>
         <%= industry.name %>
+        <%= "," unless industry == company.industries.last %>
       <% end %>
+    </h4><br>
+      <div class="text-center col-md-6">
+        <h4>Locations</h4>
       <% company.locations.each do |location| %>
-        <%= location.city %>, <%= location.state %>
+        <%= location.city %>, <%= location.state %><br>
       <% end %>
-      <p>Turing Grads Who Have Worked Here: <%= company.employed_users.count %></p>
+      </div>
+      <div class="text-center col-md-6">
+      <h4>Turing Grads Who Have Worked Here: </h4>
+      <%= company.employed_users.count %>
+    </div>
+    </div>
   </div>
+</div>
+</div>
   <% end %>
 </div>
