@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
    end
 
    def create
+     byebug
      user = User.find_by(username: params[:session][:username])
      if user.nil?
        flash[:notice] = "No user with that username; please create an account"
