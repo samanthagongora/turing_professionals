@@ -10,4 +10,10 @@ class Company < ApplicationRecord
   has_many :tech_stacks
   has_many :technologies, through: :tech_stacks
   has_many :contacts
+
+  before_validation :generate_slug
+  
+  def generate_slug
+    self.slug = name.parameterize
+  end
 end
