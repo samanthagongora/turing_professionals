@@ -21,6 +21,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'omniauth-linkedin-oauth2'
 gem 'bcrypt'
+gem 'faker'
 
 group :development, :test do
   gem 'pry'
@@ -31,6 +32,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'launchy'
 end
 
 group :test do

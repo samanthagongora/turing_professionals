@@ -1,22 +1,22 @@
 FactoryGirl.define do
-  factory :user do
+   factory :user do
 
-    role 0
+     role 0
 
-    sequence :auth_token_linkedin do |x|
-      "AuthToken#{x}"
-    end
+     sequence :auth_token_linkedin do |x|
+       "AuthToken#{x}"
+     end
 
-    sequence :uid do |x|
-      "UID#{x}"
-    end
+     sequence :uid do |x|
+       "UID#{x}"
+     end
 
-    first_name "Spongebob"
-    last_name "Squarepants"
+     first_name "Spongebob"
+     last_name "Squarepants"
 
-    sequence :email do |x|
-      "pineapple#{x}@underthesea.com"
-    end
+     sequence :email do |x|
+       "pineapple#{x}@underthesea.com"
+     end
 
     headline "World's Best Employee"
     summary "An overly enthusatic sentient sponge"
@@ -28,5 +28,7 @@ FactoryGirl.define do
     slack "@spongebob"
     github "spongebob"
     cohort "1705 BE"
+    password "password"
+    sequence :username {|n| "username#{n}"}
   end
 end
