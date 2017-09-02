@@ -12,7 +12,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="nav navbar-nav navbar-right">
-        <li><a href="#">Login with LinkedIn</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><%= link_to 'Logout', logout_path, method: :delete %></li>
       </div>
     </div>
   </div>
