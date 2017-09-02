@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :favorites
-  #has_many :favorite_companies, as: :favoritable
+  has_many :favorite_companies, through: :favorites, source: :favoritable, source_type: 'Company'
+  has_many :favorite_users, through: :favorites, source: :favoritable, source_type: 'User'
 
   enum role: ["default", "admin"]
 

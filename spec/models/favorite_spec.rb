@@ -4,8 +4,8 @@ RSpec.describe Favorite, type: :model do
   context "associations" do
     it { is_expected.to respond_to :user }
     it { is_expected.to respond_to :favoritable }
-    it should have_many :favoritables
-    it should belong_to :user
+    it { is_expected.to belong_to :favoritable }
+    it { is_expected.to belong_to :user }
   end
 
   context 'validations' do
