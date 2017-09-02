@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :technology do
-    name "MyString"
+    sequence :name {|n| "Java #{n}"}
   end
 end

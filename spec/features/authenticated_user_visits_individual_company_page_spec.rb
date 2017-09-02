@@ -48,10 +48,10 @@ RSpec.feature "User visits company show page" do
     end
     expect(page).to have_link("Members Who Have Worked Here")
     expect(page).to have_link("Interview Questions")
-    within(".co_members-#{co_1.id}") do
-      expect(page).to have_content(user_1.name)
-      expect(page).to have_content(user_2.name)
-      expect(page).to_not have_content(user_3.name)
+    within("#co-members-#{co_1.id}") do
+      expect(page).to have_content(user_1.first_name)
+      expect(page).to have_content(user_2.first_name)
+      expect(page).to_not have_content(user_3.first_name)
     end
   end
 end

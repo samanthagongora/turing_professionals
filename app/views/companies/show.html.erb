@@ -10,28 +10,28 @@
   <a href="<%= @company.website %>">Website</a>
   <p>
     Industries:
-    <% @company.industries do |industry| %>
+    <% @company.industries.each do |industry| %>
       <%= industry.name %>
       <%= "|" unless industry == @company.industries.last %>
     <% end %>
   </p>
   <p>
     Locations:
-    <% @company.locations do |location| %>
+    <% @company.locations.each do |location| %>
       <%= location.city %>, <%= location.state %>
       <%= "|" unless location == @company.locations.last %>
     <% end %>
   </p>
   <p>
     Tech Stack:
-    <% @company.technologies do |technology| %>
+    <% @company.technologies.each do |technology| %>
       <%= technology.name %>
-      <%= "|" unless technology == @company.technology.last %>
+      <%= "|" unless technology == @company.technologies.last %>
     <% end %>
   </p>
   <p>
     Contacts:
-    <% @company.contacts do |contact| %>
+    <% @company.contacts.each do |contact| %>
       <%= contact.name %>
       <%= contact.title %>
       <%= contact.email %><br>

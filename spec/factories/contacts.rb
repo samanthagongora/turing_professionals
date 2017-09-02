@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :contact do
-    name "MyString"
-    title "MyString"
-    email "MyString"
-    company nil
+    sequence :name {|n| "Bob #{n}"}
+    sequence :title {|n| "Manager #{n}"}
+    sequence :email {|n| "bob#{n}@gmail.com"}
+    company
   end
 end
