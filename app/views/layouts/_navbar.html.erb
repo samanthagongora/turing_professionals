@@ -7,13 +7,38 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Turing Professionals</a>
+      <% if current_user %>
+        <%= link_to "Turing Professionals", dashboard_path, class: "navbar-brand" %>
+      <% else %>
+        <%= link_to "Turing Professionals", root_path, class: "navbar-brand" %>
+      <% end %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="nav navbar-nav navbar-right">
-        <li><a href="/login">Login</a></li>
-        <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+        <% if current_user %>
+          <li><%= link_to "Members", users_path %></li>
+          <li><%= link_to "Companies", companies_path %></li>
+          <li class="dropdown">
+            <% if current_user.first_name && current_user.last_name %>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name + " " + current_user.last_name %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Dashboard", dashboard_path %></li>
+                <li><%= link_to "My Profile", user_path(current_user) %></li>
+                <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+              </ul>
+            <% else %>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Dashboard", dashboard_path %></li>
+                <li><%= link_to "My Profile", user_path(current_user) %></li>
+                <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+              </ul>
+            <% end %>
+        <% else %>
+          <li><%= link_to 'Create Account', new_user_path %></li>
+          <li><%= link_to "Login", login_path %></li>
+        <% end %>
       </div>
     </div>
   </div>

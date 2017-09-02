@@ -40,3 +40,8 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+RSpec.configure do |config|
+  config.include(Omniauth)
+end
+OmniAuth.config.test_mode = true
