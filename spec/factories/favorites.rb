@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :favorite do
-    user nil
+    user
     favoritable nil
-    favoritable_type "MyString"
+    favoritable_type "User"
   end
 end
