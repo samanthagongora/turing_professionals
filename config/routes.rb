@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
@@ -11,4 +12,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   resources :companies, only: [:index]
+
+  get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'
+  get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'
+
 end
