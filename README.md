@@ -1,25 +1,26 @@
-# README
+# Turing Professionals
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an app for Turing students to connect with one another post-graduation. Log in [here](https://turing-professionals.herokuapp.com/) with your Census credentials to access grad profiles, with information including:  
 
-Things you may want to cover:
+ * workplaces, current and past,
+ * current city,
+ * favoriting functionality.
 
-* Ruby version
+ Users can also view information about companies where Turing grads have worked, including anonymous commentary about company culture, interview questions, and a comparative Glassdoor rating. App also has information about cities where Turing grads have moved, including opinions about culture and activities.
 
-* System dependencies
+## For developers
 
-* Configuration
+If you'd like to clone this app for your own purposes:
 
-* Database creation
+### Versions
 
-* Database initialization
+Ruby 2.4.1
+Rails 5.1.3
 
-* How to run the test suite
+### Database creation
+`$ rails db:create`
+`$ rails db:migrate`
+`$ rails db:seed`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# turing_professionals
+### How to run the test suite
+`$ rspec`
