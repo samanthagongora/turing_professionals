@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
      elsif user.authenticate(params[:session][:password])
        flash[:notice].clear if flash[:notice]
        session[:user_id] = user.id
-       redirect_to dashboard_path
+       redirect_to user_path(user)
      else
        flash[:notice] = "Incorrect password; please try again."
        render :new

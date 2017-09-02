@@ -1,9 +1,9 @@
 class OauthController < ApplicationController
 
-  def update
+  def callback
     oauth = OauthService.new(request.env['omniauth.auth'], current_user)
 
-     if current_user = oauth.create_oauth_information
+    if current_user = oauth.create_oauth_information
       redirect_to user_path(session[:user_id])
     else
       flash[:alert] = "There was an error"
