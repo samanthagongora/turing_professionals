@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/auth/linkedin/callback', to: "sessions#create"
 
   root 'welcome#index'
-  resources :companies, only: [:index]
+  resources :companies, only: [:index, :show]
 
   get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'
   get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'

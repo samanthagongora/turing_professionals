@@ -25,7 +25,7 @@ RSpec.feature "User visits company index" do
       expect(page).to have_content(ind_1.name)
       expect(page).to have_content(ind_2.name)
       expect(page).to have_content("#{city_3.city}, #{city_3.state}")
-      expect(page).to have_content("Turing Grads Who Have Worked Here: 2")
+      expect(page).to have_content("Members Who Have Worked Here: 2")
     end
     within(".company-#{co_2.id}") do
       expect(page).to have_content(co_2.name)
@@ -34,7 +34,7 @@ RSpec.feature "User visits company index" do
       expect(page).to have_content(ind_3.name)
       expect(page).to have_content("#{city_1.city}, #{city_1.state}")
       expect(page).to have_content("#{city_2.city}, #{city_2.state}")
-      expect(page).to have_content("Turing Grads Who Have Worked Here: 3")
+      expect(page).to have_content("Members Who Have Worked Here: 3")
     end
   end
 end

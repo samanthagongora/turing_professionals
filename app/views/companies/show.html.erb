@@ -1,0 +1,65 @@
+<h1><%= @company.name %></h1>
+<a href="<%= @company.linkedin_url %>">
+  <img src="app/assets/images/linkedin_logo.png" alt="linkedin-logo">
+</a>
+<a href="<%= @company.twitter %>">
+  <img src="app/assets/images/twitter_logo.svg" alt="twitter-logo">
+</a>
+<div class=".overview">
+  <h4>Company Overview</h4>
+  <a href="<%= @company.website %>">Website</a>
+  <p>
+    Industries:
+    <% @company.industries do |industry| %>
+      <%= industry.name %>
+      <%= "|" unless industry == @company.industries.last %>
+    <% end %>
+  </p>
+  <p>
+    Locations:
+    <% @company.locations do |location| %>
+      <%= location.city %>, <%= location.state %>
+      <%= "|" unless location == @company.locations.last %>
+    <% end %>
+  </p>
+  <p>
+    Tech Stack:
+    <% @company.technologies do |technology| %>
+      <%= technology.name %>
+      <%= "|" unless technology == @company.technology.last %>
+    <% end %>
+  </p>
+  <p>
+    Contacts:
+    <% @company.contacts do |contact| %>
+      <%= contact.name %>
+      <%= contact.title %>
+      <%= contact.email %><br>
+    <% end %>
+  </p>
+</div>
+
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#co-members-<%= @company.id %>" aria-controls="home" role="tab" data-toggle="tab">Members Who Have Worked Here</a></li>
+    <li role="presentation"><a href="#interview-questions-<%= @company.id %>" aria-controls="profile" role="tab" data-toggle="tab">Interview Questions</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active row" id="co-members-<%= @company.id %>">
+      <% @company.employed_users.each do |user| %>
+      <div class="panel panel-default col-md-4">
+        <div class="panel-body">
+          <img class = "img-responsive" src="<%= user.image_url %>" alt="user-image">
+          <%= user.name %>
+          <%= user.location.city %>, <%= user.location.state %>
+          <%= user.cohort %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="interview-questions-<%= @company.id %>">...</div>
+  </div>
+</div>

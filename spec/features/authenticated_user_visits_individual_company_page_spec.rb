@@ -35,7 +35,7 @@ RSpec.feature "User visits company show page" do
     within(".overview") do
       expect(page).to have_link(co_1.website)
       expect(page).to have_content("#{city_3.city}, #{city_3.state}")
-      expect(page).to_not have_content(city_2.name)
+      expect(page).to_not have_content(city_2.city)
       expect(page).to have_content(ind_1.name)
       expect(page).to have_content(ind_2.name)
       expect(page).to_not have_content(ind_3.name)
