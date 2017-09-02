@@ -3,4 +3,7 @@ class Favorite < ApplicationRecord
 
   belongs_to :favoritable, polymorphic: true
   belongs_to :user, inverse_of: :favorites
+# returns the favorite objects
+  scope :users, -> { where(favoritable_type: 'User') }
+  scope :companies, -> { where(favoritable_type: 'Company') }
 end
