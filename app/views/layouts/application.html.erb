@@ -10,6 +10,11 @@
 
   <body>
     <%= render partial: 'layouts/navbar' %>
-      <%= yield %>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> alert-danger"><h4 class="flash_header"><%= sanitize(value) %> </h4></div>
+    <% end %>
+
+    <%= yield %>
   </body>
 </html>

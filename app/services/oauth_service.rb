@@ -6,12 +6,13 @@ class OauthService
   end
 
   def create_oauth_information
-    @user.update_attributes(oauth_account_params)
+    @user.update_attributes!(oauth_account_params)
   end
 
   private
     def oauth_account_params
-      { uid: @auth_hash[:uid],
+      { password: @user.password_digest,
+        uid: @auth_hash[:uid],
         headline: @auth_hash[:info][:description],
         first_name: @auth_hash[:info][:first_name],
         last_name: @auth_hash[:info][:last_name],
