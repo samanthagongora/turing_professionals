@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
    end
 
    def create
+     byebug
      user = User.find_by(username: params[:session][:username])
      if user.nil?
        flash[:notice] = "No user with that username; please create an account"
@@ -22,4 +23,3 @@ class SessionsController < ApplicationController
      redirect_to root_path
    end
  end
-
