@@ -2,8 +2,6 @@
 
    <h1>Login Page</h1><br/><br/>
 
-   <h4> <%= link_to "Create Account", new_user_path  %> </h4><br/><br/><br/>
-
    <%= form_for(:session, url: login_path) do |f| %>
    <%= f.label :username %><br/>
    <%= f.text_field :username %><br/><br/>
@@ -14,4 +12,3 @@
    <%= f.submit "Log In", :class => "btn btn-primary" %>
    <% end %><br/><br/>
  </div>
-
