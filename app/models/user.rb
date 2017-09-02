@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_companies, through: :favorites, source: :favoritable, source_type: 'Company'
   has_many :favorite_users, through: :favorites, source: :favoritable, source_type: 'User'
+  has_many :favorited_by, through: :favorites, source: :user
 
   enum role: ["default", "admin"]
 

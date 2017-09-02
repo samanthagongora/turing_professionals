@@ -8,4 +8,5 @@ class Company < ApplicationRecord
   has_many :workplaces
   has_many :employed_users, class_name: "User", through: :workplaces
   has_many :favorites, as: :favoritable
+  has_many :favorited_by, through: :favorites, source: :user
 end
