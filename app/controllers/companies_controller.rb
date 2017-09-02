@@ -4,6 +4,6 @@ class CompaniesController < ApplicationController
   end
 
   def show
-
+    @company = Company.find_by(slug: params[:company])
   end
 end

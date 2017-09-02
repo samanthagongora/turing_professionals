@@ -9,7 +9,7 @@
     <img class = "img-responsive company-index-picture" src="<%= company.image_url %>" alt="company picture">
       </div>
       <div class="col-md-8 text-center">
-      <h2 class = "page-header"><%= link_to company.name, company %></h2>
+      <h2 class = "page-header"><%= link_to company.name, company_path(company: company.slug) %></h2>
       <h4>
       <% company.industries.each do |industry| %>
         <%= industry.name %>

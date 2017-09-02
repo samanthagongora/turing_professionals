@@ -12,8 +12,8 @@ class Company < ApplicationRecord
   has_many :contacts
 
   before_validation :generate_slug
-  
+
   def generate_slug
-    self.slug = name.parameterize
+    self.slug = name.parameterize if name
   end
 end
