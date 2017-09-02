@@ -7,6 +7,13 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index]
 
+  get '/auth/linkedin', as: :linkedin_login
+  get '/auth/linkedin/callback', to: "sessions#create"
+
+  root 'welcome#index'
+  resources :companies, only: [:index]
+
   get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'
   get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'
+
 end
