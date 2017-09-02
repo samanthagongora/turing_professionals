@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
   resources :users, only: [:new, :create, :edit, :update]
-  #
-  # get '/auth/linkedin', as: :linkedin_login
-  # get '/auth/linkedin/callback', to: "sessions#create"
-
   resources :companies, only: [:index]
 
   get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'
