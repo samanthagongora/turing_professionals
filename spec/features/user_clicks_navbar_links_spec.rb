@@ -13,7 +13,9 @@ RSpec.feature "User clicks navbar links and" do
       # I am sent to my personal dashboard
       expect(current_path).to eq dashboard_path
       # And I click “Members” in the navbar
+      click_link("Members")
       # I am sent to the members index page
+      expect(current_path).to eq users_path
       # And I click “Companies” in the navbar
       # I am sent to the companies index page
       # And I click my username in the navbar
@@ -38,7 +40,7 @@ RSpec.feature "User clicks navbar links and" do
       visit "/"
 
       click_link("Turing Professionals")
-      
+
       expect(current_path).to eq root_path
     end
   end
