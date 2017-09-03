@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   enum status: ["active", "inactive"]
 
+  scope :default, -> {where(role: "default")}
   scope :active, -> {where(status: "active")}
   scope :inactive, -> {where(status: "inactive")}
 
