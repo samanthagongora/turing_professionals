@@ -1,7 +1,8 @@
 class InterviewQuestionsController < ApplicationController
   def create
     question = InterviewQuestion.create(interview_question_params)
-    redirect_to company_path(Company.find(interview_question_params[:company_id]).slug)
+    company = Company.find(interview_question_params[:company_id])
+    redirect_to company_path(company.slug)
   end
 
   private

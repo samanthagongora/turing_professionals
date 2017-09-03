@@ -88,7 +88,7 @@ RSpec.feature "User visits company show page" do
 
     within("#interview-questions-#{co_1.id}") do
       fill_in "interview_question_description", with: "What's your biggest strength?"
-      click_on "Submit New Question"
+      click_on "Submit"
     end
 
     within("#interview-questions-#{co_1.id}") do
