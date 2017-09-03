@@ -15,4 +15,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get '/:company', to: 'companies#show', as: :company
+
+  namespace :admin do
+    get '/dashboard', to: "dashboard#show"
+  end
 end
