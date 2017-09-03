@@ -62,7 +62,6 @@ RSpec.feature "User visits company show page" do
     q_1, q_2 = create_list(:interview_question, 2, company: co_1)
     q_3 = create(:interview_question, company: co_2)
 
-
     visit "/#{co_1.name.parameterize}"
 
     click_on "Interview Questions"
@@ -72,6 +71,30 @@ RSpec.feature "User visits company show page" do
       expect(page).to have_content(q_1.created_at.to_formatted_s(:long))
       expect(page).to have_content(q_2.description)
       expect(page).to have_content(q_2.created_at.to_formatted_s(:long))
+      expect(page).to_not have_content(q_3.description)
+    end
+  end
+
+  scenario "they can add interview question" do
+    user_1, user_2, user_3 = create_list(:user, 3)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+    co_1, co_2 = create_list(:company, 2)
+    q_1, q_2 = create_list(:interview_question, 2, company: co_1)
+    q_3 = create(:interview_question, company: co_2)
+
+    visit "/#{co_1.name.parameterize}"
+
+    click_on "Interview Questions"
+
+    within("#interview-questions-#{co_1.id}") do
+      fill_in "interview_question_description", with: "What's your biggest strength?"
+      click_on "Submit New Question"
+    end
+
+    within("#interview-questions-#{co_1.id}") do
+      expect(page).to have_content("What's your biggest strength?")
+      expect(page).to have_content(q_1.description)
+      expect(page).to have_content(q_2.description)
       expect(page).to_not have_content(q_3.description)
     end
   end

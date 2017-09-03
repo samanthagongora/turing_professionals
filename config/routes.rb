@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: "dashboard#show"
 
   resources :companies, only: [:index]
+  resources :interview_questions, only: [:create]
 
 
   get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'

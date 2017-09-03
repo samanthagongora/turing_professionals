@@ -72,11 +72,15 @@
     <div role="tabpanel" class="tab-pane" id="interview-questions-<%= @company.id %>">
       <% @company.interview_questions.each do |question| %>
         <div class="panel panel-default">
-          <div class="panel-body">
-            <%= question.description %>
-          </div>
+          <div class="panel-body"><%= question.description %></div>
           <div class="panel-footer">Question Submitted On: <%= question.created_at.to_formatted_s(:long) %></div>
         </div>
+      <% end %>
+      <%= form_for(:interview_question, url: "/interview_questions") do |f| %>
+        <%= f.hidden_field :company_id, :value => @company.id, :name => "interview_question[company_id]"%>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+        <%= f.submit 'Submit New Question', :class =>"btn btn-success"%>
       <% end %>
     </div>
   </div>
