@@ -27,7 +27,7 @@
                        <%= f.label :image_url %>
                        <%= f.file_field :image_url %>
                        <%= f.label :resume %>
-                       <%= f.file_field :resume, multiple: true %>
+                       <%= f.file_field :resume %>
                      </div>
                     <div class="field form-group">
                         <%= f.label :first_name, class: 'control-label' %> <br>
@@ -140,8 +140,3 @@
     </div>
   </div>
 </section>
-<div class="container">
-  <div class="resume">
-    <%= image_tag @user.resume.to_s, size: '170x170' if !@user.resume.nil? %>
-  </div>
-</div>
