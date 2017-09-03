@@ -100,12 +100,12 @@
     <div id="contact-details">
       <h3>Contact Me</h3>
       <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh. Please get in touch:</p>
-      <h5>Phone: <span>01234 567 890</span></h5>
+      <h5>Phone: <span><%= @user.phone %></span></h5>
       <h5>Email: <span><%= @user.email %></span></h5>
       <h5>Twitter: <span><%= @user.twitter %></span></h5>
       <h5>Slack: <span><%= @user.slack %></span></h5>
       <h5>Github: <span><%= @user.github %></span></h5>
-      <h5>Industry: <span>@user.summary</span></h5>
+      <h5>Industry: <span><%= @user.summary %></span></h5>
 
     </div>
   </div>
