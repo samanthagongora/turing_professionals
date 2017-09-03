@@ -72,7 +72,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <%= f.submit %>
+                  <%= f.submit 'Submit', class: 'btn btn-primary' %>
                 </div>
                   <%	end  %>
               </div>
@@ -91,7 +91,6 @@
     <div id="about">
       <div id="photo-bg">
         <%= image_tag @user.image_url, size: '170x170' if !@user.image_url.nil? %>
-        <!--<img src="man.jpg" alt="" width="180" height="180">-->
       </div>
       <h3>About Me</h3>
       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
@@ -100,7 +99,6 @@
     <div id="contact-details">
       <h3>Contact Me</h3>
       <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh. Please get in touch:</p>
-      <h5>Phone: <span><%= @user.phone %></span></h5>
       <h5>Email: <span><%= @user.email %></span></h5>
       <h5>Twitter: <span><%= @user.twitter %></span></h5>
       <h5>Slack: <span><%= @user.slack %></span></h5>
