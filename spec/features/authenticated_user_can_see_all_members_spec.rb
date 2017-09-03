@@ -9,13 +9,15 @@ RSpec.feature "User visits member index" do
     click_on "Members"
 
     expect(current_path).to eq("/users")
-    expect(page).to have_css(".panel-body", count: 3)
-    within(".member-#{user_1.id}") do
-      expect(page).to have_css(".member-index-picture")
-      expect(page).to have_css(".member-name")
-      expect(page).to have_css(".member-location")
-      expect(page).to have_css(".member-company")
-      expect(page).to have_css(".member-cohort")
+    expect(page).to have_css(".member-card", count: 3)
+    within first(".member-card") do
+      expect(page).to have_content(user_1.image_url)
+      expect(page).to have_content(user_1.first_name)
+      expect(page).to have_content(user_1.last_name)
+      expect(page).to have_content(user_1.location.city)
+      expect(page).to have_content(user_1.location.state)
+      expect(page).to have_content(user_1.workplaces.first.company.name)
+      expect(page).to have_content(user_1.cohort)
     end
     expect(page).to have_css('.glyphicon-star-empty', count: 3)
   end
