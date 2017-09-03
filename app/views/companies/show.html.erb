@@ -1,0 +1,74 @@
+<div class="text-center row">
+
+<h1><%= @company.name %></h1><br>
+<div class="col-md-4">
+<a href="<%= @company.linkedin_url %>">
+  <img class = "social-media-logo" src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" alt="linkedin-logo">
+</a>
+</div>
+<div class="col-md-4">
+<a href="<%= @company.twitter %>">
+  <img class = "social-media-logo" src="https://1.bp.blogspot.com/-fYzEVSAoYpo/V1BbBMPg7EI/AAAAAAAAAHw/8mUCv6Jzs2MZtFXkwpdLdBFUVrr7FFh9ACLcB/s1600/twitter%2Blogo%2Btransparent%2B234.png" alt="twitter-logo">
+</a>
+</div>
+<div class="col-md-4">
+<h3><a href="<%= @company.website %>">Website</a></h3>
+</div>
+</div>
+<div class="overview col-md-3">
+  <h4>Company Overview</h4>
+  <p>
+    Industries:<br>
+    <% @company.industries.each do |industry| %>
+      <%= industry.name %> <br>
+    <% end %>
+  </p>
+  <p>
+    Locations: <br>
+    <% @company.locations.each do |location| %>
+      <%= location.city %>, <%= location.state %> <br>
+    <% end %>
+  </p>
+  <p>
+    Tech Stack: <br>
+    <% @company.technologies.each do |technology| %>
+      <span class="label label-primary"><%= technology.name %></span>
+    <% end %>
+  </p>
+  <p>
+    Contacts:<br>
+    <% @company.contacts.each do |contact| %>
+    <span class="badge text-center">
+      <%= contact.name %><br>
+      <%= contact.title %><br>
+      <%= contact.email %><br>
+    </span>
+    <% end %>
+  </p>
+</div>
+
+
+<div class = 'col-md-8 tabs'>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#co-members-<%= @company.id %>" aria-controls="home" role="tab" data-toggle="tab">Members Who Have Worked Here</a></li>
+    <li role="presentation"><a href="#interview-questions-<%= @company.id %>" aria-controls="profile" role="tab" data-toggle="tab">Interview Questions</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active row" id="co-members-<%= @company.id %>">
+      <% @company.employed_users.each do |user| %>
+      <div class="col-md-4 text-center">
+        <div class="panel-body">
+          <img class = "img-responsive" src="<%= user.image_url %>" alt="user-image">
+          <%= "#{user.first_name} #{user.last_name}" %>
+          <p><%= user.location.city %>, <%= user.location.state %></p>
+          <p><%= user.cohort %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="interview-questions-<%= @company.id %>">...</div>
+  </div>
+</div>

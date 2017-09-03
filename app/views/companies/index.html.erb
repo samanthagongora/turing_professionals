@@ -9,7 +9,7 @@
     <img class = "img-responsive company-index-picture" src="<%= company.image_url %>" alt="company picture">
       </div>
       <div class="col-md-8 text-center">
-      <h2 class = "page-header"><%= company.name %></h2>
+      <h2 class = "page-header"><%= link_to company.name, company_path(company: company.slug) %></h2>
       <h4>
       <% company.industries.each do |industry| %>
         <%= industry.name %>
@@ -23,7 +23,7 @@
       <% end %>
       </div>
       <div class="text-center col-md-6">
-      <h4>Turing Grads Who Have Worked Here: </h4>
+      <h4>Members Who Have Worked Here: </h4>
       <%= company.employed_users.count %>
     </div>
     </div>
