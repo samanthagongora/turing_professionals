@@ -23,58 +23,60 @@
               <div class="modal-body">
                 <div class="container">
                   <%=	form_for @user, html: {class: 'form-horizontal'} do |f|   %>
-                      <%= f.label :image_url %>
-                      <%= f.file_field :image_url %>
-                      <%= f.label :resume %>
-                      <%= f.file_field :resume %>
-                  <div class="field form-group">
-                      <%= f.label :first_name, class: 'control-label' %> <br>
-                    <div class="col-sm-6">
-                      <%= f.text_field :first_name, class: 'form-control' %>  <br>
+                     <div class="field">
+                       <%= f.label :image_url %>
+                       <%= f.file_field :image_url %>
+                       <%= f.label :resume %>
+                       <%= f.file_field :resume, multiple: true %>
+                     </div>
+                    <div class="field form-group">
+                        <%= f.label :first_name, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :first_name, class: 'form-control' %>  <br>
+                      </div>
                     </div>
-                  </div>
-                  <div class="field form-group">
-                      <%= f.label :last_name, class: 'control-label' %>  <br>
-                    <div class="col-sm-6">
-                      <%= f.text_field :last_name, class: 'form-control' %> <br>
+                    <div class="field form-group">
+                        <%= f.label :last_name, class: 'control-label' %>  <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :last_name, class: 'form-control' %> <br>
+                      </div>
                     </div>
-                  </div>
-                  <div class="field form-group">
-                      <%= f.label :email, class: 'control-label' %> <br>
-                    <div class="col-sm-6">
-                      <%= f.text_field :email, class: 'form-control' %> <br>
+                    <div class="field form-group">
+                        <%= f.label :email, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :email, class: 'form-control' %> <br>
+                      </div>
                     </div>
-                  </div>
-                  <div class="field form-group">
-                      <%= f.label :summary, class: 'control-label' %> <br>
-                    <div class="col-sm-6">
-                      <%= f.text_area :summary, class: 'form-control' %> <br>
+                    <div class="field form-group">
+                        <%= f.label :summary, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_area :summary, class: 'form-control' %> <br>
+                      </div>
                     </div>
-                  </div>
-                  <div class="field form-group">
-                      <%= f.label :twitter, class: 'control-label' %> <br>
-                    <div class="col-sm-6">
-                      <%= f.text_field :twitter, class: 'form-control' %> <br>
+                    <div class="field form-group">
+                        <%= f.label :twitter, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :twitter, class: 'form-control' %> <br>
+                      </div>
                     </div>
-                  </div>
-                  <div class="field form-group">
-                      <%= f.label :slack, class: 'control-label' %> <br>
-                    <div class="col-sm-6">
-                      <%= f.text_field :slack, class: 'form-control' %> <br>
+                    <div class="field form-group">
+                        <%= f.label :slack, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :slack, class: 'form-control' %> <br>
+                      </div>
                     </div>
-                  </div>
-                  <div class="field form-group">
-                      <%= f.label :github, class: 'control-label' %> <br>
-                    <div class="col-sm-6">
-                      <%= f.text_field :github, class: 'form-control' %> <br>
+                    <div class="field form-group">
+                        <%= f.label :github, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :github, class: 'form-control' %> <br>
+                      </div>
                     </div>
-                  </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <%= f.submit 'Submit', class: 'btn btn-primary' %>
-                </div>
-                  <%	end  %>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+                    </div>
+                      <%	end  %>
               </div>
             </div>
           </div>
@@ -141,8 +143,11 @@
         <div class="container">
           <div class="resume">
             <%#= file_field_tag @user.resume %>
-            <%= image_tag @user.resume, size: '170x170' if !@user.resume.nil? %>
+            <%= image_tag @user.resume.to_s, size: '170x170' if !@user.resume.nil? %>
 
+            <%# @user.resume.each do |resume| %>
+                <li><%#= link_to(image_tag(@user.resume.thumb.url, alt: 'Image'), @user.resume.url, target: '_blank') %></li>
+            <%# end %>
             <%#= link_to "Download Resume", @user.resume %>
           </div>
         </div>

@@ -5,5 +5,5 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
 
   mount_uploader :image_url, ImageUploader
-  mount_uploader :resume, ImageUploader
+  mount_uploader :resume, AttachmentUploader
 end
