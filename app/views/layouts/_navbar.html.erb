@@ -24,7 +24,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name + " " + current_user.last_name %><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Dashboard", dashboard_path %></li>
-                <li><%= link_to "My Profile", user_path(current_user) %></li>
+                <li><%= link_to "My Profile", profile_path %></li>
                 <li><%= link_to 'Logout', logout_path, method: :delete %></li>
               </ul>
             <% elsif current_user.admin? %>
