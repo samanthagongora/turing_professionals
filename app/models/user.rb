@@ -3,13 +3,12 @@ class User < ApplicationRecord
   validates_presence_of :username, :password
   validates_uniqueness_of :username
 
-  belongs_to :location
   has_many :workplaces
 
   enum role: ["default", "admin"]
 
   belongs_to :location, optional: true
-  
+
   has_many :favorites
   has_many :favorite_companies, through: :favorites, source: :favoritable, source_type: 'Company'
   #returns the favoritable object

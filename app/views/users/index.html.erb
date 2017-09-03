@@ -1,40 +1,23 @@
-<div class="container">
   <h1 class = "page-header">All Members</h1>
-    <% @members.each do |member| %>
-    <div class="row">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="<%= member.image_url %>" alt="member picture">
-          <div class="caption">
-            <h3><%= member.first_name %> <%= member.last_name %></h3>
-              <h4>Location:</h4>
-              <p><%= member.location.city %>, <%= member.location.state %><br>
-              <h4>Company:</h4>
-              <p><%= member.workplaces.first.company.name %><br>
-              <h4>Cohort:</h4>
-              <p><%= member.cohort %><br></p>
-            <p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-              <h2 class = "page-header member-name"><%= member.first_name %> <%= member.last_name %></h2>
-              <div class="text-center col-md-6 member-location">
-                <h4>Location</h4>
-                <p><%= member.location.city %>, <%= member.location.state %><br>
-              </div>
-              <div class="text-center col-md-6 member-company">
-                <h4>Company</h4>
-                <p><%= member.workplaces.first.company.name %><br>
-              </div>
-              <div class="text-center col-md-6 member-cohort">
-                <h4>Cohort</h4>
-                <p><%= member.cohort %><br>
-              </div>
+    <div class="container-fluid">
+      <div class="row">
+        <% @members.each do |member| %>
+        <div class="col-xs-6 col-sm-4">
+          <div class="thumbnail">
+            <span class="glyphicon glyphicon-star-empty pull-right" style="font-size:1.5em;" aria-hidden="true"></span>
+            <img src="<%= member.image_url %>">
+            <div class="caption">
+              <h3><%= member.first_name %> <%= member.last_name %></h3>
+                <% if member.location %>
+                  Location: <%= member.location.city %>, <%= member.location.state %><br>
+                <% end %>
+                <% if member.workplaces.any? %>
+                  Company: <%= member.workplaces.first.company.name %><br>
+                <% end %>
+                Cohort: <%= member.cohort %><br></p>
             </div>
           </div>
         </div>
+        <% end %>
       </div>
-    <% end %>
-</div>
+    </div>
