@@ -1,14 +1,148 @@
-<div class="container center-text">
+<div class = "jumbotron profile-image">
+  <div class = "container">
+    <%# if current_user %>
 
-<p><%= image_tag @user.image_url if !@user.image_url.nil? %></p>
-<p>Username: <%= @user.username %></p>
-<p>First Name: <%= @user.first_name %></p>
-<p>Last Name: <%= @user.last_name %></p>
-<p>Email: <%= @user.email %></p>
-<p>Linkedin: <%= @user.linkedin_url %></p>
-<p>Current Position: <%= @user.headline %></p>
-<p>Industry: <%= @user.summary %></p>
+    <h1>Welcome <%= @user.username %></h1>
+
+    <p>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        UPDATE
+      </button>
+
+      <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Profile Page</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                  <%=	form_for @user, html: {class: 'form-horizontal'} do |f|   %>
+                     <div class="field">
+                       <%= f.label :image_url %>
+                       <%= f.file_field :image_url %>
+                       <%= f.label :resume %>
+                       <%= f.file_field :resume, multiple: true %>
+                     </div>
+                    <div class="field form-group">
+                        <%= f.label :first_name, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :first_name, class: 'form-control' %>  <br>
+                      </div>
+                    </div>
+                    <div class="field form-group">
+                        <%= f.label :last_name, class: 'control-label' %>  <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :last_name, class: 'form-control' %> <br>
+                      </div>
+                    </div>
+                    <div class="field form-group">
+                        <%= f.label :email, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :email, class: 'form-control' %> <br>
+                      </div>
+                    </div>
+                    <div class="field form-group">
+                        <%= f.label :summary, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_area :summary, class: 'form-control' %> <br>
+                      </div>
+                    </div>
+                    <div class="field form-group">
+                        <%= f.label :twitter, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :twitter, class: 'form-control' %> <br>
+                      </div>
+                    </div>
+                    <div class="field form-group">
+                        <%= f.label :slack, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :slack, class: 'form-control' %> <br>
+                      </div>
+                    </div>
+                    <div class="field form-group">
+                        <%= f.label :github, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_field :github, class: 'form-control' %> <br>
+                      </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+                    </div>
+                      <%	end  %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </p>
+  </div>
+</div>
+<div id="wrap">
+  <div id="header">
+    <h1><%= @user.first_name  %> <%= @user.last_name %></h1>
+    <h2><%= @user.headline %></h2>
+  </div>
+  <div id="bio">
+    <div id="about">
+      <div id="photo-bg">
+        <%= image_tag @user.image_url, size: '170x170' if !@user.image_url.nil? %>
+      </div>
+      <h3>About Me</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+      <h4>Status: <span> On line</span> </h4>
+    </div>
+    <div id="contact-details">
+      <h3>Contact Me</h3>
+      <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh. Please get in touch:</p>
+      <h5>Email: <span><%= @user.email %></span></h5>
+      <h5>Twitter: <span><%= @user.twitter %></span></h5>
+      <h5>Slack: <span><%= @user.slack %></span></h5>
+      <h5>Github: <span><%= @user.github %></span></h5>
+      <h5>Industry: <span><%= @user.summary %></span></h5>
+
+    </div>
+  </div>
+</div>
+<div class="line"></div>
 
 <p><%= link_to 'Authorize app to use your Linkedin information',
                '/auth/linkedin', class: "btn btn-primary"  %></p>
+
+<section class="cards">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Interest</h3>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">What I'm working on</h3>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="resume">
+    <%= image_tag @user.resume.to_s, size: '170x170' if !@user.resume.nil? %>
+  </div>
 </div>
+

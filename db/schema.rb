@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902215035) do
+ActiveRecord::Schema.define(version: 20170902181320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20170902215035) do
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.string "twitter"
+    t.string "linkedin_url"
   end
 
   create_table "company_industries", force: :cascade do |t|
@@ -30,6 +33,26 @@ ActiveRecord::Schema.define(version: 20170902215035) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_industries_on_company_id"
     t.index ["industry_id"], name: "index_company_industries_on_industry_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "email"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_contacts_on_company_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "favoritable_type"
+    t.bigint "favoritable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "industries", force: :cascade do |t|
@@ -54,6 +77,21 @@ ActiveRecord::Schema.define(version: 20170902215035) do
     t.index ["location_id"], name: "index_office_locations_on_location_id"
   end
 
+  create_table "tech_stacks", force: :cascade do |t|
+    t.bigint "company_id"
+    t.bigint "technology_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_tech_stacks_on_company_id"
+    t.index ["technology_id"], name: "index_tech_stacks_on_technology_id"
+  end
+
+  create_table "technologies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer "role", default: 0
     t.string "auth_token_linkedin"
@@ -66,7 +104,6 @@ ActiveRecord::Schema.define(version: 20170902215035) do
     t.string "linkedin_url"
     t.text "image_url"
     t.string "resume"
-    t.integer "location_id", default: 0
     t.string "twitter"
     t.string "slack"
     t.string "github"
@@ -75,6 +112,8 @@ ActiveRecord::Schema.define(version: 20170902215035) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "password_digest"
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_users_on_location_id"
   end
 
   create_table "workplaces", force: :cascade do |t|
@@ -90,8 +129,13 @@ ActiveRecord::Schema.define(version: 20170902215035) do
 
   add_foreign_key "company_industries", "companies"
   add_foreign_key "company_industries", "industries"
+  add_foreign_key "contacts", "companies"
+  add_foreign_key "favorites", "users"
   add_foreign_key "office_locations", "companies"
   add_foreign_key "office_locations", "locations"
+  add_foreign_key "tech_stacks", "companies"
+  add_foreign_key "tech_stacks", "technologies"
+  add_foreign_key "users", "locations"
   add_foreign_key "workplaces", "companies"
   add_foreign_key "workplaces", "users"
 end

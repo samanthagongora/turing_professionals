@@ -11,8 +11,8 @@ FactoryGirl.define do
        "UID#{x}"
      end
 
-     first_name "Spongebob"
-     last_name "Squarepants"
+     sequence :first_name {|n| "Spongebob #{n}"}
+     sequence :last_name {|n| "Squarepants #{n}"}
 
      sequence :email do |x|
        "pineapple#{x}@underthesea.com"
