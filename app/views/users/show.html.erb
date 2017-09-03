@@ -1,10 +1,9 @@
 <div class = "jumbotron profile-image">
   <div class = "container">
-    <% if current_user %>
+    <%# if current_user %>
 
     <h1>Welcome <%= @user.username %></h1>
 
-    <p>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         UPDATE
@@ -21,40 +20,64 @@
                 </button>
               </div>
               <div class="modal-body">
-                <%=	form_for @user do |f|   %>
-                    <%= f.label :image_url %>
-                    <%= f.file_field :image_url %>
-                    <%= f.label :resume %>
-                    <%= f.file_field :resume %>
-                    <%= f.label :first_name %> <br>
-                    <%= f.text_field :first_name %>  <br>
-                    <%= f.label :last_name %>  <br>
-                    <%= f.text_field :last_name %> <br>
-                    <%= f.label :email %> <br>
-                    <%= f.text_field :email %> <br>
-                    <%= f.label :headline %> <br>
-                    <%= f.text_field :headline %> <br>
-                    <%= f.label :summary %> <br>
-                    <%= f.text_field :summary %> <br>
-                    <!--<%#= f.label :location %>-->
-                    <!--<%#= f.text_field :location %>-->
-                    <%= f.label :twitter %> <br>
-                    <%= f.text_field :twitter %> <br>
-                    <%= f.label :slack %> <br>
-                    <%= f.text_field :slack %> <br>
-                    <%= f.label :github %> <br>
-                    <%= f.text_field :github %> <br>
-
+                <div class="container">
+                  <%=	form_for @user, html: {class: 'form-horizontal'} do |f|   %>
+                      <%= f.label :image_url %>
+                      <%= f.file_field :image_url %>
+                      <%= f.label :resume %>
+                      <%= f.file_field :resume %>
+                  <div class="field form-group">
+                      <%= f.label :first_name, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :first_name, class: 'form-control' %>  <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :last_name, class: 'control-label' %>  <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :last_name, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :email, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :email, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :summary, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_area :summary, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :twitter, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :twitter, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :slack, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :slack, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :github, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :github, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <%= f.submit 'Update', class: 'btn btn-primary' %>
+                </div>
+                  <%	end  %>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary"><%= f.submit %></button>
-              </div>
-                <%	end  %>
             </div>
           </div>
         </div>
-    </p>
   </div>
 </div>
 <div id="wrap">
@@ -124,7 +147,7 @@
           </div>
         </div>
 
-<% else %>
-<%= render 'show' %>
+<% #else %>
+<%#= render 'show' %>
 
-<% end %>
+<%# end %>'
