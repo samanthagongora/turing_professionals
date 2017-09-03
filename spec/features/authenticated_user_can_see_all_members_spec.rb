@@ -18,8 +18,20 @@ RSpec.feature "User visits member index" do
       expect(page).to have_content(user_1.location.state)
       expect(page).to have_content(user_1.workplaces.first.company.name)
       expect(page).to have_content(user_1.cohort)
+      expect(page).to_not have_css('.glyphicon-star-empty')
+      expect(page).to_not have_link('Your Profile')
     end
-    expect(page).to have_css('.glyphicon-star-empty', count: 3)
+
+    within second(".member-card") do
+      expect(page).to have_content(user_3.image_url)
+      expect(page).to have_content(user_3.first_name)
+      expect(page).to have_content(user_3.last_name)
+      expect(page).to have_content(user_3.location.city)
+      expect(page).to have_content(user_3.location.state)
+      expect(page).to have_content(user_3.workplaces.first.company.name)
+      expect(page).to have_content(user_3.cohort)
+      expect(page).to have_css('.glyphicon-star-empty')
+    end
   end
 
   xscenario "they can filter members" do

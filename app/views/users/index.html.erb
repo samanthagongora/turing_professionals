@@ -4,7 +4,11 @@
         <% @members.each do |member| %>
         <div class="col-xs-6 col-sm-4 member-card">
           <div class="thumbnail">
-            <span class="glyphicon glyphicon-star-empty pull-right" style="font-size:1.5em;" aria-hidden="true"></span>
+            <% if current_user == member %>
+              <%= link_to user_path(current_user) %>
+            <% else %>
+              <span class="glyphicon glyphicon-star-empty pull-right" style="font-size:1.5em;" aria-hidden="true"></span>
+            <% end %>
             <img src="<%= member.image_url %>">
             <div class="caption">
               <h3><%= member.first_name %> <%= member.last_name %></h3>
