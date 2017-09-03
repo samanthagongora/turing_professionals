@@ -18,4 +18,10 @@ class User < ApplicationRecord
 
   mount_uploader :image_url, ImageUploader
   mount_uploader :resume, AttachmentUploader
+
+  enum status: ["active", "inactive"]
+
+  scope :default, -> {where(role: "default")}
+  scope :active, -> {where(status: "active")}
+  scope :inactive, -> {where(status: "inactive")}
 end
