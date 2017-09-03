@@ -20,7 +20,10 @@
           <% @users.each do |user| %>
           <tr>
             <th scope="row"><%= user.username unless user.admin? %></th>
-              <td><%= button_to "Mark As Paid", order_path(id: order.id, new_status: "paid"), method: :patch, class: "btn btn-default" if user.active? %></td>
+              <td>
+                <%= button_to "Deactivate", user_path(id: user.id, new_status: "inactive"), method: :patch, class: "btn btn-danger" if user.active? %>
+                <%= button_to "Activate", user_path(id: user.id, new_status: "active"), method: :patch, class: "btn btn-success" if user.inactive? %>
+              </td>
           </tr>
           <% end %>
         </tbody>

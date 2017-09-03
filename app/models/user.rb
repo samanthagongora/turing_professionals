@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   enum status: ["active", "inactive"]
 
+  scope :active, -> {where(status: "active")}
+  scope :inactive, -> {where(status: "inactive")}
+
   validates_presence_of :username, :password
   validates_uniqueness_of :username
 end
