@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:index]
 
+
   get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'
   get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'
 
   root 'welcome#index'
+  get '/:company', to: 'companies#show', as: :company
 end
