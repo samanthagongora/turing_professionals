@@ -59,11 +59,11 @@ RSpec.feature "User visits company show page" do
     user_1, user_2, user_3 = create_list(:user, 3)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     co_1, co_2 = create_list(:company, 2)
-    q_1, q_2, q_3 = create_list(:interview_question, 3)
-    co_1.interview_questions << [q_1, q_2]
-    co_2.interview_questions << [q_3]
+    q_1, q_2 = create_list(:interview_question, 2, company: co_1)
+    q_3 = create(:interview_question, company: co_2)
 
-    visit "/#{co_1.name}"
+
+    visit "/#{co_1.name.parameterize}"
 
     click_on "Interview Questions"
 
