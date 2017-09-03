@@ -1,13 +1,24 @@
 <div class="container">
   <h1 class = "page-header">All Members</h1>
     <% @members.each do |member| %>
-      <div class="panel panel-default member-<%= member.id %>">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-4">
-              <img class = "img-responsive member-index-picture" src="<%= member.image_url %>" alt="member picture">
-            </div>
-            <div class="col-md-8 text-center">
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="<%= member.image_url %>" alt="member picture">
+          <div class="caption">
+            <h3><%= member.first_name %> <%= member.last_name %></h3>
+              <h4>Location:</h4>
+              <p><%= member.location.city %>, <%= member.location.state %><br>
+              <h4>Company:</h4>
+              <p><%= member.workplaces.first.company.name %><br>
+              <h4>Cohort:</h4>
+              <p><%= member.cohort %><br></p>
+            <p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
               <h2 class = "page-header member-name"><%= member.first_name %> <%= member.last_name %></h2>
               <div class="text-center col-md-6 member-location">
                 <h4>Location</h4>
