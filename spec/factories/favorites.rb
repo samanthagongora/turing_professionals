@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :favorite do
     user
-    favoritable 1
     favoritable_type "User"
+    association :favoritable, factory: :company
   end
 end

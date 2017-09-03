@@ -35,15 +35,6 @@ ActiveRecord::Schema.define(version: 20170902181320) do
     t.index ["industry_id"], name: "index_company_industries_on_industry_id"
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "favoritable_type"
-    t.bigint "favoritable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
-
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "title"
@@ -52,6 +43,16 @@ ActiveRecord::Schema.define(version: 20170902181320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_contacts_on_company_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "favoritable_type"
+    t.bigint "favoritable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "industries", force: :cascade do |t|
@@ -128,8 +129,8 @@ ActiveRecord::Schema.define(version: 20170902181320) do
 
   add_foreign_key "company_industries", "companies"
   add_foreign_key "company_industries", "industries"
-  add_foreign_key "favorites", "users"
   add_foreign_key "contacts", "companies"
+  add_foreign_key "favorites", "users"
   add_foreign_key "office_locations", "companies"
   add_foreign_key "office_locations", "locations"
   add_foreign_key "tech_stacks", "companies"
