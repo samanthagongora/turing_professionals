@@ -8,7 +8,7 @@ feature "registered user updates account information" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit user_path(user)
+    visit profile_path
 
     click_on "Authorize app to use your Linkedin information"
 
