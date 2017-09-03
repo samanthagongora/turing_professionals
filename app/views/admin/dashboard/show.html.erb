@@ -11,10 +11,6 @@
   <div class="tab-content">
     <div class="tab-pane active" id="users" role="tabpanel">
       <table class="table">
-        <thead>
-          <th>User</th>
-          <th>Active?</th>
-        </thead>
 
         <tbody>
           <% @users.each do |user| %>
@@ -30,8 +26,19 @@
       </table>
     </div>
     <div class="tab-pane" id="companies" role="tabpanel">
-      <% @companies.each do |company| %>
-      <% end %>
+      <table class="table">
+
+        <tbody>
+          <% @companies.each do |company| %>
+          <tr>
+            <th scope="row"><%= company.name %></th>
+              <td>
+                <%= button_to "Delete", admin_company_path(id: company.id), method: :delete, class: "btn btn-danger" %>
+              </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
