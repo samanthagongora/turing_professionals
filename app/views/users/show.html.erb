@@ -4,6 +4,7 @@
 
     <h1>Welcome <%= @user.username %></h1>
 
+    <p>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         UPDATE
@@ -71,13 +72,14 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <%= f.submit 'Update', class: 'btn btn-primary' %>
+                  <%= f.submit %>
                 </div>
                   <%	end  %>
               </div>
             </div>
           </div>
         </div>
+    </p>
   </div>
 </div>
 <div id="wrap">
