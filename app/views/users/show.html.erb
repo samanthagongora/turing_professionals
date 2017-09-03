@@ -1,3 +1,4 @@
+<div class="user-profile-page">
 <div class = "jumbotron profile-image">
   <div class = "container">
     <% if current_user == @user %>
@@ -145,4 +146,4 @@
     <%= image_tag @user.resume.to_s, size: '170x170' if !@user.resume.nil? %>
   </div>
 </div>
-
+</div>

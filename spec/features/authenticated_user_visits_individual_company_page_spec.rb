@@ -33,7 +33,7 @@ RSpec.feature "User visits company show page" do
     expect(page).to have_selector(:css, "a[href='#{co_1.linkedin_url}']")
     expect(page).to have_selector(:css, "a[href='#{co_1.twitter}']")
     expect(page).to have_link("Website", href: co_1.website)
-    
+
     within(".overview") do
       expect(page).to have_content("#{city_3.city}, #{city_3.state}")
       expect(page).to_not have_content(city_2.city)
@@ -54,5 +54,25 @@ RSpec.feature "User visits company show page" do
       expect(page).to have_content(user_2.first_name)
       expect(page).to_not have_content(user_3.first_name)
     end
+  end
+
+  scenario "they can add a new contact" do
+    user_1 = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+    co_1 = create(:company)
+    contact_1 = create(:contact, company: co_1)
+
+    click_on "Add New Contact"
+    fill_in :contact_name, with: "Michael Scott"
+    fill_in :contact_title, with: "Regional Manager"
+    fill_in :contact_email, with: "michaelscott@dunderm.com"
+    click_on "Submit"
+
+    expect(page).to have_content("Michael Scott")
+    expect(page).to have_content("Regional Manager")
+    expect(page).to have_content("michaelscott@dunderm.com")
+    expect(page).to have_content("contact_1.name")
+    expect(page).to have_content("contact_1.title")
+    expect(page).to have_content("contact_1.email")
   end
 end

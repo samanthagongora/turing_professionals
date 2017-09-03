@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20170903190239) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "interview_questions", force: :cascade do |t|
+    t.string "description"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_interview_questions_on_company_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "city"
     t.string "state"
@@ -132,6 +140,7 @@ ActiveRecord::Schema.define(version: 20170903190239) do
   add_foreign_key "company_industries", "industries"
   add_foreign_key "contacts", "companies"
   add_foreign_key "favorites", "users"
+  add_foreign_key "interview_questions", "companies"
   add_foreign_key "office_locations", "companies"
   add_foreign_key "office_locations", "locations"
   add_foreign_key "tech_stacks", "companies"
