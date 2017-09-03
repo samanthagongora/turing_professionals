@@ -22,6 +22,8 @@ gem 'figaro'
 gem 'omniauth-linkedin-oauth2'
 gem 'bcrypt'
 gem 'faker'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
   gem 'pry'

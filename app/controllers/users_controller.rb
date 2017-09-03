@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:edit, :update, :show]
   def index
-    @members = User.all
+    @users = User.default.active
   end
 
   def new
@@ -21,15 +21,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
   end
 
   def edit
   end
 
   def update
-    @user.update(status: user_params[:new_status])
-    redirect_back fallback_location: root_path
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -38,6 +40,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :summary, :headline, :image_url, :first_name, :last_name, :linkedin_url)
+    params.require(:user).permit(:username, :password, :password_confirmation, :summary, :headline, :image_url, :first_name, :last_name, :linkedin_url, :email, :headline, :summary, :twitter, :slack, :github, :resume)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
