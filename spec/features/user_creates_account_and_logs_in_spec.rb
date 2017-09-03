@@ -13,7 +13,6 @@ feature 'new user creates account from homepage' do
     fill_in "user[password_confirmation]", with: user_attributes.password
 
     click_button "Sign Up"
-
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content("Welcome, #{user_attributes.username}")
     expect(page).to have_content("Logout")
