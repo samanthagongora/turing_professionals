@@ -62,6 +62,8 @@ RSpec.feature "User visits company show page" do
     co_1 = create(:company)
     contact_1 = create(:contact, company: co_1)
 
+    visit("/#{co_1.name.parameterize}")
+
     click_on "Add New Contact"
     fill_in :contact_name, with: "Michael Scott"
     fill_in :contact_title, with: "Regional Manager"
@@ -71,8 +73,8 @@ RSpec.feature "User visits company show page" do
     expect(page).to have_content("Michael Scott")
     expect(page).to have_content("Regional Manager")
     expect(page).to have_content("michaelscott@dunderm.com")
-    expect(page).to have_content("contact_1.name")
-    expect(page).to have_content("contact_1.title")
-    expect(page).to have_content("contact_1.email")
+    expect(page).to have_content(contact_1.name)
+    expect(page).to have_content(contact_1.title)
+    expect(page).to have_content(contact_1.email)
   end
 end

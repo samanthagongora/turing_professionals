@@ -44,12 +44,21 @@
       <%= contact.email %><br>
     </span>
     <% end %>
-    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Add New Contact
-    </a>
+    <div class="text-center">
+    <a class="btn btn-primary " role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Add New Contact</a>
+  </div>
     <div class="collapse" id="collapseExample">
       <div class="well">
-        ...
+        <%= form_for(:contact, url: "/contacts") do |f| %>
+          <%= f.hidden_field :company_id, :value => @company.id, :name => "contact[company_id]"%>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+          <%= f.submit "Submit", class: "btn btn-success" %>
+        <% end %>
       </div>
     </div>
   </p>
