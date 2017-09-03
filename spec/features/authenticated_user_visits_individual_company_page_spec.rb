@@ -33,7 +33,7 @@ RSpec.feature "User visits company show page" do
     expect(page).to have_selector(:css, "a[href='#{co_1.linkedin_url}']")
     expect(page).to have_selector(:css, "a[href='#{co_1.twitter}']")
     expect(page).to have_link("Website", href: co_1.website)
-    
+
     within(".overview") do
       expect(page).to have_content("#{city_3.city}, #{city_3.state}")
       expect(page).to_not have_content(city_2.city)
@@ -53,6 +53,26 @@ RSpec.feature "User visits company show page" do
       expect(page).to have_content(user_1.first_name)
       expect(page).to have_content(user_2.first_name)
       expect(page).to_not have_content(user_3.first_name)
+    end
+  end
+  scenario "they click interview questions tab and see interview questions" do
+    user_1, user_2, user_3 = create_list(:user, 3)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+    co_1, co_2 = create_list(:company, 2)
+    q_1, q_2, q_3 = create_list(:interview_question, 3)
+    co_1.interview_questions << [q_1, q_2]
+    co_2.interview_questions << [q_3]
+
+    visit "/#{co_1.name}"
+
+    click_on "Interview Questions"
+
+    within("#interview-questions-#{co_1.id}") do
+      expect(page).to have_content(q_1.description)
+      expect(page).to have_content(q_1.created_at)
+      expect(page).to have_content(q_2.description)
+      expect(page).to have_content(q_2.created_at)
+      expect(page).to_not have_content(q_3.description)
     end
   end
 end
