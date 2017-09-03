@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :interview_question do
-    description "MyString"
+    sequence :description {|n| "What's your favority color #{n}?"}
     company
   end
 end

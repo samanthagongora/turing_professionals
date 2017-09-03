@@ -70,7 +70,12 @@
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="interview-questions-<%= @company.id %>">
-
+      <% @company.interview_questions.each do |question| %>
+      <div class="">
+        <%= question.description %>
+        <%= question.created_at %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
