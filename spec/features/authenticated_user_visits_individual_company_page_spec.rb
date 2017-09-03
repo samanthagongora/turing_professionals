@@ -69,9 +69,9 @@ RSpec.feature "User visits company show page" do
 
     within("#interview-questions-#{co_1.id}") do
       expect(page).to have_content(q_1.description)
-      expect(page).to have_content(q_1.created_at)
+      expect(page).to have_content(q_1.created_at.to_formatted_s(:long))
       expect(page).to have_content(q_2.description)
-      expect(page).to have_content(q_2.created_at)
+      expect(page).to have_content(q_2.created_at.to_formatted_s(:long))
       expect(page).to_not have_content(q_3.description)
     end
   end
