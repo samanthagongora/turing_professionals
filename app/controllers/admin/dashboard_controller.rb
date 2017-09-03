@@ -1,7 +1,7 @@
 class Admin::DashboardController < Admin::BaseController
 
   def show
-    @users = User.all
+    @users = User.default
     @companies = Company.all
   end
 

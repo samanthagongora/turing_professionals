@@ -28,6 +28,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.update(status: user_params[:new_status])
+    redirect_back fallback_location: root_path
   end
 
   def destroy
@@ -36,6 +38,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :summary, :headline, :image_url, :first_name, :last_name, :linkedin_url)
+    params.require(:user).permit(:username, :password, :password_confirmation, :summary, :headline, :image_url, :first_name, :last_name, :linkedin_url, :new_status)
   end
 end
