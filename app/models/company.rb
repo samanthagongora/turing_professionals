@@ -13,6 +13,7 @@ class Company < ApplicationRecord
   has_many :tech_stacks
   has_many :technologies, through: :tech_stacks
   has_many :contacts
+  has_many :interview_questions
 
   before_validation :generate_slug
 
