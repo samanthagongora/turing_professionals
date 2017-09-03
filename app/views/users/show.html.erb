@@ -142,13 +142,8 @@
 </section>
         <div class="container">
           <div class="resume">
-            <%#= file_field_tag @user.resume %>
             <%= image_tag @user.resume.to_s, size: '170x170' if !@user.resume.nil? %>
 
-            <%# @user.resume.each do |resume| %>
-                <li><%#= link_to(image_tag(@user.resume.thumb.url, alt: 'Image'), @user.resume.url, target: '_blank') %></li>
-            <%# end %>
-            <%#= link_to "Download Resume", @user.resume %>
           </div>
         </div>
 
