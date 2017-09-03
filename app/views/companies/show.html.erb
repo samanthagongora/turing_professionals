@@ -60,7 +60,7 @@
     <div role="tabpanel" class="tab-pane active row" id="co-members-<%= @company.id %>">
       <% @company.employed_users.each do |user| %>
       <div class="col-md-4 text-center">
-        <div class="panel-body">
+        <div class="panel-body member-panel">
           <img class = "img-responsive" src="<%= user.image_url %>" alt="user-image">
           <%= "#{user.first_name} #{user.last_name}" %>
           <p><%= user.location.city %>, <%= user.location.state %></p>
@@ -71,10 +71,12 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="interview-questions-<%= @company.id %>">
       <% @company.interview_questions.each do |question| %>
-      <div class="">
-        <%= question.description %>
-        <%= question.created_at %>
-      </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= question.description %>
+          </div>
+          <div class="panel-footer">Question Submitted On: <%= question.created_at.to_formatted_s(:long) %></div>
+        </div>
       <% end %>
     </div>
   </div>

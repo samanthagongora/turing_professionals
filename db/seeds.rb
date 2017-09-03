@@ -23,6 +23,9 @@ end
   co.locations << Location.all[n..n+3]
   co.contacts.create(name: Faker::Friends.character, title: Faker::Job.title, email: Faker::Internet.email)
   co.technologies << Technology.all[n..n+5]
+  5.times do
+    co.interview_questions.create(description: "#{Faker::Hacker.say_something_smart} What are your thoughts on #{Faker::Hacker.ingverb} #{Faker::Hacker.noun}?", company: co)
+  end
 end
 
 3.times do |n|
