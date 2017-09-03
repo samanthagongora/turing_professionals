@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
 
   belongs_to :location
+  has_many :workplaces
 end

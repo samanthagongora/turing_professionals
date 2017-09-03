@@ -5,20 +5,19 @@ RSpec.feature "User visits member index" do
     user_1, user_2, user_3 = create_list(:user, 3)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
+    visit dashboard_path
+    click_on "Members"
 
-    # click_on "Members"
-    visit members_path
-
-    expect(current_path).to eq("/members")
-    expect(page).to have_css(".member", count: 3)
-    within first(".member") do
-      expect(page).to have_css(".image_url")
-      expect(page).to have_css(".name")
-      expect(page).to have_css(".location")
-      expect(page).to have_css(".company")
-      expect(page).to have_css(".cohort")
+    expect(current_path).to eq("/users")
+    expect(page).to have_css(".panel-body", count: 3)
+    within(".member-#{user_1.id}") do
+      expect(page).to have_css(".member-index-picture")
+      expect(page).to have_css(".member-name")
+      expect(page).to have_css(".member-location")
+      expect(page).to have_css(".member-company")
+      expect(page).to have_css(".member-cohort")
     end
-    expect(page).to have_css('.glyphicon-star', count: 3)
+    expect(page).to have_css('.glyphicon-star-empty', count: 3)
   end
 
   xscenario "they can filter members" do
