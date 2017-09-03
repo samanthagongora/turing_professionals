@@ -22,7 +22,7 @@
               </div>
               <div class="modal-body">
                 <div class="container">
-                  <%=	form_for @user, html: {class: 'form-horizontal'} do |f|   %>
+                  <%=	form_for @user, html: {class: 'form-horizontal'}, :url => { :action => :update } do |f|   %>
                      <div class="field">
                        <%= f.label :image_url %>
                        <%= f.file_field :image_url %>
@@ -71,12 +71,18 @@
                         <%= f.text_field :github, class: 'form-control' %> <br>
                       </div>
                     </div>
+                    <div class="field form-group">
+                      <%= f.label :password, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.password_field :password, :required => 'required', class: 'form-control' %> <br>
+                      </div>
+                    </div>
                 </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       <%= f.submit 'Submit', class: 'btn btn-primary' %>
                     </div>
-                      <%	end  %>
+                <%	end  %>
               </div>
             </div>
           </div>
@@ -145,4 +151,3 @@
     <%= image_tag @user.resume.to_s, size: '170x170' if !@user.resume.nil? %>
   </div>
 </div>
-
