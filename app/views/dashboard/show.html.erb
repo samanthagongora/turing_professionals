@@ -1,5 +1,4 @@
 <div class="container text-center">
-  <h1>Welcome, <%= current_user.username %>!</h1>
   <h1>Here's your user dashboard!</h1>
-  <h3><%= link_to "Here's a link to your profile!", profile_path %></h3>
+  <h3><%= link_to "Here's a link to your profile!", user_path(current_user) %></h3>
 </div>

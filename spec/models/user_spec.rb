@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
     it {should validate_uniqueness_of(:username)}
   end
 
-  # context "relationships" do
-  #   it {should belong_to(:location)}
-  # end
+  context "relationships" do
+    it {should have_many(:locations)}
+  end
 end
