@@ -1,9 +1,10 @@
+.user-profile-page {
 #wrap {
   width: 960px;
   margin: 0 auto;
 }
 
-body{
+body {
   background: whitesmoke;
   color: #666666;
 }
@@ -17,8 +18,8 @@ h1, h2, h3, h4, h5, h6{
 /* ------------------ */
 
 
-.jumbotron {
-  background-image:url('lake-sunset');
+.jumbotron profile-image {
+  background-image:url('pexels-photo.jpg');
   height:370px;
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -123,4 +124,13 @@ h1, h2, h3, h4, h5, h6{
 
 #contact-details h5 span {
   color: #888888;
+}
+
+/* ------------ */
+/* ----CARDS--- */
+/* ------------ */
+
+.card p {
+  color: #888888;
+}
 }
