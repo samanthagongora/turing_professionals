@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20170903190239) do
   add_foreign_key "contacts", "companies"
   add_foreign_key "interview_questions", "companies"
   add_foreign_key "favorites", "users"
+  add_foreign_key "interview_questions", "companies"
   add_foreign_key "office_locations", "companies"
   add_foreign_key "office_locations", "locations"
   add_foreign_key "tech_stacks", "companies"
