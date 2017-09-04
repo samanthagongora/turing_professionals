@@ -31,10 +31,10 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:notice] = "Profile successfully updated!"
-      redirect_to user_path(@user)
+      redirect_to profile_path
     else
       flash[:alert] = "Sorry! There was an error updating your profile information. Please try again."
-      redirect_to user_path(@user)
+      redirect_to profile_path
     end
   end
 
