@@ -1,6 +1,8 @@
 <div class="container">
 <h1 class = "page-header">All Companies</h1>
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid filters">
 <span class="dropdown">
   <%= form_for(:filter, url: "/filters", method: "get") do |f| %>
   <button class="btn btn-default dropdown-toggle" type="button" id="location-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -34,8 +36,12 @@
   </ul>
   <%= f.submit "Filter", class: "btn btn-primary" %>
   <% end %>
+  <a href="/companies" class = "btn btn-primary">Clear Filters</a>
 </span>
 </span>
+</div>
+</nav>
+
 
 
   <% @company_index_presentor.companies.each do |company| %>

@@ -42,7 +42,7 @@ RSpec.feature "User visits company index" do
     end
   end
 
-  it "they can filter by location and industry" do
+  it "they can filter by location and industry and clear filter" do
     visit companies_path
 
     find('.cities').click
@@ -54,5 +54,10 @@ RSpec.feature "User visits company index" do
     expect(page).to have_content @co_2.name
     expect(page).to have_content @co_3.name
     expect(page).to_not have_content @co_1.name
+
+    click_on "Clear Filters"
+    expect(page).to have_content @co_2.name
+    expect(page).to have_content @co_3.name
+    expect(page).to have_content @co_1.name
   end
 end
