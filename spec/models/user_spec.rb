@@ -7,6 +7,6 @@ RSpec.describe User, type: :model do
   end
 
   context "relationships" do
-    it {should belong_to(:location)}
+    it {should have_many(:locations)}
   end
 end
