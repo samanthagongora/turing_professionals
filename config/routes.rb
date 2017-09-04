@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy]
 
   get '/dashboard', to: "dashboard#show"
+
+  resources :contacts, only: [:create]
+
   get '/profile', to: "profile#show"
 
   resources :companies, only: [:index]
