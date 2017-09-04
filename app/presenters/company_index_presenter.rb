@@ -1,11 +1,17 @@
 class CompanyIndexPresenter
-  def initialize(filter_params = nil)
-    @filter_params = filter_params
+  def initialize(params = {})
+    @filter_params = params[:filter]
+    @order = (params[:order] if params[:order]) || "ASC"
   end
 
   def companies
     companies = (Company.filter(@filter_params) if @filter_params) || Company.all
-    companies.order(:name)
+    companies.order("name #{@order}")
+  end
+
+  def switch_order
+    return 'DESC' if @order == 'ASC'
+    return 'ASC' if @order == 'DESC'
   end
 
   def locations
