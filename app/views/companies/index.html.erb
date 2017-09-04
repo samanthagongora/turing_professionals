@@ -30,12 +30,13 @@
           <%= industry.name %>
         </li>
       <% end %>
-      <%= f.submit "Filter" %>
 
-    <% end %>
   </ul>
+  <%= f.submit "Filter" %>
+  <% end %>
 </span>
 </span>
+
 
   <% @companies.each do |company| %>
   <div class="panel panel-default company-<%= company.id %>">
