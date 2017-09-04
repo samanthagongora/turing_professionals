@@ -1,103 +1,101 @@
 <div class="user-profile-page">
-<div class = "jumbotron profile-image">
-  <div class = "container">
-    <h1>Welcome <%= current_user.username %></h1>
-
-    <p>
-      <!-- Button trigger modal -->
+  <div class = "jumbotron profile-image">
+    <div class = "container">
+      <h1>Welcome <%= current_user.username %></h1>
+        <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Update
       </button>
       <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Profile Page</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Profile Page</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <%=	form_for @user, :url => user_path(current_user), :html => {:method => :patch, :class => 'form-horizontal'} do |f|   %>
+                   <div class="field">
+                     <%= f.label :image_url %>
+                     <%= f.file_field :image_url %>
+                     <%= f.label :resume %>
+                     <%= f.file_field :resume %>
+                   </div>
+                  <div class="field form-group">
+                      <%= f.label :first_name, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :first_name, class: 'form-control' %>  <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :last_name, class: 'control-label' %>  <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :last_name, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :email, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :email, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :summary, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_area :summary, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                    <%= f.label :about_me, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_area :about_me, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                    <%= f.label :interest, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_area :interest, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                    <%= f.label :working_on, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_area :working_on, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :twitter, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :twitter, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :slack, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :slack, class: 'form-control' %> <br>
+                    </div>
+                  </div>
+                  <div class="field form-group">
+                      <%= f.label :github, class: 'control-label' %> <br>
+                    <div class="col-sm-6">
+                      <%= f.text_field :github, class: 'form-control' %> <br>
+                    </div>
+                  </div>
               </div>
-              <div class="modal-body">
-                <div class="container">
-                  <%=	form_for @user, :url => user_path(current_user), :html => {:method => :patch, :class => 'form-horizontal'} do |f|   %>
-                     <div class="field">
-                       <%= f.label :image_url %>
-                       <%= f.file_field :image_url %>
-                       <%= f.label :resume %>
-                       <%= f.file_field :resume %>
-                     </div>
-                    <div class="field form-group">
-                        <%= f.label :first_name, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_field :first_name, class: 'form-control' %>  <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                        <%= f.label :last_name, class: 'control-label' %>  <br>
-                      <div class="col-sm-6">
-                        <%= f.text_field :last_name, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                        <%= f.label :email, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_field :email, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                        <%= f.label :summary, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_area :summary, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                      <%= f.label :about_me, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_area :about_me, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                      <%= f.label :interest, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_area :interest, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                      <%= f.label :working_on, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_area :working_on, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                        <%= f.label :twitter, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_field :twitter, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                        <%= f.label :slack, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_field :slack, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                        <%= f.label :github, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= f.text_field :github, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <%= f.submit 'Update User', class: 'btn btn-primary' %>
-                    </div>
-                <%	end  %>
-              </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <%= f.submit 'Update User', class: 'btn btn-primary' %>
+                  </div>
+              <%	end  %>
             </div>
           </div>
         </div>
-    </p>
+      </div>
+    </div>
   </div>
 </div>
 <div id="wrap">
@@ -122,7 +120,6 @@
       <h5>Slack: <span><%= current_user.slack %></span></h5>
       <h5>Github: <span><%= current_user.github %></span></h5>
       <h5>Summary: <span><%= current_user.summary %></span></h5>
-
     </div>
   </div>
 </div>
@@ -132,7 +129,6 @@
                '/auth/linkedin', class: "btn btn-primary"  %></p>
 
 <section class="cards">
-
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
