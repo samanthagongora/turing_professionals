@@ -55,6 +55,31 @@ RSpec.feature "User visits company show page" do
       expect(page).to_not have_content(user_3.first_name)
     end
   end
+
+  scenario "they can add a new contact" do
+    user_1 = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+    co_1 = create(:company)
+    contact_1 = create(:contact, company: co_1)
+
+    visit("/#{co_1.name.parameterize}")
+
+    click_on "Add New Contact"
+    within(".new-contact-form") do
+      fill_in :contact_name, with: "Michael Scott"
+      fill_in :contact_title, with: "Regional Manager"
+      fill_in :contact_email, with: "michaelscott@dunderm.com"
+      click_on "Submit"
+    end
+
+    expect(page).to have_content("Michael Scott")
+    expect(page).to have_content("Regional Manager")
+    expect(page).to have_content("michaelscott@dunderm.com")
+    expect(page).to have_content(contact_1.name)
+    expect(page).to have_content(contact_1.title)
+    expect(page).to have_content(contact_1.email)
+  end
+
   scenario "they click interview questions tab and see interview questions" do
     user_1, user_2, user_3 = create_list(:user, 3)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
