@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/profile', to: "profile#show"
 
   resources :filters, only: [:index]
-  get "/order", to: "order#index"
+  get "/order_companies", to: "order_companies#index"
 
   resources :companies, only: [:index]
   resources :interview_questions, only: [:create]

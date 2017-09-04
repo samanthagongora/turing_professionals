@@ -39,8 +39,7 @@
   <a href="/companies" class = "btn btn-primary">Clear Filters</a>
 </span>
 </span>
-<%= form_for(:order, url: "/order", method: "get") do |f| %>
-  <%= f.hidden_field :resource_type, :value => "company", :name => "order[resource_type]"%>
+<%= form_for(:order, url: "/order_companies", method: "get") do |f| %>
   <%= f.hidden_field :direction, :value => @company_index_presentor.switch_order, :name => "order[direction]"%>
   <%= f.submit "A-Z", class: "a-z-order"  %>
 <% end %>

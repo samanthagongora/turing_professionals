@@ -1,4 +1,4 @@
-class OrderController < ApplicationController
+class OrderCompaniesController < ApplicationController
   def index
     @company_index_presentor = CompanyIndexPresenter.new({order: order_params[:direction]})
     render "companies/index"
