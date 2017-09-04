@@ -47,11 +47,12 @@ RSpec.feature "User visits company index" do
 
     find('.cities').click
 
-    save_and_open_page
-    find(".#{@city_1.id}").click
+    check("city-#{@city_1.id}")
+    check("industry-#{@ind_1.id}")
     click_on "Filter"
 
     expect(page).to have_content @co_2.name
     expect(page).to have_content @co_3.name
+    expect(page).to_not have_content @co_1.name
   end
 end
