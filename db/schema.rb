@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903190239) do
+ActiveRecord::Schema.define(version: 20170904175918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,9 @@ ActiveRecord::Schema.define(version: 20170903190239) do
     t.string "password_digest"
     t.bigint "location_id"
     t.integer "status", default: 0
+    t.string "about_me"
+    t.string "interest"
+    t.string "working_on"
     t.index ["location_id"], name: "index_users_on_location_id"
   end
 
