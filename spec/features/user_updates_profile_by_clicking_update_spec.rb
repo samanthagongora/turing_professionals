@@ -10,22 +10,29 @@ feature 'User visits profile page and clicks update' do
 
       click_button "UPDATE"
 
-      fill_in "user[first_name]", with: "First"
-      fill_in "user[last_name]",  with: "Last"
+      fill_in "user[first_name]", with: "FirstName"
+      fill_in "user[last_name]",  with: "LastName"
       fill_in "user[email]",      with: "Email@example.com"
       fill_in "user[headline]",   with: "New Headline"
       fill_in "user[summary]",    with: "New Summary"
       fill_in "user[twitter]",    with: "Tweet"
       fill_in "user[slack]",      with: "Slacker"
       fill_in "user[github]",     with: "Octodex"
-      fill_in "user[locations_attribute][0][city]", with: "Denver"
+      fill_in "user[locations_attributes][0][city]", with: "Denver"
       fill_in "user[locations_attributes][0][state]", with: "CO"
 
-      click_on "Update User"
+      click_on "Submit"
 
-      expect(current_path).to eq(user_path(user))
-      expect(page).to have_content("First")
-      expect(page).to have_content("Last")
+      new_user = User.first
+
+      expect(current_path).to eq(profile_path)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(new_user)
+
+      visit profile_path
+
+      expect(page).to have_content("FirstName")
+      expect(page).to have_content("LastName")
       expect(page).to have_content("Email@example.com")
       expect(page).to have_content("New Headline")
       expect(page).to have_content("New Summary")

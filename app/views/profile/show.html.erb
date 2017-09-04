@@ -54,7 +54,7 @@
                       </div>
                     </div>
 
-                    <%= f.fields_for :locations do |location_form| %>
+                    <%= f.fields_for :locations, Location.new do |location_form| %>
                     <div class="field form-group">
                       <%= location_form.label :city , class: 'control-label' %> <br>
                       <div class="col-sm-6">
