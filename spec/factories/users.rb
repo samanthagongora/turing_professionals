@@ -11,8 +11,8 @@ FactoryGirl.define do
        "UID#{x}"
      end
 
-     first_name "Spongebob"
-     last_name "Squarepants"
+     sequence :first_name {|n| "Spongebob #{n}"}
+     sequence :last_name {|n| "Squarepants #{n}"}
 
      sequence :email do |x|
        "pineapple#{x}@underthesea.com"
@@ -23,7 +23,7 @@ FactoryGirl.define do
     linkedin_url "www.nick.com/spongebob-squarepants/"
     image_url "http://az616578.vo.msecnd.net/files/2016/07/09/6360363022594514001256241258_SBSB.png"
     resume "resume.doc"
-    location
+    # location
     twitter "https://twitter.com/SpongeBob"
     slack "@spongebob"
     github "spongebob"

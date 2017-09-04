@@ -1,0 +1,12 @@
+<h1>This is the members index page!</h1>
+<ul>
+  <% @users.each do |user| %>
+      <li>Username: <%= user.username %></li> <br>
+      <li>First Name: <%= user.first_name %></li> <br>
+      <li>Last Name: <%= user.last_name %></li> <br>
+      <li>Industry: <%= user.summary %></li> <br>
+      <%= link_to 'my profile', user_path(user) %>
+      ------------------------------------------------ <br>
+  <% end %>
+
+</ul>
