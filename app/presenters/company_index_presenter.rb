@@ -4,7 +4,8 @@ class CompanyIndexPresenter
   end
 
   def companies
-    (Company.filter(@filter_params) if @filter_params) || Company.all
+    companies = (Company.filter(@filter_params) if @filter_params) || Company.all
+    companies.order(:name)
   end
 
   def locations

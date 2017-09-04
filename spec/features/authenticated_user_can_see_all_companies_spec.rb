@@ -4,7 +4,9 @@ RSpec.feature "User visits company index" do
   before :each do
     @user_1, @user_2, @user_3 = create_list(:user, 3)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
-    @co_1, @co_2, @co_3 = create_list(:company, 3)
+    @co_1 = create(:company, name: "B Company")
+    @co_2 = create(:company, name: "A Company")
+    @co_3 = create(:company, name: "C Company")
     @ind_1, @ind_2, @ind_3 = create_list(:industry, 3)
     @city_1, @city_2, @city_3 = create_list(:location, 3)
     @co_1.industries << [@ind_1, @ind_2]
@@ -45,8 +47,6 @@ RSpec.feature "User visits company index" do
   it "they can filter by location and industry and clear filter" do
     visit companies_path
 
-    find('.cities').click
-
     check("location-#{@city_1.id}")
     check("industry-#{@ind_1.id}")
     click_on "Filter"
@@ -59,5 +59,19 @@ RSpec.feature "User visits company index" do
     expect(page).to have_content @co_2.name
     expect(page).to have_content @co_3.name
     expect(page).to have_content @co_1.name
+  end
+
+  it "they can order alphabetically by clicking a button" do
+    visit companies_path
+
+    expect(page.all(:css, '.panel-body')[0]).to have_content("A Company")
+    expect(page.all(:css, '.panel-body')[1]).to have_content("B Company")
+    expect(page.all(:css, '.panel-body')[2]).to have_content("C Company")
+
+    find('.a-z-order').click
+
+    expect(page.all(:css, '.panel-body')[0]).to have_content("C Company")
+    expect(page.all(:css, '.panel-body')[1]).to have_content("B Company")
+    expect(page.all(:css, '.panel-body')[2]).to have_content("A Company")
   end
 end
