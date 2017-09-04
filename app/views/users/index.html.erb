@@ -12,8 +12,13 @@
             <img src="<%= user.image_url %>">
             <div class="caption">
               <h3><%= user.first_name %> <%= user.last_name %></h3>
-                <% if user.location %>
-                  Location: <%= user.location.city %>, <%= user.location.state %><br>
+                <% if user.locations %>
+                <p>
+                  <% user.locations.each do |location| %>
+                  <%= location.city  %></br>
+                  <%= location.state %></br>
+                  <% end %>
+                </p>
                 <% end %>
                 <% if user.workplaces.any? %>
                   Company: <%= user.workplaces.first.company.name %><br>
