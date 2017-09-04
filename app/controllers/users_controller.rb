@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
+
   def index
     @users = User.default.active
   end
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path(user_id: @user.id)
       flash[:notice] = "Welcome, #{@user.username}"
     else
-      flash[:notice] = "Username is taken; please choose a new one."
+      flash[:notice] = @user.errors.messages
       render :new
     end
   end
@@ -28,9 +29,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      flash[:notice] = "Profile successfully updated!"
       redirect_to user_path(@user)
     else
-      render :edit
+      flash[:notice] = "Sorry! There was an error updating your profile information. Please try again."
+      redirect_to user_path(@user)
     end
   end
 
