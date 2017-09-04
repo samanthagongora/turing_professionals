@@ -1,8 +1,6 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.all
-    @cities = Location.all
-    @industries = Industry.all
+    @company_index_presentor = CompanyIndexPresenter.new
   end
 
   def show

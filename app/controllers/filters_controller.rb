@@ -1,9 +1,6 @@
 class FiltersController < ApplicationController
   def index
-    @companies = Company.filter(filter_params)
-
-    @cities = Location.all
-    @industries = Industry.all
+    @company_index_presentor = CompanyIndexPresenter.new(filter_params)
     render "companies/index"
   end
 

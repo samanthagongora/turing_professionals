@@ -47,7 +47,7 @@ RSpec.feature "User visits company index" do
 
     find('.cities').click
 
-    check("city-#{@city_1.id}")
+    check("location-#{@city_1.id}")
     check("industry-#{@ind_1.id}")
     click_on "Filter"
 
