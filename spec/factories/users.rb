@@ -1,5 +1,5 @@
 FactoryGirl.define do
-   factory :user do
+   factory :user, aliases: [:employed_user] do
 
      role 0
 
@@ -30,5 +30,6 @@ FactoryGirl.define do
     cohort "1705 BE"
     password "password"
     sequence :username {|n| "username#{n}"}
+    after(:create) { |user| create(:workplace, employed_user: user) }
   end
 end

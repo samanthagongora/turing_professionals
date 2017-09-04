@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
 
   def index
-    @users = User.default.active.where.not(username: current_user.username)
+    @users = User.default.active
   end
 
   def new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path(user_id: @user.id)
       flash[:notice] = "Welcome, #{@user.username}"
     else
-      flash[:notice] = "Username is taken; please choose a new one."
+      flash[:notice] = @user.errors.messages
       render :new
     end
   end
