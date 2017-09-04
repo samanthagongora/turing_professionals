@@ -1,4 +1,6 @@
 class CompanyIndexPresenter
+  attr_reader :order
+
   def initialize(params = {})
     @filter_params = params[:filter]
     @order = (params[:order] if params[:order]) || "ASC"
