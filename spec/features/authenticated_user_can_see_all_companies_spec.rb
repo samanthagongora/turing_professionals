@@ -4,6 +4,7 @@ RSpec.feature "User visits company index" do
   before :each do
     @user_1, @user_2, @user_3 = create_list(:user, 3)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
+
     @co_1 = create(:company, name: "B Company")
     @co_2 = create(:company, name: "A Company")
     @co_3 = create(:company, name: "C Company")
