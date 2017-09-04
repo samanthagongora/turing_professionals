@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/profile', to: "profile#show"
 
+  resources :filters, only: [:index]
+
   resources :companies, only: [:index]
   resources :interview_questions, only: [:create]
 

@@ -2,7 +2,7 @@
 <h1 class = "page-header">All Companies</h1>
 
 <span class="dropdown">
-  <%= form_for("/filter", method: "get") do |f| %>
+  <%= form_for(:filter, url: "/filters", method: "get") do |f| %>
   <button class="btn btn-default dropdown-toggle" type="button" id="location-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Cities
     <span class="caret"></span>
@@ -11,7 +11,7 @@
   <ul class="dropdown-menu cities" aria-labelledby="location-dropdown">
       <% @cities.each do |city| %>
         <li>
-          <%= check_box_tag :city_id, city.id, false, class: city.id, id: "city-#{city.id}" %>
+          <%= check_box_tag :location_id, city.id, false, class: city.id, id: "city-#{city.id}" %>
           <%= "#{city.city}, #{city.state}" %>
         </li>
     <% end %>
@@ -32,7 +32,7 @@
       <% end %>
 
   </ul>
-  <%= f.submit "Filter" %>
+  <%= f.submit "Filter", class: "btn btn-primary" %>
   <% end %>
 </span>
 </span>
