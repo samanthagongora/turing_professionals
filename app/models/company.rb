@@ -21,4 +21,11 @@ class Company < ApplicationRecord
     self.slug = name.parameterize if name
   end
 
+  def self.filter(params)
+    Company.select("companies.*")
+          .joins(office_locations: :location)
+          .joins(company_industries: :industry)
+          .where("locations.id = ?", params[:location_id])
+          .where("industries.id = ?", params[:industry_id])
+  end
 end
