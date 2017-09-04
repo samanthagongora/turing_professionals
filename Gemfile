@@ -25,6 +25,8 @@ gem 'faker'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'database_cleaner'
+gem 'toastr-rails'
+
 
 group :development, :test do
   gem 'pry'

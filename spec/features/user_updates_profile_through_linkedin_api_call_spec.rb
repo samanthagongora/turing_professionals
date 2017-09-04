@@ -12,7 +12,7 @@ feature "registered user updates account information" do
 
     click_on "Authorize app to use your Linkedin information"
 
-    expect(current_path).to eq("/dashboard")
+    expect(current_path).to eq("/profile")
     expect(page).to have_content("mock")
     expect(page).to have_content("user")
   end
