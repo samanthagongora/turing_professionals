@@ -1,4 +1,111 @@
-<div class="container text-center">
-  <h1>Here's your user dashboard!</h1>
-  <h3><%= link_to "Here's a link to your profile!", user_path(current_user) %></h3>
+
+<div class='container user-dashboard-page'>
+
+<!-- heading with page description -->
+
+    <div class = "container">
+      <div class = "row well">
+        <div class="row text-center">
+          <h2> <%= current_user.first_name %>'s Dashboard </h2>
+        </div>
+      </div>
+    </div>
+
+
+  <div class='container'>
+    <div class="row well">
+      <div class="row text-center">
+
+        <!-- DISPLAY 1 -->
+
+        <div class='col-md-4'>
+          <div class='row text-center'>
+            <div class="thumbnail">
+              <i class='glyphicon glyphicon-briefcase'></i>
+                <h3>Favorite Companies</h3>
+                  <p> company 1</p>
+                  <p> company 1</p>
+                  <p> company 1</p>
+              <button type = 'button' class='btn btn-primary'>See All</button>
+            </div>
+          </div>
+        </div>
+        <!-- DISPLAY 2 //able to make private comments only I see -->
+
+          <div class='col-md-4'>
+            <div class='row text-center'>
+            <div class="thumbnail">
+              <i class='glyphicon glyphicon-user'></i>
+                <h3>Favorite Members</h2>
+                  <p>Member 1.</p>
+                  <p>Member 2.</p>
+                  <p>Member 2.</p>
+                <button type = 'button' class='btn btn-primary'>See All</button>
+            </div>
+          </div>
+        </div>
+        <!-- DISPLAY 3 -->
+
+        <div class='col-md-4'>
+          <div class='row text-center'>
+            <div class="thumbnail">
+              <i class='glyphicon glyphicon-pencil'></i>
+                <h3>My Items</h2>
+                  <p> resume </p>
+                  <p> comment </p>
+                  <p><%= link_to "Profile", user_path(current_user) %></p>
+                <button type = 'button' class='btn btn-primary'>See All</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISPLAY 4 -->
+        <div class='col-md-4'>
+          <div class='row text-center'>
+            <div class="thumbnail">
+              <i class='glyphicon glyphicon-comment'></i>
+                <h3>Conversations</h2>
+                  <p> resume </p>
+                  <p> comment </p>
+                  <p><%= link_to "Profile", user_path(current_user) %></p>
+                <button type = 'button' class='btn btn-primary'>See All</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISPLAY 5 -->
+        <div class='col-md-4'>
+          <div class='row text-center'>
+            <div class="thumbnail">
+              <i class='glyphicon glyphicon-globe'></i>
+                <h3>Locations</h2>
+                  <p> resume </p>
+                  <p> comment </p>
+                  <p><%= link_to "Profile", user_path(current_user) %></p>
+                <button type = 'button' class='btn btn-primary'>See All</button>
+            </div>
+          </div>
+        </div>
+
+        <!--  DISPLAY 6-->
+        <div class='col-md-4'>
+          <div class='row text-center'>
+            <div class="thumbnail">
+              <i class='glyphicon glyphicon-headphones'></i>
+                <h3>Lifestyle</h2>
+                  <p> resume </p>
+                  <p> comment </p>
+                  <p><%= link_to "Profile", user_path(current_user) %></p>
+                <button type = 'button' class='btn btn-primary'>See All</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- container div -->
+      </div>
+    </div>
+  </div>
 </div>
+
+
+    <!-- <div class="thumbnail"> could be used instead of row well class to provide borner without background color-->
