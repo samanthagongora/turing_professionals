@@ -18,11 +18,9 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-
               <div class="modal-body">
                 <div class="container">
                   <%=	form_for @user, :url => user_path(current_user), :html => {:method => :patch, :class => 'form-horizontal'} do |f|   %>
-
                      <div class="field">
                        <%= f.label :image_url %>
                        <%= f.file_field :image_url %>
@@ -42,33 +40,11 @@
                       </div>
                     </div>
                     <div class="field form-group">
-                        <%= f.label :headline, class: 'control-label' %>  <br>
-                      <div class="col-sm-6">
-                        <%= f.text_field :headline, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
                         <%= f.label :email, class: 'control-label' %> <br>
                       <div class="col-sm-6">
                         <%= f.text_field :email, class: 'form-control' %> <br>
                       </div>
                     </div>
-
-                    <%= f.fields_for :locations, Location.new do |location_form| %>
-                    <div class="field form-group">
-                      <%= location_form.label :city , class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= location_form.text_field :city, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <div class="field form-group">
-                      <%= location_form.label :state, class: 'control-label' %> <br>
-                      <div class="col-sm-6">
-                        <%= location_form.text_field :state, class: 'form-control' %> <br>
-                      </div>
-                    </div>
-                    <% end %>
-
                     <div class="field form-group">
                         <%= f.label :summary, class: 'control-label' %> <br>
                       <div class="col-sm-6">
@@ -93,14 +69,13 @@
                         <%= f.text_field :github, class: 'form-control' %> <br>
                       </div>
                     </div>
+                </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       <%= f.submit 'Submit', class: 'btn btn-primary' %>
                     </div>
-                    <%	end  %>
-                  </div>
-                </div>
-
+                <%	end  %>
+              </div>
             </div>
           </div>
         </div>
@@ -164,18 +139,3 @@
     </div>
   </div>
 </section>
-
-<div class="container">
-<div class="col-md-2"></div>
-  <div class="row">
-    <div class="col-lg-8">
-      <h3 class="card-title">Location</h3>
-          <%= image_tag "map_placeholder.png", size: '500x400'  %></br>
-          <% @user.locations.each do |location| %>
-          <%= location.city %></br>
-          <%= location.state %></br>
-          <% end %>
-      </div>
-    </div>
-    <div class="col-md-2"></div>
-  </div>
