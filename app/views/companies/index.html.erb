@@ -1,6 +1,41 @@
 <div class="container">
 <h1 class = "page-header">All Companies</h1>
 
+<span class="dropdown">
+  <%= form_tag("/filter", method: "get") do |f| %>
+
+  <button class="btn btn-default dropdown-toggle" type="button" id="location-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Cities
+    <span class="caret"></span>
+  </button>
+
+  <ul class="dropdown-menu cities" aria-labelledby="location-dropdown">
+      <% @cities.each do |city| %>
+        <li>
+          <%= check_box_tag 'activated[]', city.id, class: city.id %>
+          <%= "#{city.city}, #{city.state}" %>
+        </li>
+    <% end %>
+  </ul>
+  <span class="dropdown">
+
+  <button class="btn btn-default dropdown-toggle" type="button" id="industries-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Industries
+    <span class="caret"></span>
+  </button>
+
+  <ul class="dropdown-menu industries" aria-labelledby="industries-dropdown">
+      <% @industries.each do |industry| %>
+        <li>
+          <%= check_box_tag 'activated[]', industry %>
+          <%= industry.name %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</span>
+</span>
+
   <% @companies.each do |company| %>
   <div class="panel panel-default company-<%= company.id %>">
     <div class="panel-body">
