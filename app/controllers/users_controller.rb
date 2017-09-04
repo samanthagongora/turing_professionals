@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
 
   def index
-    @users = User.default.active.where.not(username: current_user.username)
+    @users = User.default.active
   end
 
   def new
