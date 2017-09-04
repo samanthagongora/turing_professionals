@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User visits member index" do
   scenario "they see all members" do
-    user_1, user_2, user_3 = create_list(:user, 3)
+    user_1, user_2, user_3 = create_list(:user, 3, :with_workplaces)
     location = create(:location)
     user_1_location = create(:user_location, location_id: location.id, user_id: user_1.id)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)

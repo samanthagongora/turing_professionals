@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.all
+    @company_index_presenter = CompanyIndexPresenter.new
   end
 
   def show
