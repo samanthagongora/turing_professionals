@@ -2,12 +2,10 @@ require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
-
 technologies = ["JavaScript", "Java", "Python", "TypeScript", "PHP", "Ruby on Rails", "Elixir", "Rust", "Go", "C#", "Swift"]
 technologies.each do |tech|
   Technology.create(name: tech)
 end
-
 
 10.times do
   Industry.create(name: Faker::Job.field)

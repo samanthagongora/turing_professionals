@@ -6,4 +6,11 @@ class Location < ApplicationRecord
 
   has_many :user_locations
   has_many :users, through: :user_locations
+
+  geocoded_by :full_address
+  after_validation :geocode, if: :city_changed? && :state_changed?
+
+  def full_address
+    [city, state].compact.join(", ")
+  end
 end
