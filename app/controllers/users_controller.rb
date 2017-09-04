@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path(user_id: @user.id)
       flash[:notice] = "Welcome, #{@user.username}"
     else
-      flash[:notice] = "Username is taken; please choose a new one."
+      flash[:alert] = "Username is taken; please choose a new one."
       render :new
     end
   end

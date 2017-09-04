@@ -24,6 +24,8 @@ gem 'bcrypt'
 gem 'faker'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'toastr-rails'
+
 
 group :development, :test do
   gem 'pry'
