@@ -4,18 +4,19 @@
     <title>TuringProfessionals</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+    <%#= google_webfonts_init({
+        google: ['Roboto Salb', 'Roboto']
+        }) %>
+
   </head>
 
   <body>
 
     <%= render partial: 'layouts/navbar' %>
+    <%= render partial: 'shared/flash_message' %>
     <div class="container">
-
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
 
       <%= yield %>
     </div>

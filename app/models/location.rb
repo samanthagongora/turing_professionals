@@ -3,5 +3,7 @@ class Location < ApplicationRecord
 
   has_many :office_locations
   has_many :companies, through: :office_locations
-  has_many :users
+
+  has_many :user_locations
+  has_many :users, through: :user_locations
 end
