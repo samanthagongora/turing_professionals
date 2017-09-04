@@ -1,4 +1,4 @@
-class FiltersController < ApplicationController
+class FilterCompaniesController < ApplicationController
   def index
     @company_index_presentor = CompanyIndexPresenter.new({filter: filter_params})
     render "companies/index"
@@ -9,5 +9,4 @@ class FiltersController < ApplicationController
   def filter_params
     params.permit(:location_id, :industry_id)
   end
-
 end

@@ -7,6 +7,6 @@ class OrderCompaniesController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:resource_type, :direction)
+    params.require(:order).permit(:direction)
   end
 end
