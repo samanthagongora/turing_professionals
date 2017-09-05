@@ -29,12 +29,11 @@ RSpec.describe Company, type: :model do
       co_1.locations << [location_1, location_2, location_3]
       co_2.locations << [location_1, location_2]
 
-      params_1 = {location_id: location_1.id, industry_id: ind_1.id}
-      params_2 = {location_id: location_1.id, industry_id: ind_3.id}
+      params_1 = {location_ids: location_1.id, industry_ids: ind_1.id}
+      params_2 = {location_ids: location_1.id, industry_ids: ind_3.id}
 
-      expect(Company.filter(params_1)).to eq([co_1, co_2])
-      expect(Company.filter(params_2)).to eq([co_1])
-
+      expect(Company.filter(params_1).to_a).to include(co_1, co_2)
+      expect(Company.filter(params_2).to_a).to include(co_1)
     end
   end
 end

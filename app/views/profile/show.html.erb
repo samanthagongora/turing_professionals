@@ -21,7 +21,7 @@
 
               <div class="modal-body">
                 <div class="container">
-                  <%=	form_for @user, :url => user_path(current_user), :html => {:method => :patch, :class => 'form-horizontal'} do |f|   %>
+                  <%=	form_for current_user, :url => user_path(current_user), :html => {:method => :patch, :class => 'form-horizontal'} do |f|   %>
 
                      <div class="field">
                        <%= f.label :image_url %>
@@ -171,7 +171,7 @@
     <div class="col-lg-8">
       <h3 class="card-title">Location</h3>
           <%= image_tag "map_placeholder.png", size: '500x400'  %></br>
-          <% @user.locations.each do |location| %>
+          <% current_user.locations.each do |location| %>
           <%= location.city %></br>
           <%= location.state %></br>
           <% end %>

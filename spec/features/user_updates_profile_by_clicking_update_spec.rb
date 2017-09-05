@@ -25,7 +25,7 @@ feature 'User visits profile page and clicks update' do
 
       new_user = User.first
 
-      expect(current_path).to eq(user_path(user))
+      expect(current_path).to eq(profile_path)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(new_user)
 

@@ -25,7 +25,7 @@ class Company < ApplicationRecord
     Company.select("companies.*")
           .joins(office_locations: :location)
           .joins(company_industries: :industry)
-          .where("locations.id = ?", params[:location_id])
-          .where("industries.id = ?", params[:industry_id])
+          .where("locations.id": params[:location_ids])
+          .where("industries.id": params[:industry_ids]).distinct
   end
 end
