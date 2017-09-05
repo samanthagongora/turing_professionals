@@ -20,4 +20,8 @@ class Company < ApplicationRecord
   def generate_slug
     self.slug = name.parameterize if name
   end
+
+  def self.questions(user_companies)
+    user_companies.map {|c| c.interview_questions}
+  end
 end

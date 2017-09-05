@@ -1,16 +1,14 @@
 
 <div class='container user-dashboard-page'>
 
-<!-- heading with page description -->
-
+<!-- heading with username and page description -->
     <div class = "container">
       <div class = "row well">
         <div class="row text-center">
-          <h2> <%= current_user.id %>'s Dashboard </h2>
+          <h2> <%= current_user.username %>'s Dashboard </h2>
         </div>
       </div>
     </div>
-
 
   <div class='container'>
     <div class="row well">
@@ -109,6 +107,28 @@
           </div>
         </div>
 
+        <!-- Display My Workplace  -->
+        <% if current_user.companies %>
+        <div class='col-md-4'>
+          <div class='row text-center'>
+            <div class="thumbnail">
+              <i class='glyphicon glyphicon-headphones'></i>
+                <h3>My Workplaces</h2>
+                  <p> <% @companies.each do |c| %> </p>
+                    <p> <%= c.name %> </p>
+                  <% end %>
+                  <p> My Feedback: <% @feedback[0].each do |f|%>  </p>
+                    <p> <%= f.description %> </p>
+                  <% end %>
+                  <!-- <% @companies.each do |q| %> </p> -->
+                  <!-- <p> <%#= q.interview_questions %>  </p> -->
+
+                <button type = 'button' class='btn btn-primary'>See All</button>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
 
         <!-- container div -->
         <!-- </div> -->

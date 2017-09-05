@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
 
   has_many :workplaces
+  has_many :companies, through: :workplaces
 
   enum role: ["default", "admin"]
 
