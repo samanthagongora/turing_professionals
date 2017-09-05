@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
 
   def index
-    @users = User.default.active
+    @member_index_presenter = MemberIndexPresenter.new
   end
 
   def new
