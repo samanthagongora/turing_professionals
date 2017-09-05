@@ -32,4 +32,6 @@ Rails.application.routes.draw do
 
   delete '/favorite_users', to: 'favorite_users#destroy'
   post '/favorite_users', to: 'favorite_users#create'
+  delete '/favorite_companies', to: 'favorite_companies#destroy'
+  post '/favorite_companies', to: 'favorite_companies#create'
 end

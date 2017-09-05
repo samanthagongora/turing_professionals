@@ -1,6 +1,16 @@
 <div class="text-center row">
 
-<h1 class = "page-header"><%= @company.name %></h1><br>
+<h1 class = "page-header"><%= @company.name %>
+  <% if current_user.favorite_companies.include? @company %>
+    <%= link_to favorite_companies_path, data: {params: {favorite_company_id: @company.id}.to_param, remote: true, method: :delete}, class: "pull-right" do %>
+      <span class="glyphicon glyphicon-star" style="font-size:.75em"></span>
+    <% end %>
+  <% else %>
+    <%= link_to favorite_companies_path, data: {params: {favorite_company_id: @company.id}.to_param, remote: true, method: :post}, class: "pull-right" do %>
+      <span class="glyphicon glyphicon-star-empty" style="font-size:.75em"></span>
+    <% end %>
+  <% end %>
+</h1><br>
 <div class="col-md-4">
 <a href="<%= @company.linkedin_url %>">
   <img class = "social-media-logo" src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" alt="linkedin-logo">

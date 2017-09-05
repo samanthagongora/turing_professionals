@@ -8,27 +8,22 @@
             <% if current_user == user %>
               <%= button_to "Your Profile", user_path(current_user), class: "pull-right" %>
             <% elsif current_user.favorite_users.include? user %>
-              <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :delete}, class: "pull-right favorite-icon" do %>
+              <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :delete}, class: "pull-right" do %>
                 <span class="glyphicon glyphicon-star" style="font-size:1.5em"></span>
               <% end %>
             <% else %>
-              <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :post}, class: "pull-right favorite-icon" do %>
+              <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :post}, class: "pull-right" do %>
                 <span class="glyphicon glyphicon-star-empty" style="font-size:1.5em"></span>
               <% end %>
             <% end %>
             <img src="<%= user.image_url %>">
             <div class="caption">
-              <h3><%= user.first_name %> <%= user.last_name %></h3>
-                <% if user.locations %>
-                <p>
-                  <% user.locations.each do |location| %>
-                  <%= location.city  %></br>
-                  <%= location.state %></br>
-                  <% end %>
-                </p>
+              <h3><%= link_to "#{user.first_name} #{user.last_name}", user_path(user.id) %></h3>
+                <% if user.locations.any? %>
+                  Location: <%= user.locations.first.city %>, <%= user.locations.first.state %><br>
                 <% end %>
                 <% if user.workplaces.any? %>
-                  Company: <%= user.workplaces.first.company.name %><br>
+                  Company: <%= link_to "#{user.workplaces.first.company.name}", company_path(user.workplaces.first.company.id) %><br>
                 <% end %>
                 Cohort: <%= user.cohort %><br></p>
             </div>
