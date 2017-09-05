@@ -19,7 +19,7 @@
             <img src="<%= user.image_url %>">
             <div class="caption">
               <h3><%= link_to "#{user.first_name} #{user.last_name}", user_path(user.id) %></h3>
-                <% if user.location %>
+                <% if user.locations.any? %>
                   Location: <%= user.location.city %>, <%= user.location.state %><br>
                 <% end %>
                 <% if user.workplaces.any? %>
