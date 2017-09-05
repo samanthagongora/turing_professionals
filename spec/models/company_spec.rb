@@ -32,8 +32,8 @@ RSpec.describe Company, type: :model do
       params_1 = {location_ids: location_1.id, industry_ids: ind_1.id}
       params_2 = {location_ids: location_1.id, industry_ids: ind_3.id}
 
-      expect(Company.filter(params_1)).to eq([co_1, co_2])
-      expect(Company.filter(params_2)).to eq([co_1])
+      expect(Company.filter(params_1).to_a).to include(co_1, co_2)
+      expect(Company.filter(params_2).to_a).to include(co_1)
     end
   end
 end

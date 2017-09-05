@@ -1,1 +1,85 @@
-<%= render 'profile/show' %>
+<div class="user-profile-page">
+<div id="wrap">
+  <div id="header">
+    <h1><%= @user.first_name  %> <%= @user.last_name %></h1>
+    <h2><%= @user.headline %></h2>
+    <% if current_user == @user %>
+      <%= button_to "Your Profile", user_path(current_user), class: "pull-right" %>
+    <% elsif current_user.favorite_users.include? @user %>
+      <%= link_to favorite_users_path, data: {params: {favorite_user_id: @user.id}.to_param, remote: true, method: :delete}, class: "pull-right" do %>
+        <span class="glyphicon glyphicon-star" style="font-size:1.5em"></span>
+      <% end %>
+    <% else %>
+      <%= link_to favorite_users_path, data: {params: {favorite_user_id: @user.id}.to_param, remote: true, method: :post}, class: "pull-right" do %>
+        <span class="glyphicon glyphicon-star-empty" style="font-size:1.5em"></span>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="bio">
+    <div id="about">
+      <div id="photo-bg">
+        <%= image_tag @user.image_url, size: '170x170' if !@user.image_url.nil? %>
+      </div>
+      <h3>About Me</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+      <h4>Status: <span> On line</span> </h4>
+      <h4><a href="<%= @user.resume.url %>">Resume</h4>
+    </div>
+    <div id="contact-details">
+      <h3>Contact Me</h3>
+      <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh. Please get in touch:</p>
+      <h5>Email: <span><%= @user.email %></span></h5>
+      <h5>Twitter: <span><%= @user.twitter %></span></h5>
+      <h5>Slack: <span><%= @user.slack %></span></h5>
+      <h5>Github: <span><%= @user.github %></span></h5>
+      <h5>Industry: <span><%= @user.summary %></span></h5>
+
+    </div>
+  </div>
+</div>
+<div class="line"></div>
+
+<p><%= link_to 'Authorize app to use your Linkedin information',
+               '/auth/linkedin', class: "btn btn-primary"  %></p>
+
+<section class="cards">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Interest</h3>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">What I'm working on</h3>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+<div class="col-md-2"></div>
+  <div class="row">
+    <div class="col-lg-8">
+      <h3 class="card-title">Location</h3>
+          <%= image_tag "map_placeholder.png", size: '500x400'  %></br>
+          <% @user.locations.each do |location| %>
+          <%= location.city %></br>
+          <%= location.state %></br>
+          <% end %>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
