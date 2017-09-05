@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   before_action :get_messages
-  before_action :logged_in_user
 
   def index
   end
