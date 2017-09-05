@@ -17,7 +17,7 @@
         <!-- <div class="row match-my-cols"> -->
         <!-- DISPLAY 1 -->
 
-        <div class='col-md-4'>
+        <div class='col-md-4 my-companies'>
           <div class='row text-center'>
             <div class="thumbnail">
               <i class='glyphicon glyphicon-briefcase'></i>
@@ -32,27 +32,25 @@
         </div>
         <!-- DISPLAY 2 //able to make private comments only I see -->
 
-          <div class='col-md-4'>
+          <div class='col-md-4 my-connections'>
             <div class='row text-center'>
-            <div class="thumbnail">
-
-              <i class='glyphicon glyphicon-user'></i>
-                <h3>Favorite Members</h2>
-
-                  <div class="caption">
-                     <% @favorite_members.each do |member| %>
-                    <p> <%= link_to member.username,user_path(member) %></p>
-                    <p> starred on: <%= member.created_at %></p>
-                  <% end %>
-                  </div>
-                <button type = 'button' class='btn btn-primary'>See All</button>
+              <div class="thumbnail">
+                <i class='glyphicon glyphicon-user'></i>
+                  <h3>Favorite Members</h2>
+                    <div class="caption">
+                      <% @favorite_members.each do |member| %>
+                      <p> <%= link_to member.username,user_path(member) %></p>
+                      <p> starred on: <%= member.created_at %></p>
+                      <% end %>
+                    </div>
+                  <button type = 'button' class='btn btn-primary'>See All</button>
+                </div>
               </div>
             </div>
-          </div>
 
         <!-- DISPLAY 3 -->
 
-        <div class='col-md-4'>
+        <div class='col-md-4 my-items'>
           <div class='row text-center'>
             <div class="thumbnail">
               <i class='glyphicon glyphicon-pencil'></i>
@@ -66,7 +64,7 @@
         </div>
 
         <!-- DISPLAY 4 -->
-        <div class='col-md-4'>
+        <div class='col-md-4 my-conversations'>
           <div class='row text-center'>
             <div class="thumbnail">
               <i class='glyphicon glyphicon-comment'></i>
@@ -80,7 +78,7 @@
         </div>
 
         <!-- DISPLAY 5 -->
-        <div class='col-md-4'>
+        <div class='col-md-4 my-locations'>
           <div class='row text-center'>
             <div class="thumbnail">
               <i class='glyphicon glyphicon-globe'></i>
@@ -94,7 +92,7 @@
         </div>
 
         <!--  DISPLAY 6-->
-        <div class='col-md-4'>
+        <div class='col-md-4 my-lifestyle'>
           <div class='row text-center'>
             <div class="thumbnail">
               <i class='glyphicon glyphicon-headphones'></i>
@@ -109,7 +107,7 @@
 
         <!-- Display My Workplace  -->
         <% if current_user.companies %>
-        <div class='col-md-4'>
+        <div class='col-md-4 my-workplaces'>
           <div class='row text-center'>
             <div class="thumbnail">
               <i class='glyphicon glyphicon-headphones'></i>
@@ -132,8 +130,8 @@
 
         <!-- container div -->
         <!-- </div> -->
+      </div>
     </div>
   </div>
-</div>
 </div>
     <!-- <div class="thumbnail"> could be used instead of row well class to provide borner without background color-->
