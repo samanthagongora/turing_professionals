@@ -3,6 +3,9 @@ class User < ApplicationRecord
   validates_presence_of :username
   validates_uniqueness_of :username
 
+  has_many :workplaces
+  has_many :companies, through: :workplaces
+
   enum role: ["default", "admin"]
   enum status: ["active", "inactive"]
 
@@ -15,8 +18,6 @@ class User < ApplicationRecord
 
   # belongs_to :location, optional: true
   #### Does a user need to belong to a location. Can we have a many through relationship instead?
-
-  has_many :workplaces
 
   has_many :favorites
   has_many :favorite_companies, through: :favorites, source: :favoritable, source_type: 'Company'
