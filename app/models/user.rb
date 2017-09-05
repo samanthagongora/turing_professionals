@@ -29,11 +29,10 @@ class User < ApplicationRecord
   mount_uploader :resume, ResumeUploader
 
   def self.filter(params)
-    byebug
       User.select("users.*")
           .joins(user_locations: :location)
           .joins(workplaces: :company)
-          .where("locations.id = ?", params[:location_id])
-          .where("companies.id = ?", params[:company_id])
+          .where("locations.id": params[:location_ids])
+          .where("companies.id": params[:company_ids]).distinct
   end
 end

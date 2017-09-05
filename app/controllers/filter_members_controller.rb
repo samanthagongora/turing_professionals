@@ -7,6 +7,6 @@ class FilterMembersController < ApplicationController
   private
 
   def filter_params
-    params.permit(:location_id, :company_id)
+      params.require(:filter).permit(location_ids: [], company_ids: [])
   end
 end

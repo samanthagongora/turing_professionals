@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
       create(:workplace, user_id: user_2.id, company: co_2)
       create(:workplace, user_id: user_3.id, company: co_1)
 
-      params = {location_id: [loc_1.id, loc_3.id], company_id: [co_1.id, co_2.id]}
+      params = {location_ids: [loc_1.id, loc_3.id], company_ids: [co_2.id, co_3.id]}
       expect(User.filter(params)).to eq([user_1, user_2])
     end
   end
