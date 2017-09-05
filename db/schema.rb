@@ -139,6 +139,9 @@ ActiveRecord::Schema.define(version: 20170905025508) do
     t.string "password_digest"
     t.bigint "location_id"
     t.integer "status", default: 0
+    t.string "about_me"
+    t.string "interest"
+    t.string "working_on"
     t.index ["location_id"], name: "index_users_on_location_id"
   end
 

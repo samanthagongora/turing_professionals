@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
+  include SessionsHelper
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -9,4 +10,12 @@ class ApplicationController < ActionController::Base
   def require_default
     render "public/404" unless current_user.default?
   end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_path
+    end
+  end
+
 end
