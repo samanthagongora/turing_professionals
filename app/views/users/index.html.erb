@@ -37,7 +37,7 @@
         <% end %>
         <a href="/users" class = "btn btn-primary">Clear Filters</a>
         <span class = "order-form">
-        <%= form_for(:order, url: "/order_companies", method: "get") do |f| %>
+        <%= form_for(:order, url: "/order_members", method: "get") do |f| %>
           <%= f.hidden_field :direction, :value => @member_index_presenter.switch_order, :name => "order[direction]"%>
           <% arrow = "&darr;  A-Z".html_safe if  @member_index_presenter.order == "ASC" %>
           <% arrow = "&uarr;  A-Z".html_safe if  @member_index_presenter.order == "DESC" %>
