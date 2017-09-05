@@ -130,7 +130,22 @@ h1, h2, h3, h4, h5, h6{
 /* ----CARDS--- */
 /* ------------ */
 
+.card {
+  overflow: hidden;
+  padding: 0;
+  //width: 340px;
+  height: auto;
+  border: none;
+  border-radius: .28571429rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+
 .card p {
   color: #888888;
+  text-align: center;
 }
+  .card h3 {
+    color: #555555;
+    text-align: center;
+  }
 }
