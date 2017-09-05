@@ -8,5 +8,8 @@ RSpec.describe User, type: :model do
 
   context "relationships" do
     it {should have_many(:locations)}
+    it {should have_many(:workplaces)}
+    it {should have_many(:favorites)}
+    it {should have_many(:user_locations)}
   end
 end

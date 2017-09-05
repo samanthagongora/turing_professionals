@@ -29,6 +29,11 @@ FactoryGirl.define do
     cohort "1705 BE"
     password "password"
     sequence :username {|n| "username#{n}"}
-    after(:create) { |user| create(:workplace, employed_user: user) }
+  end
+
+  trait :with_workplaces do
+    after(:create) do |user|
+      create(:workplace, employed_user: user)
+    end
   end
 end

@@ -2,5 +2,6 @@
 <ul>
   <% location.users.each do |user| %>
     <li><strong><%= link_to user.username, user_path(user) %></strong></li>
+    <li><strong><%= image_tag user.image_url, size: "25x25" if !user.image_url.nil? %></strong></li>
   <% end %>
 </ul>
