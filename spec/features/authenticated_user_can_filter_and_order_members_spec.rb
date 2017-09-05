@@ -27,14 +27,14 @@ RSpec.feature "User visits member index" do
     check("company-#{@co_2.id}")
     click_on "Filter"
 
-    expect(page).to have_content(@user_1.name)
-    expect(page).to have_content(@user_2.name)
-    expect(page).to_not have_content(@user_3.name)
+    expect(page).to have_content(@user_1.first_name)
+    expect(page).to have_content(@user_2.first_name)
+    expect(page).to_not have_content(@user_3.first_name)
 
     click_on "Clear Filter"
 
-    expect(page).to have_content(@user_1.name)
-    expect(page).to have_content(@user_2.name)
-    expect(page).to have_content(@user_3.name)
+    expect(page).to have_content(@user_1.first_name)
+    expect(page).to have_content(@user_2.first_name)
+    expect(page).to have_content(@user_3.first_name)
   end
 end

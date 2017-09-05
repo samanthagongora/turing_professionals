@@ -28,4 +28,12 @@ class User < ApplicationRecord
   mount_uploader :image_url, ImageUploader
   mount_uploader :resume, ResumeUploader
 
+  def self.filter(params)
+    byebug
+      User.select("users.*")
+          .joins(user_locations: :location)
+          .joins(workplaces: :company)
+          .where("locations.id = ?", params[:location_id])
+          .where("companies.id = ?", params[:company_id])
+  end
 end
