@@ -7,8 +7,19 @@ class User < ApplicationRecord
   has_many :companies, through: :workplaces
 
   enum role: ["default", "admin"]
+  enum status: ["active", "inactive"]
 
-  belongs_to :location, optional: true
+  has_many :user_locations
+  has_many :locations, through: :user_locations
+
+  accepts_nested_attributes_for :locations,
+  reject_if: lambda {|attributes| attributes['city'].blank? && attributes['state'].blank?}
+  #allows for nested form for user to edit their profile
+
+  # belongs_to :location, optional: true
+  #### Does a user need to belong to a location. Can we have a many through relationship instead?
+
+  has_many :workplaces
 
   has_many :favorites
   has_many :favorite_companies, through: :favorites, source: :favoritable, source_type: 'Company'
@@ -19,6 +30,4 @@ class User < ApplicationRecord
 
   mount_uploader :image_url, ImageUploader
   mount_uploader :resume, ResumeUploader
-
-  enum status: ["active", "inactive"]
 end

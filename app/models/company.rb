@@ -24,4 +24,12 @@ class Company < ApplicationRecord
   def self.questions(user_companies)
     user_companies.map {|c| c.interview_questions}
   end
+
+  def self.filter(params)
+    Company.select("companies.*")
+          .joins(office_locations: :location)
+          .joins(company_industries: :industry)
+          .where("locations.id": params[:location_ids])
+          .where("industries.id": params[:industry_ids]).distinct
+  end
 end

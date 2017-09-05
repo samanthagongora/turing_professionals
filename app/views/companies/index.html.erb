@@ -1,12 +1,65 @@
 <div class="container">
 <h1 class = "page-header">All Companies</h1>
 
-  <% @companies.each do |company| %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid filters">
+<span class="dropdown">
+  <%= form_for(:filter, url: "/filter_companies", method: "get") do |f| %>
+  <button class="btn btn-default dropdown-toggle" type="button" id="location-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Cities
+    <span class="caret"></span>
+  </button>
+
+  <ul class="dropdown-menu cities" aria-labelledby="location-dropdown">
+      <% @company_index_presenter.locations.each do |location| %>
+        <li>
+          <%= check_box_tag :location_id, location.id, false, class: location.id, id: "location-#{location.id}", name: 'filter[location_ids][]' %>
+          <%= "#{location.city}, #{location.state}" %>
+        </li>
+    <% end %>
+  </ul>
+  <span class="dropdown">
+
+  <button class="btn btn-default dropdown-toggle" type="button" id="industries-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Industries
+    <span class="caret"></span>
+  </button>
+
+  <ul class="dropdown-menu industries" aria-labelledby="industries-dropdown">
+      <% @company_index_presenter.industries.each do |industry| %>
+        <li>
+          <%= check_box_tag :industry_id, industry.id, false, class: industry.id, id: "industry-#{industry.id}", name: 'filter[industry_ids][]' %>
+          <%= industry.name %>
+        </li>
+      <% end %>
+
+  </ul>
+  <%= f.submit "Filter", class: "btn btn-primary" %>
+  <% end %>
+  <a href="/companies" class = "btn btn-primary">Clear Filters</a>
+  <span class = "order-form">
+  <%= form_for(:order, url: "/order_companies", method: "get") do |f| %>
+    <%= f.hidden_field :direction, :value => @company_index_presenter.switch_order, :name => "order[direction]"%>
+    <% arrow = "&darr;  A-Z".html_safe if  @company_index_presenter.order == "ASC" %>
+    <% arrow = "&uarr;  A-Z".html_safe if  @company_index_presenter.order == "DESC" %>
+    <%= f.submit arrow.html_safe, class: "a-z-order btn btn-primary"  %>
+  <% end %>
+  </span>
+</span>
+
+</span>
+
+</div>
+</nav>
+
+
+
+  <% @company_index_presenter.companies.each do |company| %>
   <div class="panel panel-default company-<%= company.id %>">
     <div class="panel-body">
       <div class="row">
         <div class="col-md-4">
-    <img class = "img-responsive company-index-picture" src="<%= company.image_url %>" alt="company picture">
+    <img class = "img-responsive company-index-picture align-middle" src="<%= company.image_url %>" alt="company picture">
       </div>
       <div class="col-md-8 text-center">
       <h2 class = "page-header"><%= link_to company.name, company_path(company: company.slug) %></h2>

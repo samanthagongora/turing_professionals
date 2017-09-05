@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   get '/profile', to: "profile#show"
 
+
+  get "/filter_companies", to: "filter_companies#index"
+  get "/order_companies", to: "order_companies#index"
+
   resources :companies, only: [:index]
   resources :interview_questions, only: [:create]
 
@@ -25,4 +29,7 @@ Rails.application.routes.draw do
     resources :users, only: [:update]
     resources :companies, only: [:destroy]
   end
+
+  delete '/favorite_users', to: 'favorite_users#destroy'
+  post '/favorite_users', to: 'favorite_users#create'
 end
