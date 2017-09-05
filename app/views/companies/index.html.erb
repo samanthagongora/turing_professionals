@@ -13,7 +13,7 @@
   <ul class="dropdown-menu cities" aria-labelledby="location-dropdown">
       <% @company_index_presenter.locations.each do |location| %>
         <li>
-          <%= check_box_tag :location_id, location.id, false, class: location.id, id: "location-#{location.id}" %>
+          <%= check_box_tag :location_id, location.id, false, class: location.id, id: "location-#{location.id}", name: 'filter[location_ids][]' %>
           <%= "#{location.city}, #{location.state}" %>
         </li>
     <% end %>
@@ -28,7 +28,7 @@
   <ul class="dropdown-menu industries" aria-labelledby="industries-dropdown">
       <% @company_index_presenter.industries.each do |industry| %>
         <li>
-          <%= check_box_tag :industry_id, industry.id, false, class: industry.id, id: "industry-#{industry.id}" %>
+          <%= check_box_tag :industry_id, industry.id, false, class: industry.id, id: "industry-#{industry.id}", name: 'filter[industry_ids][]' %>
           <%= industry.name %>
         </li>
       <% end %>

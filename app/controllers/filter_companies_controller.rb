@@ -7,6 +7,6 @@ class FilterCompaniesController < ApplicationController
   private
 
   def filter_params
-    params.permit(:location_id, :industry_id)
+    params.require(:filter).permit(location_ids: [], industry_ids: [])
   end
 end
