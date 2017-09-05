@@ -7,7 +7,7 @@ class MemberIndexPresenter
   end
 
   def users
-    users = (User.filter(@filter_params) if @filter_params) || User.default.active
+    users = (User.default.active.filter(@filter_params) if @filter_params) || User.default.active
     users.order("last_name #{@order}")
   end
 
