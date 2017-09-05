@@ -32,4 +32,6 @@ Rails.application.routes.draw do
 
   delete '/favorite_users', to: 'favorite_users#destroy'
   post '/favorite_users', to: 'favorite_users#create'
+
+  resources :messages
 end

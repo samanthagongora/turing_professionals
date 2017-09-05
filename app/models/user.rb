@@ -28,4 +28,5 @@ class User < ApplicationRecord
   mount_uploader :image_url, ImageUploader
   mount_uploader :resume, ResumeUploader
 
+  has_many :messages
 end
