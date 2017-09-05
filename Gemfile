@@ -26,6 +26,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'database_cleaner'
 gem 'toastr-rails'
+gem 'jquery-turbolinks'
 
 
 group :development, :test do

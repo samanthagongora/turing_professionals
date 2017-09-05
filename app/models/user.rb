@@ -17,6 +17,7 @@ class User < ApplicationRecord
   #### Does a user need to belong to a location. Can we have a many through relationship instead?
 
   has_many :workplaces
+  has_many :companies, through: :workplaces
 
   has_many :favorites
   has_many :favorite_companies, through: :favorites, source: :favoritable, source_type: 'Company'
