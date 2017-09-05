@@ -42,6 +42,7 @@ end
 group :test do
   gem 'vcr'
   gem 'webmock'
+  gem 'chromedriver-helper'
   gem 'selenium-webdriver'
 end
 
