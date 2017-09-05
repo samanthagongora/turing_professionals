@@ -3,6 +3,9 @@ class User < ApplicationRecord
   validates_presence_of :username
   validates_uniqueness_of :username
 
+  has_many :workplaces
+  has_many :companies, through: :workplaces
+
   enum role: ["default", "admin"]
   enum status: ["active", "inactive"]
 
@@ -27,5 +30,4 @@ class User < ApplicationRecord
 
   mount_uploader :image_url, ImageUploader
   mount_uploader :resume, ResumeUploader
-
 end
