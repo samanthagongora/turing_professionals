@@ -28,16 +28,16 @@ RSpec.feature "User can favorite and unfavorite a member", js: true do
 
     visit user_path(user_2)
 
-    find("body > div > div > div > div.col-xs-6.col-sm-4.user-card-#{user_2.id} > div > a > span").click
+    find("#header > a > span").click
 
-    within(".user-card-#{user_2.id}") do
+    within("#header > a") do
       expect(page).to_not have_css(".glyphicon-star-empty")
     end
     expect(user_1.favorite_users).to eq([user_2])
 
-    find("body > div > div > div > div.col-xs-6.col-sm-4.user-card-#{user_2.id} > div > a > span").click
+    find("#header > a > span").click
 
-    within(".user-card-#{user_2.id}") do
+    within("#header > a") do
       expect(page).to have_css(".glyphicon-star-empty")
     end
     expect(user_1.reload.favorite_users).to be_empty

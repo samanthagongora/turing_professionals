@@ -20,7 +20,7 @@
             <div class="caption">
               <h3><%= link_to "#{user.first_name} #{user.last_name}", user_path(user.id) %></h3>
                 <% if user.locations.any? %>
-                  Location: <%= user.location.city %>, <%= user.location.state %><br>
+                  Location: <%= user.locations.first.city %>, <%= user.locations.first.state %><br>
                 <% end %>
                 <% if user.workplaces.any? %>
                   Company: <%= link_to "#{user.workplaces.first.company.name}", company_path(user.workplaces.first.company.id) %><br>
