@@ -25,6 +25,8 @@ gem 'faker'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'database_cleaner'
+gem 'toastr-rails'
+
 
 group :development, :test do
   gem 'pry'
@@ -40,6 +42,8 @@ end
 group :test do
   gem 'vcr'
   gem 'webmock'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
 end
 
 group :development do

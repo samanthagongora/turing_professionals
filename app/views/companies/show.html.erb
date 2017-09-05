@@ -82,7 +82,13 @@
         <div class="panel-body member-panel">
           <img class = "img-responsive" src="<%= user.image_url %>" alt="user-image">
           <%= "#{user.first_name} #{user.last_name}" %>
-          <p><%= user.location.city %>, <%= user.location.state %></p>
+          <p>
+            <% user.locations.each do |location| %>
+            <%= location.city  %></br>
+            <%= location.state %></br>
+            <% end %>
+          </p>
+
           <p><%= user.cohort %></p>
         </div>
       </div>

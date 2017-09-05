@@ -4,7 +4,7 @@ class OauthController < ApplicationController
     oauth = OauthService.new(request.env['omniauth.auth'], current_user)
 
     if current_user = oauth.create_oauth_information
-      redirect_to dashboard_path
+      redirect_to profile_path
     else
       Rails.logger.info(current_user.errors.messages.inspect)
       flash[:alert] = "There was an error"
@@ -14,7 +14,7 @@ class OauthController < ApplicationController
 
   def failure
    flash[:alert] = "There was an error while trying to authenticate your account."
-   redirect_to register_path
+   redirect_to profile_path
   end
 
 
