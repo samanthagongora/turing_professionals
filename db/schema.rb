@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904210403) do
+ActiveRecord::Schema.define(version: 20170904232641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,9 +131,7 @@ ActiveRecord::Schema.define(version: 20170904210403) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "password_digest"
-    t.bigint "location_id"
     t.integer "status", default: 0
-    t.index ["location_id"], name: "index_users_on_location_id"
   end
 
   create_table "workplaces", force: :cascade do |t|
@@ -158,7 +156,6 @@ ActiveRecord::Schema.define(version: 20170904210403) do
   add_foreign_key "tech_stacks", "technologies"
   add_foreign_key "user_locations", "locations"
   add_foreign_key "user_locations", "users"
-  add_foreign_key "users", "locations"
   add_foreign_key "workplaces", "companies"
   add_foreign_key "workplaces", "users"
 end
