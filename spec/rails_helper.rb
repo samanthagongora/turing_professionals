@@ -7,6 +7,23 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'webmock/rspec'
 require 'vcr'
+require 'selenium/webdriver'
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu) }
+  )
+
+  Capybara::Selenium::Driver.new app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+end
+
+Capybara.javascript_driver = :headless_chrome
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -16,6 +33,7 @@ Shoulda::Matchers.configure do |config|
 end
 
 VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = "spec/cassettes"
   config.hook_into :webmock
 end
@@ -39,9 +57,8 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
-end
 
-RSpec.configure do |config|
   config.include(Omniauth)
 end
+
 OmniAuth.config.test_mode = true

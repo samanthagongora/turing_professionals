@@ -11,8 +11,7 @@ class OauthService
 
   private
     def oauth_account_params
-      { password: @user.password_digest,
-        uid: @auth_hash[:uid],
+      { uid: @auth_hash[:uid],
         headline: @auth_hash[:info][:description],
         first_name: @auth_hash[:info][:first_name],
         last_name: @auth_hash[:info][:last_name],

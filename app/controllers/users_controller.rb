@@ -16,24 +16,26 @@ class UsersController < ApplicationController
       redirect_to dashboard_path(user_id: @user.id)
       flash[:notice] = "Welcome, #{@user.username}"
     else
-      flash[:notice] = @user.errors.messages
+      flash[:alert] = @user.errors.messages
       render :new
     end
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
+    @user.locations.build
   end
 
   def update
     if @user.update(user_params)
       flash[:notice] = "Profile successfully updated!"
-      redirect_to user_path(@user)
+      redirect_to profile_path
     else
-      flash[:notice] = "Sorry! There was an error updating your profile information. Please try again."
-      redirect_to user_path(@user)
+      flash[:alert] = "Sorry! There was an error updating your profile information. Please try again."
+      redirect_to profile_path
     end
   end
 
@@ -43,7 +45,14 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :summary, :headline, :image_url, :first_name, :last_name, :linkedin_url, :email, :headline, :summary, :twitter, :slack, :github, :resume, :about_me, :interest, :working_on)
+
+    params.require(:user).permit(:username, :password, :password_confirmation,
+                                :summary, :headline, :image_url, :first_name,
+                                :last_name, :linkedin_url, :email, :headline,
+                                :summary, :twitter, :slack, :github, :resume,
+                                :about_me, :interest, :working_on,
+                                locations_attributes: [:id, :city, :state])
+
   end
 
   def set_user

@@ -20,4 +20,12 @@ class Company < ApplicationRecord
   def generate_slug
     self.slug = name.parameterize if name
   end
+
+  def self.filter(params)
+    Company.select("companies.*")
+          .joins(office_locations: :location)
+          .joins(company_industries: :industry)
+          .where("locations.id": params[:location_ids])
+          .where("industries.id": params[:industry_ids]).distinct
+  end
 end
