@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature "User can edit profile", type: :feature do
-  scenario "user makes changes successfully" do
+  # scenario "user makes changes successfully" do
+    context "using a browser", :js => true do
     user = create(:user, first_name: "Jyll", last_name: "Justamond")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -12,12 +13,13 @@ RSpec.feature "User can edit profile", type: :feature do
 
     expect(current_path).to eq(profile_path(user))
 
-    within('.modal') do
+    # within('.modal') do
       fill_in "First name", with: "New first name"
       fill_in "Last name", with: "New last name"
 
       click_on "Update User"
-    end
+      find("#header h1", :visible => true).text.should == "New first name"
+    # end
 
     expect(current_path).to eq("/profile.1")
     within('#header h1') do
@@ -27,4 +29,5 @@ RSpec.feature "User can edit profile", type: :feature do
       expect(page).to_not have_content("Justamond")
     end
   end
-end
+  end
+
