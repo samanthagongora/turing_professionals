@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
   resources :contacts, only: [:create]
 
-  get '/profile', to: "profile#show"
+  get 'insights', to: 'insights#index'
 
+  get '/profile', to: "profile#show"
 
   get "/filter_companies", to: "filter_companies#index"
   get "/order_companies", to: "order_companies#index"

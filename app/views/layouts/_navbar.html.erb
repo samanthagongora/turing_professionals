@@ -25,6 +25,7 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "Dashboard", dashboard_path %></li>
                 <li><%= link_to "My Profile", profile_path %></li>
+                <li><%= link_to "Insights", insights_path %></li>
                 <li><%= link_to 'Logout', logout_path, method: :delete %></li>
               </ul>
             <% elsif current_user.admin? %>
