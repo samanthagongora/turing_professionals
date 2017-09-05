@@ -63,7 +63,7 @@
       </div>
       <div class="col-md-8 text-center">
       <h2 class = "page-header"><%= link_to company.name, company_path(company: company.slug) %>
-        <% elsif current_user.favorite_companies.include? company %>
+        <% if current_user.favorite_companies.include? company %>
           <%= link_to favorite_companies_path, data: {params: {favorite_company_id: company.id}.to_param, remote: true, method: :delete}, class: "pull-right" do %>
             <span class="glyphicon glyphicon-star" style="font-size:1.5em"></span>
           <% end %>
@@ -71,7 +71,8 @@
           <%= link_to favorite_companies_path, data: {params: {favorite_company_id: company.id}.to_param, remote: true, method: :post}, class: "pull-right" do %>
             <span class="glyphicon glyphicon-star-empty" style="font-size:1.5em"></span>
           <% end %>
-        <% end %></h2>
+        <% end %>
+      </h2>
       <h4>
       <% company.industries.each do |industry| %>
         <%= industry.name %>
