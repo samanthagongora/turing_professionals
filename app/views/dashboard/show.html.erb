@@ -6,7 +6,7 @@
     <div class = "container">
       <div class = "row well">
         <div class="row text-center">
-          <h2> <%= current_user.first_name %>'s Dashboard </h2>
+          <h2> <%= current_user.id %>'s Dashboard </h2>
         </div>
       </div>
     </div>
@@ -15,7 +15,8 @@
   <div class='container'>
     <div class="row well">
       <div class="row text-center">
-
+        <div class="row-conformity row-centered">
+        <!-- <div class="row match-my-cols"> -->
         <!-- DISPLAY 1 -->
 
         <div class='col-md-4'>
@@ -23,9 +24,10 @@
             <div class="thumbnail">
               <i class='glyphicon glyphicon-briefcase'></i>
                 <h3>Favorite Companies</h3>
-                  <p> company 1</p>
-                  <p> company 1</p>
-                  <p> company 1</p>
+                  <%  @favorited_companies.each do |company| %>
+                  <p> <%= company.name %></p>
+                  <p> <%= company.website %></p>
+                  <% end %>
               <button type = 'button' class='btn btn-primary'>See All</button>
             </div>
           </div>
@@ -35,15 +37,21 @@
           <div class='col-md-4'>
             <div class='row text-center'>
             <div class="thumbnail">
+
               <i class='glyphicon glyphicon-user'></i>
                 <h3>Favorite Members</h2>
-                  <p>Member 1.</p>
-                  <p>Member 2.</p>
-                  <p>Member 2.</p>
+
+                  <div class="caption">
+                     <% @favorite_members.each do |member| %>
+                    <p> <%= link_to member.username,user_path(member) %></p>
+                    <p> starred on: <%= member.created_at %></p>
+                  <% end %>
+                  </div>
                 <button type = 'button' class='btn btn-primary'>See All</button>
+              </div>
             </div>
           </div>
-        </div>
+
         <!-- DISPLAY 3 -->
 
         <div class='col-md-4'>
@@ -51,7 +59,7 @@
             <div class="thumbnail">
               <i class='glyphicon glyphicon-pencil'></i>
                 <h3>My Items</h2>
-                  <p> resume </p>
+                  <h4><a href="<%= current_user.resume.url %>">Resume</h4>
                   <p> comment </p>
                   <p><%= link_to "Profile", user_path(current_user) %></p>
                 <button type = 'button' class='btn btn-primary'>See All</button>
@@ -101,11 +109,11 @@
           </div>
         </div>
 
+
         <!-- container div -->
-      </div>
+        <!-- </div> -->
     </div>
   </div>
 </div>
-
-
+</div>
     <!-- <div class="thumbnail"> could be used instead of row well class to provide borner without background color-->
