@@ -29,4 +29,7 @@ Rails.application.routes.draw do
     resources :users, only: [:update]
     resources :companies, only: [:destroy]
   end
+
+  delete '/favorite_users', to: 'favorite_users#destroy'
+  post '/favorite_users', to: 'favorite_users#create'
 end
