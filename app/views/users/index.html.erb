@@ -6,9 +6,15 @@
         <div class="col-xs-6 col-sm-4 <%="user-card-#{user.id}"%>">
           <div class="thumbnail">
             <% if current_user == user %>
-              <%= link_to user_path(current_user) %>
+              <%= button_to "Your Profile", user_path(current_user), class: "pull-right" %>
+            <% elsif current_user.favorite_users.include? user %>
+              <%= link_to favorite_user_path(user.id), data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :delete}, class: "pull-right favorite-icon" do %>
+                <span class="glyphicon glyphicon-star" style="font-size:1.5em"></span>
+              <% end %>
             <% else %>
-              <span class="glyphicon glyphicon-star-empty pull-right" style="font-size:1.5em;" aria-hidden="true"></span>
+              <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :post}, class: "pull-right favorite-icon" do %>
+                <span class="glyphicon glyphicon-star-empty" style="font-size:1.5em"></span>
+              <% end %>
             <% end %>
             <img src="<%= user.image_url %>">
             <div class="caption">
