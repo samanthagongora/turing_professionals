@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get "/filter_companies", to: "filter_companies#index"
   get "/order_companies", to: "order_companies#index"
 
+  get "/filter_members", to: "filter_members#index"
+  get "/order_members", to: "order_members#index"
+
   resources :companies, only: [:index]
   resources :interview_questions, only: [:create]
 
