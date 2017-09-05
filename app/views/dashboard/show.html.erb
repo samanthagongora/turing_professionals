@@ -2,37 +2,35 @@
 <div class='container user-dashboard-page'>
 
 <!-- heading with username and page description -->
-    <div class = "container">
-      <div class = "row well">
-        <div class="row text-center">
-          <h2> <%= current_user.username %>'s Dashboard </h2>
-        </div>
+  <div class = "container">
+    <div class = "row well">
+      <div class="row text-center">
+        <h2> <%= current_user.username %>'s Dashboard </h2>
       </div>
     </div>
+  </div>
 
   <div class='container'>
     <div class="row well">
       <div class="row text-center">
-        <div class="row-conformity row-centered">
-        <!-- <div class="row match-my-cols"> -->
-        <!-- DISPLAY 1 -->
 
-        <div class='col-md-4 my-companies'>
-          <div class='row text-center'>
-            <div class="thumbnail">
-              <i class='glyphicon glyphicon-briefcase'></i>
-                <h3>Favorite Companies</h3>
-                  <%  @favorited_companies.each do |company| %>
-                  <p> <%= company.name %></p>
-                  <p> <%= company.website %></p>
-                  <% end %>
-              <button type = 'button' class='btn btn-primary'>See All</button>
+
+          <!-- DISPLAY 1 -->
+          <div class='col-md-6 my-companies'>
+            <div class='row text-center'>
+              <div class="thumbnail">
+                <i class='glyphicon glyphicon-briefcase'></i>
+                  <h3>Favorite Companies</h3>
+                    <%  @favorited_companies.each do |company| %>
+                    <p> <%= company.name %></p>
+                    <% end %>
+                <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
+              </div>
             </div>
           </div>
-        </div>
-        <!-- DISPLAY 2 //able to make private comments only I see -->
 
-          <div class='col-md-4 my-connections'>
+          <!-- DISPLAY 2 -->
+          <div class='col-md-6 my-connections'>
             <div class='row text-center'>
               <div class="thumbnail">
                 <i class='glyphicon glyphicon-user'></i>
@@ -40,96 +38,72 @@
                     <div class="caption">
                       <% @favorite_members.each do |member| %>
                       <p> <%= link_to member.username,user_path(member) %></p>
-                      <p> starred on: <%= member.created_at %></p>
+                      <!-- <p> starred on: <%#= member.created_at %></p> -->
                       <% end %>
                     </div>
-                  <button type = 'button' class='btn btn-primary'>See All</button>
+                  <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
                 </div>
               </div>
             </div>
 
-        <!-- DISPLAY 3 -->
-
-        <div class='col-md-4 my-items'>
-          <div class='row text-center'>
-            <div class="thumbnail">
-              <i class='glyphicon glyphicon-pencil'></i>
-                <h3>My Items</h2>
-                  <h4><a href="<%= current_user.resume.url %>">Resume</h4>
-                  <p> comment </p>
-                  <p><%= link_to "Profile", user_path(current_user) %></p>
-                <button type = 'button' class='btn btn-primary'>See All</button>
+            <!-- DISPLAY 3 -->
+            <div class='col-md-6 my-items'>
+              <div class='row text-center'>
+                <div class="thumbnail">
+                  <i class='glyphicon glyphicon-pencil'></i>
+                    <h3>My Items</h2>
+                      <p><%= link_to "See Profile", profile_path %></p>
+                    <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- DISPLAY 4 -->
-        <div class='col-md-4 my-conversations'>
-          <div class='row text-center'>
-            <div class="thumbnail">
-              <i class='glyphicon glyphicon-comment'></i>
-                <h3>Conversations</h2>
-                  <p> resume </p>
-                  <p> comment </p>
-                  <p><%= link_to "Profile", user_path(current_user) %></p>
-                <button type = 'button' class='btn btn-primary'>See All</button>
+            <!-- DISPLAY 4 Conversations glyphicon-comment-->
+
+
+            <!-- DISPLAY 5 -->
+            <div class='col-md-6 my-locations'>
+              <div class='row text-center'>
+                <div class="thumbnail">
+                  <i class='glyphicon glyphicon-globe'></i>
+                    <h3>Locations</h2>
+                      <p><%= link_to "Profile", user_path(current_user) %></p>
+                    <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- DISPLAY 5 -->
-        <div class='col-md-4 my-locations'>
-          <div class='row text-center'>
-            <div class="thumbnail">
-              <i class='glyphicon glyphicon-globe'></i>
-                <h3>Locations</h2>
-                  <p> resume </p>
-                  <p> comment </p>
-                  <p><%= link_to "Profile", user_path(current_user) %></p>
-                <button type = 'button' class='btn btn-primary'>See All</button>
+            <!--  DISPLAY 6-->
+            <div class='col-md-6 my-lifestyle'>
+              <div class='row text-center'>
+                <div class="thumbnail">
+                  <i class='glyphicon glyphicon-headphones'></i>
+                    <h3>Lifestyle</h2>
+                      <p><%= link_to "Profile", user_path(current_user) %></p>
+                    <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!--  DISPLAY 6-->
-        <div class='col-md-4 my-lifestyle'>
-          <div class='row text-center'>
-            <div class="thumbnail">
-              <i class='glyphicon glyphicon-headphones'></i>
-                <h3>Lifestyle</h2>
-                  <p> resume </p>
-                  <p> comment </p>
-                  <p><%= link_to "Profile", user_path(current_user) %></p>
-                <button type = 'button' class='btn btn-primary'>See All</button>
+            <!-- Display My Workplace  -->
+          <% if current_user.companies %>
+            <div class='col-md-6 my-workplaces'>
+              <div class='row text-center'>
+                <div class="thumbnail">
+                  <i class='glyphicon glyphicon-headphones'></i>
+                    <h3>My Workplaces</h2>
+                      <p> <% @companies.each do |c| %> </p>
+                        <p> <%= c.name %> </p>
+                      <% end %>
+                    <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          <% end %>
 
-        <!-- Display My Workplace  -->
-        <% if current_user.companies %>
-        <div class='col-md-4 my-workplaces'>
-          <div class='row text-center'>
-            <div class="thumbnail">
-              <i class='glyphicon glyphicon-headphones'></i>
-                <h3>My Workplaces</h2>
-                  <p> <% @companies.each do |c| %> </p>
-                    <p> <%= c.name %> </p>
-                  <% end %>
-                  <p> My Feedback: <% @feedback[0].each do |f|%>  </p>
-                    <p> <%= f.description %> </p>
-                  <% end %>
-                  <!-- <% @companies.each do |q| %> </p> -->
-                  <!-- <p> <%#= q.interview_questions %>  </p> -->
+        <!-- container  -->
 
-                <button type = 'button' class='btn btn-primary'>See All</button>
-            </div>
-          </div>
-        </div>
-        <% end %>
-        <% end %>
 
-        <!-- container div -->
-        <!-- </div> -->
       </div>
     </div>
   </div>
