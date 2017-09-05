@@ -10,18 +10,21 @@ RSpec.feature "User can edit profile", type: :feature do
 
     click_on "Update"
 
-    fill_in "First name", with: "New first name"
-    fill_in "Last name", with: "New last name"
+    expect(current_path).to eq(profile_path(user))
 
-    click_on "Update User"
+    within('.modal') do
+      fill_in "First name", with: "New first name"
+      fill_in "Last name", with: "New last name"
 
-    expect(current_path).to eq('/profile.1')
-    within('#wrap #header h1') do
+      click_on "Update User"
+    end
+
+    expect(current_path).to eq("/profile.1")
+    within('#header h1') do
       expect(page).to have_content("New first name")
       expect(page).to have_content("New last name")
       expect(page).to_not have_content("Jyll")
       expect(page).to_not have_content("Justamond")
     end
-
   end
 end
