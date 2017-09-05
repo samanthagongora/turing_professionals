@@ -1,10 +1,10 @@
 @initMap = ->
   center =
-    lat: 0
-    lng: 0
+    lat: 39.5
+    lng: -98.35
 
   map = new (google.maps.Map) $('#map')[0],
-    zoom: 2
+    zoom: 4
     center: center
 
   infowindow = new (google.maps.InfoWindow)
