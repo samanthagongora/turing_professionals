@@ -16,9 +16,9 @@ describe 'technologies api' do
 
     expect(techs.count).to eq(10)
     techs = JSON.parse(response.body)["data"]
-    expect(techs.first[:name]).to eq(technologies[0].name)
-    expect(techs.last[:name]).to eq(technologies[9].name)
-    expect(techs.first[:front_end_users]).to eq("3")
-    expect(techs.first[:back_end_users]).to eq("1")
+    expect(techs.first["name"]).to eq(technologies[0].name)
+    expect(techs.last["name"]).to eq(technologies[9].name)
+    expect(techs.first["front_end_users"]).to eq("3")
+    expect(techs.first["back_end_users"]).to eq("1")
   end
 end
