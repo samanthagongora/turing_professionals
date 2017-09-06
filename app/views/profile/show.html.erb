@@ -169,12 +169,12 @@
 <div class="container">
   <div class="row">
   <div class="col-md-4">
+    <% if !current_user.locations.nil? %>
     <h3 class="text-center">Your Current Location</h3>
     <h4 class="text-center">
-      <% if !current_user.locations.nil? %>
-        <%= current_user.locations.last.city %>,
-        <%= current_user.locations.last.state %>
+        <%= Location.recent_location(current_user).full_address %>
       </h4>
+      <% end %>
       </div>
 
         <div class="col-md-8">
@@ -201,8 +201,7 @@
               </div>
             </div>
           </div>
-      </div>
-      <% end %>
+       </div>
       <br>
     <br>
   <br>

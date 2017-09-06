@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user_location do
-    user nil
-    location nil
+    user
+    location
   end
 end

@@ -23,4 +23,8 @@ class User < ApplicationRecord
   mount_uploader :image_url, ImageUploader
   mount_uploader :resume, ResumeUploader
 
+  def self.current_location
+    locations.order(updated_at: :desc)
+    .where.not(latitude: nil, longitude: nil)
+  end
 end
