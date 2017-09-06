@@ -12,36 +12,29 @@ $(document).ready(function(){
           backendData.push(dataItem.back_end_users)
           frontendData.push(dataItem.front_end_users)
         })
+        Highcharts.chart('container-pop-technologies', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Most Popular Technologies Used by Members'
+            },
+            xAxis: {
+                categories: categories,
+            },
+            yAxis: {
+                title: {
+                    text: '# of Members Using '
+                },
+            },
+            series: [{
+                name: 'Backend',
+                data: backendData
+            }, {
+                name: 'Frontend',
+                data: frontendData
+            }]
+        });
       }
   });
-})
-
-
-document.addEventListener("turbolinks:load", function() {
-  $(function () {
-      var myChart = Highcharts.chart('container-pop-technologies', {
-          chart: {
-              type: 'bar'
-          },
-          title: {
-              text: 'Most Popular Technologies Used by Members'
-          },
-          xAxis: {
-              categories: ['Ruby', 'Javascript', 'Python'],
-          },
-          yAxis: {
-              title: {
-                  text: '# of Members Using '
-              },
-          },
-          series: [{
-              name: 'Backend',
-              data: [1, 0, 4]
-          }, {
-              name: 'Frontend',
-              data: [1, 7, 3]
-          }]
-      });
-  });
-
 })
