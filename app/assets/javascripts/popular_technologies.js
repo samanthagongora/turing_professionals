@@ -2,9 +2,16 @@ $(document).ready(function(){
   $.ajax({
     type: 'GET',
      url: 'http://localhost:3000/api/v1/technologies/most_popular',
-     success: function(posts) {
-        $("#response").append("<div class = 'post'><p>It worked!</p></div>")
-        console.log(posts)
+     success: function(data) {
+       var categories = []
+       var backendData = []
+       var frontendData = []
+
+        $.each(data, function (index, dataItem) {
+          categories.push(dataItem.name)
+          backendData.push(dataItem.back_end_users)
+          frontendData.push(dataItem.front_end_users)
+        })
       }
   });
 })
