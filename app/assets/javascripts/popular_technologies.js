@@ -8,31 +8,13 @@ document.addEventListener("turbolinks:load", function() {
           title: {
               text: 'Most Popular Technologies Used by Members'
           },
-          plotOptions: {
-            series: {
-                shadow:false,
-                borderWidth:0,
-                dataLabels:{
-                    enabled:true,
-                    formatter:function() {
-                      return Highcharts.numberFormat(this.y,0) + '%';
-                    }
-                }
-            }
-        },
           xAxis: {
               categories: ['Ruby', 'Javascript', 'Python'],
           },
           yAxis: {
               title: {
-                  text: '% of Members Using '
+                  text: '# of Members Using '
               },
-              labels: {
-                formatter: function () {
-                  return Highcharts.numberFormat(this.value, 0) + ' %';
-                }
-
-              }
           },
           series: [{
               name: 'Backend',

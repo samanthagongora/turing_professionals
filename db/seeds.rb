@@ -1,6 +1,7 @@
 require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
+Faker::UniqueGenerator.clear
 
 
 technologies = ["JavaScript", "Java", "Python", "TypeScript", "PHP", "Ruby on Rails", "Elixir", "Rust", "Go", "C#", "Swift"]
@@ -29,14 +30,20 @@ end
 end
 
 
-3.times do |n|
-  user = User.create(username: Faker::Internet.user_name, password: "password", image_url: Faker::Avatar.image("50x50"), first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+10.times do |n|
+  user = User.create(username: Faker::Internet.unique.user_name, password: "password", image_url: Faker::Avatar.image("50x50"), cohort: "1705 BE", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
   Workplace.create(user_id: user.id, company: Company.first, position: Faker::Job.title, status: 0)
   user.locations << Location.all[n]
+  4.times do
+    user.technologies << Technology.all[rand(0..10)]
+  end
 end
 
-2.times do |n|
-  user = User.create(username: "username2#{n}", password: "password", image_url: Faker::Avatar.image("50x50"), first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+10.times do |n|
+  user = User.create(username: Faker::Internet.unique.user_name, password: "password", image_url: Faker::Avatar.image("50x50"), cohort: "1705 FE", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
   Workplace.create(user_id: user.id, company: Company.second, position: Faker::Job.title, status: 0)
   user.locations << Location.all[n]
+  4.times do
+    user.technologies << Technology.all[rand(0..10)]
+  end
 end
