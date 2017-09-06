@@ -1,0 +1,88 @@
+</br>
+</br>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <h3 class="text-center">Your Current Location</h3>
+      <h4 class="panel-body text-center">
+        <% if !current_user.locations.nil? %>
+          <%= @locations.recent_location(current_user).full_address %>
+          <% end %>
+        </h4>
+      </div>
+
+    <div class="col-md-8">
+      <div id="location" style="width: 100%; height: 400px">
+        <% current_user.locations.each do |location| %>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script>
+        function initialize() {
+          var location = { lat: <%= location.latitude %>, lng: <%= location.longitude %> };
+          var map = new google.maps.Map(document.getElementById('location'), {
+            center: location,
+            zoom:14
+          });
+
+          var marker = new google.maps.Marker({
+            position: location,
+            map: map
+          });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center">Near By Members</h3>
+      <% for nearby_member in current_user.locations.last.nearbys(50) %>
+        <div class="panel panel-default text-center">
+          <div class="panel-heading preview text-center">
+            <% nearby_member.users.each do |user| %>
+            <div class="panel-body">
+              <%= link_to user.username, user_path(user) %></br>
+              <%= nearby_member.distance.round(2) %> miles away
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+    </div>
+    <div class="col-md-8">
+      <h3 class="text-center">Near By Companies</h3>
+      <% nearby_company = @companies.each do |company| %>
+      <%  company.locations.where.not(latitude: nil, longitude: nil) %>
+      <% end %>
+      <% for nearby_company in current_user.locations.last.nearbys(500) %>
+        <div class="panel panel-default text-center">
+          <div class="panel-heading preview text-center">
+            <% nearby_company.companies.each do |company| %>
+            <div class="panel-body">
+              <%= link_to company.name %></br>
+              <%= nearby_company.distance.round(2) %> miles away
+                <% end %>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

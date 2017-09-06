@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   get '/profile', to: "profile#show"
 
-
   get "/filter_companies", to: "filter_companies#index"
   get "/order_companies", to: "order_companies#index"
 
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:index]
   resources :interview_questions, only: [:create]
+  resources :locations, only: [:index]
 
   get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'
   get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'

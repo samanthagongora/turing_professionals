@@ -26,8 +26,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'database_cleaner'
 gem 'toastr-rails'
+gem 'geocoder'
 gem 'kramdown'
-
 
 group :development, :test do
   gem 'pry'

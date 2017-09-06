@@ -3,6 +3,9 @@ require "rails_helper"
 RSpec.feature "User can favorite and unfavorite a member", js: true do
   scenario "when visits member index" do
     user_1, user_2, user_3 = create_list(:user, 3)
+    location = create(:location)
+    user_location = create(:user_location, user_id: user_2.id, location_id: location.id)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit users_path
@@ -24,6 +27,9 @@ RSpec.feature "User can favorite and unfavorite a member", js: true do
 
   scenario "when visits member show" do
     user_1, user_2, user_3 = create_list(:user, 3)
+    location = create(:location)
+    user_location = create(:user_location, user_id: user_2.id, location_id: location.id)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit user_path(user_2)
