@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "User can favorite and unfavorite a member", js: true do
-  xscenario "when visits member index" do
+  scenario "when visits member index" do
     user_1, user_2, user_3 = create_list(:user, 3)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 

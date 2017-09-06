@@ -83,6 +83,7 @@
                   Location: <%= user.locations.first.city %>, <%= user.locations.first.state %><br>
 
                 <% end %>
+                <% end %>
                 <% if user.workplaces.any? %>
                   Company: <%= link_to "#{user.workplaces.first.company.name}", company_path(user.workplaces.first.company.id) %><br>
                 <% end %>
@@ -93,4 +94,3 @@
         <% end %>
       </div>
     </div>
-<% end %>
