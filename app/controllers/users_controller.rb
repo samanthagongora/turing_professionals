@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
 
   def index
-    @users = User.default.active
+    @member_index_presenter = MemberIndexPresenter.new
   end
 
   def new
@@ -45,11 +45,14 @@ class UsersController < ApplicationController
   private
 
   def user_params
+
     params.require(:user).permit(:username, :password, :password_confirmation,
                                 :summary, :headline, :image_url, :first_name,
                                 :last_name, :linkedin_url, :email, :headline,
                                 :summary, :twitter, :slack, :github, :resume,
+                                :about_me, :interest, :working_on,
                                 locations_attributes: [:id, :city, :state])
+
   end
 
   def set_user

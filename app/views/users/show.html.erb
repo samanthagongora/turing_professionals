@@ -3,6 +3,17 @@
   <div id="header">
     <h1><%= @user.first_name  %> <%= @user.last_name %></h1>
     <h2><%= @user.headline %></h2>
+    <% if current_user == @user %>
+      <%= button_to "Your Profile", user_path(current_user), class: "pull-right" %>
+    <% elsif current_user.favorite_users.include? @user %>
+      <%= link_to favorite_users_path, data: {params: {favorite_user_id: @user.id}.to_param, remote: true, method: :delete}, class: "pull-right" do %>
+        <span class="glyphicon glyphicon-star" style="font-size:1.5em"></span>
+      <% end %>
+    <% else %>
+      <%= link_to favorite_users_path, data: {params: {favorite_user_id: @user.id}.to_param, remote: true, method: :post}, class: "pull-right" do %>
+        <span class="glyphicon glyphicon-star-empty" style="font-size:1.5em"></span>
+      <% end %>
+    <% end %>
   </div>
   <div id="bio">
     <div id="about">

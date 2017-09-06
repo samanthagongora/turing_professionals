@@ -2,9 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User visits member index" do
   scenario "they see all members" do
-    user_1, user_2, user_3 = create_list(:user, 3, :with_workplaces)
-    location = create(:location)
-    user_1_location = create(:user_location, location_id: location.id, user_id: user_1.id)
+    user_1, user_2, user_3 = create_list(:user, 3, :with_workplaces, :with_location)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit dashboard_path
@@ -16,9 +14,10 @@ RSpec.feature "User visits member index" do
       expect(page).to have_content(user_1.image_url)
       expect(page).to have_content(user_1.first_name)
       expect(page).to have_content(user_1.last_name)
-      expect(page).to have_content(user_1.locations.map { |location| location.city }.join)
-      expect(page).to have_content(user_1.locations.map { |location| location.state }.join)
-      expect(page).to have_content(user_1.workplaces.first.company.name)
+      expect(page).to have_link("#{user_1.first_name} #{user_1.last_name}")
+      expect(page).to have_content(user_1.locations.first.city)
+      expect(page).to have_content(user_1.locations.first.state)
+      expect(page).to have_link(user_1.workplaces.first.company.name)
       expect(page).to have_content(user_1.cohort)
       expect(page).to_not have_css('.glyphicon-star-empty')
       expect(page).to_not have_link('Your Profile')
@@ -28,9 +27,10 @@ RSpec.feature "User visits member index" do
       expect(page).to have_content(user_2.image_url)
       expect(page).to have_content(user_2.first_name)
       expect(page).to have_content(user_2.last_name)
-      expect(page).to have_content(user_2.locations.map { |location| location.city }.join)
-      expect(page).to have_content(user_2.locations.map { |location| location.state }.join)
-      expect(page).to have_content(user_2.workplaces.first.company.name)
+      expect(page).to have_link("#{user_2.first_name} #{user_2.last_name}")
+      expect(page).to have_content(user_2.locations.first.city)
+      expect(page).to have_content(user_2.locations.first.state)
+      expect(page).to have_link(user_2.workplaces.first.company.name)
       expect(page).to have_content(user_2.cohort)
       expect(page).to have_css('.glyphicon-star-empty')
     end
