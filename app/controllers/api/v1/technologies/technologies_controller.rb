@@ -1,6 +1,7 @@
-class API::V1::Technologies::TechnologiesController < ApplicationController
+class Api::V1::Technologies::TechnologiesController < ApplicationController
+
   def index
-    render json: Technology.find(params[:id])
+    render json: Technology.most_popular
   end
 
 end

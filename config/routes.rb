@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get '/technologies/most_popular', to: "technologies#index"
+      get '/technologies/most_popular', to: "technologies/technologies#index"
     end
   end
 
