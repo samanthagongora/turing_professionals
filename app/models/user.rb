@@ -25,6 +25,21 @@ class User < ApplicationRecord
   mount_uploader :resume, ResumeUploader
 
 
+  def full_address
+    [city, state].compact.join(", ")
+  end
+
+  def self.recent_location(user)
+    user.locations.order(updated_at: :desc)
+    .where.not(latitude: nil, longitude: nil).first
+  end
+
+  def self.recent_lat_and_long(user)
+    user.locations.order(updated_at: :desc)
+    .where.not(latitude: nil, longitude: nil)
+    .pluck(:latitude, :longitude).first
+  end
+
   has_many :messages
 
   def self.filter(params)
