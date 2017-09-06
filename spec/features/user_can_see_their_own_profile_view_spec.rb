@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.feature "User can see profile", type: :feature do
   scenario "user views profile" do
     user = create(:user)
+    location = create(:location)
+    user_location = create(:user_location, user_id: user.id, location_id: location.id)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit profile_path
 

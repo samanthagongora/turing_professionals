@@ -1,6 +1,8 @@
 class Location < ApplicationRecord
   validates_presence_of :city, :state
 
+  scope :with_lat_lng, -> { where.not(latitude: nil, longitude: nil) }
+
   has_many :office_locations
   has_many :companies, through: :office_locations
 

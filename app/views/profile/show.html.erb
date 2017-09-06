@@ -165,7 +165,4 @@
   </div>
 </section>
 
-<hr>
-
-<%#= render partial: "shared/user_location", locals: {locations: @locations} %>
-<%= render partial: "shared/user_location", :object => [@locations, @companies] %>
+<%= render partial: "location", :object => [@locations, @companies] %>

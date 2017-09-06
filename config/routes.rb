@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/profile', to: "profile#show"
 
 
+
   get "/filter_companies", to: "filter_companies#index"
   get "/order_companies", to: "order_companies#index"
 
@@ -33,4 +34,8 @@ Rails.application.routes.draw do
 
   delete '/favorite_users', to: 'favorite_users#destroy'
   post '/favorite_users', to: 'favorite_users#create'
+
+  delete '/favorite_companies', to: 'favorite_companies#destroy'
+  post '/favorite_companies', to: 'favorite_companies#create'
+
 end
