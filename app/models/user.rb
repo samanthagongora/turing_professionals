@@ -3,6 +3,9 @@ class User < ApplicationRecord
   validates_presence_of :username
   validates_uniqueness_of :username
 
+  scope :frontend, -> { where("cohort LIKE ?", "%#{'F'}%") }
+  scope :backend, -> { where("cohort LIKE ?", "%#{'B'}%") }
+
   enum role: ["default", "admin"]
   enum status: ["active", "inactive"]
 

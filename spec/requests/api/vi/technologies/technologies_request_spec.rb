@@ -5,7 +5,7 @@ describe 'technologies api' do
     technologies = create_list(:technology, 12)
     users = create_list(:user, 3, cohort: "1705 FE")
     users.each_with_index do |user, n|
-      user.technologies << technologies[0..(9 + n)]
+      user.technologies << technologies[0..(8 + n)]
     end
     user_4 = create(:user, cohort: "1705 BE")
     user_4.technologies << technologies[2]
@@ -14,8 +14,8 @@ describe 'technologies api' do
 
     expect(response).to be_success
 
-    expect(techs.count).to eq(10)
     techs = JSON.parse(response.body)["data"]
+    expect(techs.count).to eq(10)
     expect(techs.first["name"]).to eq(technologies[0].name)
     expect(techs.last["name"]).to eq(technologies[9].name)
     expect(techs.first["front_end_users"]).to eq("3")
