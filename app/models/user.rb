@@ -6,6 +6,9 @@ class User < ApplicationRecord
   enum role: ["default", "admin"]
   enum status: ["active", "inactive"]
 
+  has_many :user_technologies
+  has_many :technologies, through: :user_technologies
+
   has_many :user_locations
   has_many :locations, through: :user_locations
 
