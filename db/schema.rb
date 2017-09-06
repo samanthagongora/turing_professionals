@@ -78,6 +78,14 @@ ActiveRecord::Schema.define(version: 20170904232641) do
     t.float "longitude"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "office_locations", force: :cascade do |t|
     t.bigint "location_id"
     t.bigint "company_id"
@@ -132,6 +140,9 @@ ActiveRecord::Schema.define(version: 20170904232641) do
     t.string "username"
     t.string "password_digest"
     t.integer "status", default: 0
+    t.string "about_me"
+    t.string "interest"
+    t.string "working_on"
   end
 
   create_table "workplaces", force: :cascade do |t|
@@ -150,6 +161,7 @@ ActiveRecord::Schema.define(version: 20170904232641) do
   add_foreign_key "contacts", "companies"
   add_foreign_key "favorites", "users"
   add_foreign_key "interview_questions", "companies"
+  add_foreign_key "messages", "users"
   add_foreign_key "office_locations", "companies"
   add_foreign_key "office_locations", "locations"
   add_foreign_key "tech_stacks", "companies"
