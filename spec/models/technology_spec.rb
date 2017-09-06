@@ -14,7 +14,7 @@ RSpec.describe Technology, type: :model do
       end
       user_4 = create(:user, cohort: "1705 BE")
       user_4.technologies << technologies[2]
-
+      
       expect(Technology.most_popular.to_a.count).to eq(10)
       expect(Technology.most_popular.first["name"]).to eq(technologies[2].name)
       expect(Technology.most_popular.last["name"]).to eq(technologies[9].name)

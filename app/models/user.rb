@@ -3,11 +3,11 @@ class User < ApplicationRecord
   validates_presence_of :username
   validates_uniqueness_of :username
 
-  scope :frontend, -> { where("cohort LIKE ?", "%#{'F'}%") }
-  scope :backend, -> { where("cohort LIKE ?", "%#{'B'}%") }
+  before_validation :set_program_type
 
   enum role: ["default", "admin"]
   enum status: ["active", "inactive"]
+  enum program_type: ["backend", "frontend"]
 
   has_many :user_technologies
   has_many :technologies, through: :user_technologies
@@ -41,5 +41,13 @@ class User < ApplicationRecord
           .joins(workplaces: :company)
           .where("locations.id": params[:location_ids])
           .where("companies.id": params[:company_ids]).distinct
+  end
+
+  private
+
+  def set_program_type
+    return nil if self.cohort.nil?
+    self.program_type = 0 if self.cohort.include?("B")
+    self.program_type = 1 if self.cohort.include?("F")
   end
 end
