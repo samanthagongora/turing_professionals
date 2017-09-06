@@ -3,11 +3,6 @@ class Technology < ApplicationRecord
   has_many :user_technologies
 
   def self.most_popular
-    # Technology.select("technologies.*")
-    # .joins(user_technologies: :user)
-    # .group(:id)
-    # .order("count(users) DESC")
-    # .limit(10)
     Technology.find_by_sql "SELECT technologies.*,
     SUM(case when users.program_type = 1 then 1 else 0 end)
     AS front_end_users,

@@ -13,12 +13,11 @@ describe 'technologies api' do
     get "/api/v1/technologies/most_popular"
 
     expect(response).to be_success
-
-    techs = JSON.parse(response.body)["data"]
+    techs = JSON.parse(response.body)
     expect(techs.count).to eq(10)
-    expect(techs.first["name"]).to eq(technologies[0].name)
+    expect(techs.first["name"]).to eq(technologies[2].name)
     expect(techs.last["name"]).to eq(technologies[9].name)
-    expect(techs.first["front_end_users"]).to eq("3")
-    expect(techs.first["back_end_users"]).to eq("1")
+    expect(techs.first["front_end_users"]).to eq(3)
+    expect(techs.first["back_end_users"]).to eq(1)
   end
 end
