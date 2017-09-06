@@ -1,3 +1,14 @@
+$(document).ready(function(){
+  $.ajax({
+    type: 'GET',
+     url: 'http://localhost:3000/api/v1/technologies/most_popular',
+     success: function(posts) {
+        $("#response").append("<div class = 'post'><p>It worked!</p></div>")
+        console.log(posts)
+      }
+  });
+})
+
 
 document.addEventListener("turbolinks:load", function() {
   $(function () {
