@@ -9,8 +9,10 @@ class Technology < ApplicationRecord
     # .order("count(users) DESC")
     # .limit(10)
     Technology.find_by_sql "SELECT technologies.*,
-    SUM(case when users.cohort LIKE '1705 FE' then 1 else 0 end)
-    AS front_end_users
+    SUM(case when users.program_type = 1 then 1 else 0 end)
+    AS front_end_users,
+    SUM(case when users.program_type = 0 then 1 else 0 end)
+    AS back_end_users
     FROM technologies
     INNER JOIN user_technologies
     ON technologies.id = user_technologies.technology_id
