@@ -23,4 +23,4 @@ submit_message = () ->
       event.preventDefault()
 
 scroll_bottom = () ->
-  $('#messages').scrollTop($('#messages')[0].scrollHeight)
+  $('#message-input').scrollTop($('#messages')[1].scrollHeight)
