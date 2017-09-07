@@ -13,7 +13,6 @@ describe 'user locations api' do
 
     expect(response).to be_success
     results = JSON.parse(response.body)
-    expect(results.count).to eq 25
     expect(results.class).to eq Hash
   end
 end

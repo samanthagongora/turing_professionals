@@ -1,6 +1,9 @@
 class Technology < ApplicationRecord
   validates_presence_of :name
   has_many :user_technologies
+  has_many :tech_stacks
+  has_many :companies, through: :tech_stacks
+  has_many :industries, through: :companies
 
   def self.most_popular
     Technology.find_by_sql "SELECT technologies.*,
@@ -15,5 +18,14 @@ class Technology < ApplicationRecord
     GROUP BY technologies.id
     ORDER BY COUNT(users) DESC
     LIMIT 10"
+  end
+
+  def self.by_industry_and_company(query)
+    includes(:industries)
+    .where("industries.name = ?", query)
+    .references(:industries)
+    .joins(:companies)
+    .group("technologies.name")
+    .count(:companies)
   end
 end
