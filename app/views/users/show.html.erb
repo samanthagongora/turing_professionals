@@ -69,10 +69,13 @@
 <div class="container">
   <div class="row">
   <div class="col-md-4">
-    <% if !@user.locations.nil? %>
     <h3 class="text-center">Current Location</h3>
     <h4 class="text-center">
+      <% if !@user.locations.nil? %>
+        <%= "No Recent Location" %>
+        <% else %>
         <%= Location.recent_location(@user).full_address %>
+        <% end %>
       </h4>
       </div>
 
@@ -99,7 +102,6 @@
                 </div>
               </div>
             </div>
-            <% end %>
           </div>
        </div>
       <br>
