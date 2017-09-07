@@ -15,7 +15,6 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'figaro'
@@ -26,10 +25,12 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'database_cleaner'
 gem 'toastr-rails'
-gem 'jquery-turbolinks'
+gem 'database_cleaner'
+gem 'toastr-rails'
 gem 'kramdown'
 gem 'redis'
-
+gem 'geocoder'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'pry'

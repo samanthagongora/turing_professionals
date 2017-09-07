@@ -1,11 +1,13 @@
 <div class="user-profile-page">
   <div id="jumbotron" class = "jumbotron profile-image">
     <div class = "container">
-      <h1>Welcome <%= current_user.username %></h1>
         <!-- Button trigger modal -->
       <button type="button" id='update' class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         UPDATE
       </button>
+    <p><%= link_to 'Authorize app to use your Linkedin information',
+    '/auth/linkedin', class: "btn btn-primary"  %></p>
+    <h1>Welcome <%= current_user.username %></h1>
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -117,19 +119,17 @@
       <h4><a href="<%= current_user.resume.url %>">Resume</a></h4>
     </div>
     <div id="contact-details">
-      <h3>Contact Me</h3>
-      <h5>Email: <span><%= current_user.email %></span></h5>
-      <h5>Twitter: <span><%= current_user.twitter %></span></h5>
-      <h5>Slack: <span><%= current_user.slack %></span></h5>
-      <h5>Github: <span><%= current_user.github %></span></h5>
-      <h5>Summary: <span><%= current_user.summary %></span></h5>
+      <h3>Contact Info</h3>
+      <h5><%= fa_icon "envelope-o" %> : <span><%= current_user.email %></span></h5>
+      <h5><%= fa_icon "twitter" %> : <span><%= current_user.twitter %></span></h5>
+      <h5><%= fa_icon "slack" %><%= current_user.slack %></span></h5>
+      <h5><%= fa_icon "github" %> : <%= current_user.github %></span></h5>
+      <h5><%= fa_icon "building-o" %> : <span><%= current_user.summary %></span></h5>
     </div>
   </div>
 </div>
 <div class="line"></div>
 
-<p><%= link_to 'Authorize app to use your Linkedin information',
-               '/auth/linkedin', class: "btn btn-primary"  %></p>
 
 <section class="cards">
   <div class="container">
@@ -155,17 +155,4 @@
 </section>
 </div>
 
-<div class="container">
-<div class="col-md-2"></div>
-  <div class="row">
-    <div class="col-lg-8">
-      <h3 class="card-title">Location</h3>
-          <%= image_tag "map_placeholder.png", size: '500x400'  %></br>
-          <% current_user.locations.each do |location| %>
-          <%= location.city %></br>
-          <%= location.state %></br>
-          <% end %>
-      </div>
-    </div>
-    <div class="col-md-2"></div>
-  </div>
+<%= render partial: "location", :object => [@locations, @companies] %>
