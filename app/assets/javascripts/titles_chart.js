@@ -1,10 +1,8 @@
-document.addEventListener("turbolinks:load", function(){
-
 $(document).ready(function(){
   if($('div').is('.insights')){
   $.ajax({
     type: 'GET',
-     url: 'https://turing-professionals.herokuapp.com/api/v1/workplaces/titles',
+     url: '/api/v1/workplaces/titles',
      success: function(data) {
        var chartData = []
 
@@ -47,5 +45,4 @@ $(document).ready(function(){
           }
         })
       }
-      });
       });

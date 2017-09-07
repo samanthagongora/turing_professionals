@@ -41,7 +41,7 @@ RSpec.feature "User visits member index" do
   end
 
   it "they can sort members alphabetically" do
-    visit users_path
+    visit members_path
 
     expect(page.all(:css, '.caption')[0]).to have_content("A_Member")
     expect(page.all(:css, '.caption')[1]).to have_content("B_Member")

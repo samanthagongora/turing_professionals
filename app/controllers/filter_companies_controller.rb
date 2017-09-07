@@ -1,6 +1,6 @@
 class FilterCompaniesController < ApplicationController
   def index
-    @company_index_presenter = CompanyIndexPresenter.new({filter: filter_params})
+    @company_index_presenter = CompanyIndexPresenter.new(({filter: filter_params} if params[:filter]) || {}) 
     render "companies/index"
   end
 
