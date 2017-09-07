@@ -3,11 +3,18 @@ class User < ApplicationRecord
   validates_presence_of :username
   validates_uniqueness_of :username
 
+
+  before_validation :set_program_type
+
   has_many :workplaces
   has_many :companies, through: :workplaces
 
   enum role: ["default", "admin"]
   enum status: ["active", "inactive"]
+  enum program_type: ["backend", "frontend"]
+
+  has_many :user_technologies
+  has_many :technologies, through: :user_technologies
 
   has_many :user_locations
   has_many :locations, through: :user_locations
@@ -40,4 +47,12 @@ class User < ApplicationRecord
           .where("companies.id": params[:company_ids]).distinct
   end
 
+
+  private
+
+  def set_program_type
+    return nil if self.cohort.nil?
+    self.program_type = 0 if self.cohort.include?("B")
+    self.program_type = 1 if self.cohort.include?("F")
+  end
 end

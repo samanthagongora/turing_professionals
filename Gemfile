@@ -26,8 +26,10 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'database_cleaner'
 gem 'toastr-rails'
+gem 'jquery-turbolinks'
 gem 'kramdown'
 gem 'redis'
+
 
 group :development, :test do
   gem 'pry'
