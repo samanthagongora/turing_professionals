@@ -67,7 +67,6 @@
               <img src="<%= user.image_url %>">
               <div class="caption">
 
-                <h3><%= user.first_name %> <%= user.last_name %></h3>
                   <%= link_to 'Chat', messages_path, class: 'btn btn-info btn-xs' %>
 
                     <% if user.locations %>
@@ -83,6 +82,7 @@
                   Location: <%= user.locations.first.city %>, <%= user.locations.first.state %><br>
 
                 <% end %>
+                <% end %>
                 <% if user.workplaces.any? %>
                   Company: <%= link_to "#{user.workplaces.first.company.name}", company_path(user.workplaces.first.company.id) %><br>
                 <% end %>
@@ -93,4 +93,3 @@
         <% end %>
       </div>
     </div>
-<% end %>

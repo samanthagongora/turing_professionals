@@ -28,6 +28,7 @@ gem 'database_cleaner'
 gem 'toastr-rails'
 gem 'geocoder'
 gem 'kramdown'
+gem 'redis'
 
 group :development, :test do
   gem 'pry'
