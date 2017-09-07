@@ -1,8 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-$ ->
-    $("a.favorite-star").on "ajax:success", (e, data, status, xhr) ->
+# # You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on 'ready', ->
+  $("a.favorite-star").on "ajax:success", (e, data, status, xhr) ->
       a = $(e.target)
       span = a.children("span").first()
       if span.hasClass("glyphicon-star")
