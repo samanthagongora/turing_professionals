@@ -55,7 +55,7 @@
     <div class="col-xs-6 col-sm-4 <%=" user-card-#{user.id}"%>">
       <div class="thumbnail">
         <% if current_user == user %>
-        <%= button_to "Your Profile", user_path(current_user), class: "pull-right" %>
+        <%= link_to "Your Profile", user_path(current_user.id), class: "pull-right btn btn-primary" %>
         <% elsif current_user.favorite_users.include? user %>
         <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :delete}, class: "pull-right favorite-star" do %>
         <span class="glyphicon glyphicon-star" style="font-size:1.5em"></span>
@@ -88,7 +88,7 @@
 
       <% if user.workplaces.any? %>
       Company:
-      <%= link_to "#{user.workplaces.first.company.name}", company_path(user.workplaces.first.company.id) %><br>
+      <%= link_to "#{user.workplaces.first.company.name}", company_path(user.workplaces.first.company.slug) %><br>
       <% end %>
       Cohort:
       <%= user.cohort %><br></p>
