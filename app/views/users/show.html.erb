@@ -69,12 +69,12 @@
 <div class="container">
   <div class="row">
   <div class="col-md-4">
-    <h3 class="text-center">Current Location</h3>
     <h4 class="text-center">
-      <% if !@user.locations.nil? %>
-        <%= "No Recent Location" %>
+      <% if @user.locations.blank? %>
+        <h3>No Recent Location</h3>
         <% else %>
-        <%= Location.recent_location(@user).full_address %>
+        <h3 class="text-center">Current Location</h3>
+        <h4 class="text-center"><%= Location.recent_location(@user).full_address %></h4>
         <% end %>
       </h4>
       </div>

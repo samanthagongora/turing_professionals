@@ -3,14 +3,14 @@
 <div class="container">
   <div class="row">
 
+    <% if !current_user.locations.blank? %>
     <div class="col-md-4">
       <h3 class="text-center">Your Current Location</h3>
       <h4 class="panel-body text-center">
-        <% if !current_user.locations.nil? %>
           <%= @locations.recent_location(current_user).full_address %>
-          <% end %>
         </h4>
       </div>
+
 
     <div class="col-md-8">
       <div id="location" style="width: 100%; height: 400px">
@@ -67,6 +67,7 @@
               <% end %>
             <% end %>
     </div>
+    <% end %>
 
   </div>
 </div>
