@@ -9,11 +9,9 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     alert('You have a new mention') if data.mention
     if (data.message && !data.message.blank?)
       $('#messages-table').append data.message
-      scroll_bottom()
 
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   submit_message()
-  scroll_bottom()
 
 submit_message = () ->
   $('#message_content').on 'keydown', (event) ->
@@ -22,5 +20,3 @@ submit_message = () ->
       event.target.value = ""
       event.preventDefault()
 
-scroll_bottom = () ->
-  $('#message-input').scrollTop($('#messages')[1].scrollHeight)

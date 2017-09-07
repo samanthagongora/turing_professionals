@@ -4,14 +4,10 @@
     <title>TuringProfessionals</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
-    <%#= google_webfonts_init({
-        google: ['Roboto Salb', 'Roboto']
-        }) %>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
   </head>
 
   <body>
@@ -24,4 +20,5 @@
       <%= yield %>
     </div>
   </body>
+  <%= javascript_include_tag 'application' %>
 </html>
