@@ -3,7 +3,11 @@ class User < ApplicationRecord
   validates_presence_of :username
   validates_uniqueness_of :username
 
+
   before_validation :set_program_type
+
+  has_many :workplaces
+  has_many :companies, through: :workplaces
 
   enum role: ["default", "admin"]
   enum status: ["active", "inactive"]
@@ -22,9 +26,6 @@ class User < ApplicationRecord
   # belongs_to :location, optional: true
   #### Does a user need to belong to a location. Can we have a many through relationship instead?
 
-  has_many :workplaces
-  has_many :companies, through: :workplaces
-
   has_many :favorites
   has_many :favorite_companies, through: :favorites, source: :favoritable, source_type: 'Company'
   #returns the favoritable object
@@ -35,6 +36,9 @@ class User < ApplicationRecord
   mount_uploader :image_url, ImageUploader
   mount_uploader :resume, ResumeUploader
 
+
+  has_many :messages
+
   def self.filter(params)
       User.select("users.*")
           .joins(user_locations: :location)
@@ -42,6 +46,7 @@ class User < ApplicationRecord
           .where("locations.id": params[:location_ids])
           .where("companies.id": params[:company_ids]).distinct
   end
+
 
   private
 

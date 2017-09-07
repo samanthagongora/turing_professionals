@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
   resources :users, except: [:destroy]
+  resources :messages
 
   get '/dashboard', to: "dashboard#show"
 
@@ -43,6 +44,12 @@ Rails.application.routes.draw do
 
   delete '/favorite_users', to: 'favorite_users#destroy'
   post '/favorite_users', to: 'favorite_users#create'
+
+
+  mount ActionCable.server, at: '/cable'
+
+
   delete '/favorite_companies', to: 'favorite_companies#destroy'
   post '/favorite_companies', to: 'favorite_companies#create'
+
 end

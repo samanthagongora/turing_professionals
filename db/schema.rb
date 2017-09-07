@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906061227) do
+
+ActiveRecord::Schema.define(version: 20170904232641) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +76,16 @@ ActiveRecord::Schema.define(version: 20170906061227) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "office_locations", force: :cascade do |t|
@@ -138,10 +150,12 @@ ActiveRecord::Schema.define(version: 20170906061227) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "password_digest"
-    t.bigint "location_id"
     t.integer "status", default: 0
     t.integer "program_type"
     t.index ["location_id"], name: "index_users_on_location_id"
+    t.string "about_me"
+    t.string "interest"
+    t.string "working_on"
   end
 
   create_table "workplaces", force: :cascade do |t|
@@ -160,6 +174,7 @@ ActiveRecord::Schema.define(version: 20170906061227) do
   add_foreign_key "contacts", "companies"
   add_foreign_key "favorites", "users"
   add_foreign_key "interview_questions", "companies"
+  add_foreign_key "messages", "users"
   add_foreign_key "office_locations", "companies"
   add_foreign_key "office_locations", "locations"
   add_foreign_key "tech_stacks", "companies"

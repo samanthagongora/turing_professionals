@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
     it {should have_many(:locations)}
     it {should have_many(:technologies)}
     it {should have_many(:user_technologies)}
+    it {should have_many(:messages)}
   end
 
   context "class methods" do
@@ -28,7 +29,7 @@ RSpec.describe User, type: :model do
       create(:workplace, user_id: user_3.id, company: co_1)
 
       params = {location_ids: [loc_1.id, loc_3.id], company_ids: [co_2.id, co_3.id]}
-      expect(User.filter(params)).to eq([user_1, user_2])
+      expect(User.filter(params).to_a).to include user_1, user_2
     end
   end
 end

@@ -7,7 +7,7 @@ RSpec.feature "User can favorite and unfavorite a member", js: true do
 
     visit users_path
 
-    find("body > div > div > div > div.col-xs-6.col-sm-4.user-card-#{user_2.id} > div > a > span").click
+    find("body > div > div > div > div.col-xs-6.col-sm-4.user-card-#{user_2.id} > div.thumbnail > a > span").click
 
     within(".user-card-#{user_2.id}") do
       expect(page).to have_css(".glyphicon-star")
