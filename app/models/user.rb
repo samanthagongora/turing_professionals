@@ -38,6 +38,7 @@ class User < ApplicationRecord
 
 
   has_many :messages
+  NAME_REGEX = /\w+/
 
   def self.filter(params)
       User.select("users.*")
