@@ -26,9 +26,13 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'database_cleaner'
 gem 'toastr-rails'
+gem 'geocoder'
 gem 'jquery-turbolinks'
 gem 'kramdown'
 gem 'redis'
+gem "font-awesome-rails"
+gem 'kaminari'
+
 
 
 group :development, :test do
