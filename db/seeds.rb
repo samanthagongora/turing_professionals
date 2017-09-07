@@ -89,7 +89,7 @@ end
                     email: Faker::Internet.email,
                     about_me: Faker::Lorem.paragraph,
                     interest: Technology.all.sample.name,
-                    working_on: Faker::App.name))
+                    working_on: Faker::App.name)
 
   Workplace.create(user_id: user.id, company: Company.second, position: job_titles[rand(0..7)], status: 0)
   user.locations << Location.all[rand(0..9)]
