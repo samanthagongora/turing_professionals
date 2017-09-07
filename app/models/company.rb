@@ -21,6 +21,10 @@ class Company < ApplicationRecord
     self.slug = name.parameterize if name
   end
 
+  def self.questions(user_companies)
+    user_companies.map {|c| c.interview_questions}
+  end
+
   def self.filter(params)
     Company.select("companies.*")
           .joins(office_locations: :location)

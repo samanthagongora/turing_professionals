@@ -1,39 +1,100 @@
+<h1 class="page-header">All Members</h1>
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid filters">
+      <span class="dropdown">
+        <%= form_for(:filter, url: "/filter_members", method: "get") do |f| %>
+        <button class="btn btn-default dropdown-toggle" type="button" id="location-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Cities
+          <span class="caret"></span>
+        </button>
 
-  <h1 class = "page-header">All Members</h1>
-    <div class="container-fluid">
-      <div class="row">
-        <% @users.each do |user| %>
-        <div class="col-xs-6 col-sm-4 <%="user-card-#{user.id}"%>">
-          <div class="thumbnail">
-            <% if current_user == user %>
-              <%= button_to "Your Profile", user_path(current_user), class: "pull-right" %>
-            <% elsif current_user.favorite_users.include? user %>
-              <%= link_to favorite_user_path(user.id), data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :delete}, class: "pull-right favorite-icon" do %>
-                <span class="glyphicon glyphicon-star" style="font-size:1.5em"></span>
-              <% end %>
-            <% else %>
-              <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :post}, class: "pull-right favorite-icon" do %>
-                <span class="glyphicon glyphicon-star-empty" style="font-size:1.5em"></span>
-              <% end %>
+        <ul class="dropdown-menu cities" aria-labelledby="location-dropdown">
+          <% @member_index_presenter.locations.each do |location| %>
+          <li>
+            <%= check_box_tag :location_id, location.id, false, class: location.id, id: "location-#{location.id}", name: 'filter[location_ids][]' %>
+            <%= "#{location.city}, #{location.state}" %>
+          </li>
+          <% end %>
+        </ul>
+        <span class="dropdown">
+
+          <button class="btn btn-default dropdown-toggle" type="button" id="industries-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Companies
+            <span class="caret"></span>
+          </button>
+
+          <ul class="dropdown-menu industries" aria-labelledby="industries-dropdown">
+            <% @member_index_presenter.companies.each do |company| %>
+            <li>
+              <%= check_box_tag :company_id, company.id, false, class: company.id, id: "company-#{company.id}", name: 'filter[company_ids][]' %>
+              <%= company.name %>
+            </li>
             <% end %>
-            <img src="<%= user.image_url %>">
-            <div class="caption">
-              <h3><%= user.first_name %> <%= user.last_name %></h3>
-                <% if user.locations %>
-                <p>
-                  <% user.locations.each do |location| %>
-                  <%= location.city  %></br>
-                  <%= location.state %></br>
-                  <% end %>
-                </p>
-                <% end %>
-                <% if user.workplaces.any? %>
-                  Company: <%= user.workplaces.first.company.name %><br>
-                <% end %>
-                Cohort: <%= user.cohort %><br></p>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </div>
+          </ul>
+          <%= f.submit "Filter", class: "btn btn-primary" %>
+          <% end %>
+
+          <a href="/users" class="btn btn-primary">Clear Filters</a>
+
+          <span class="order-form">
+            <%= form_for(:order, url: "/order_members", method: "get") do |f| %>
+            <%= f.hidden_field :direction, :value => @member_index_presenter.switch_order, :name => "order[direction]"%>
+            <% arrow = "&darr;  A-Z".html_safe if  @member_index_presenter.order == "ASC" %>
+            <% arrow = "&uarr;  A-Z".html_safe if  @member_index_presenter.order == "DESC" %>
+            <%= f.submit arrow.html_safe, class: "a-z-order btn btn-primary"  %>
+            <% end %>
+          </span>
+        </span>
+      </span>
     </div>
+  </nav>
+
+  <div class="row">
+    <% @member_index_presenter.users.each do |user| %>
+    <div class="col-xs-6 col-sm-4 <%=" user-card-#{user.id}"%>">
+      <div class="thumbnail">
+        <% if current_user == user %>
+        <%= button_to "Your Profile", user_path(current_user), class: "pull-right" %>
+        <% elsif current_user.favorite_users.include? user %>
+        <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :delete}, class: "pull-right favorite-star" do %>
+        <span class="glyphicon glyphicon-star" style="font-size:1.5em"></span>
+        <% end %>
+      <% else %>
+        <%= link_to favorite_users_path, data: {params: {favorite_user_id: user.id}.to_param, remote: true, method: :post}, class: "pull-right favorite-star" do %>
+        <span class="glyphicon glyphicon-star-empty" style="font-size:1.5em"></span>
+        <% end %>
+        <% end %>
+        <img src="<%= user.image_url %>">
+        <div class="caption">
+
+          <%= link_to 'Chat', messages_path, class: 'btn btn-info btn-xs' %>
+
+          <% if user.locations %>
+          <p>
+            <% user.locations.each do |location| %>
+            <%= location.city  %></br>
+          <%= location.state %></br>
+        <% end %>
+      </p>
+      <% end %>
+
+      <h3><%= link_to "#{user.first_name} #{user.last_name}", user_path(user.id) %></h3>
+      <% if user.locations.any? %>
+      Location:
+      <%= user.locations.first.city %>,
+      <%= user.locations.first.state %><br>
+      <% end %>
+
+      <% if user.workplaces.any? %>
+      Company:
+      <%= link_to "#{user.workplaces.first.company.name}", company_path(user.workplaces.first.company.id) %><br>
+      <% end %>
+      Cohort:
+      <%= user.cohort %><br></p>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
+</div>

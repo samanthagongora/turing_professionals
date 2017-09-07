@@ -14,7 +14,5 @@ feature 'new user creates account from homepage' do
 
     click_button "Sign Up"
     expect(current_path).to eq("/dashboard")
-    expect(page).to have_content("Here's a link to your profile")
-    expect(page).to have_content("Logout")
   end
 end
