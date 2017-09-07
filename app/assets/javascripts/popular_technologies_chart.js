@@ -30,6 +30,11 @@ $(document).ready(function(){
                     text: '# of Members Using '
                 },
             },
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                }
+            },
             series: [{
                 name: 'Backend Program Graduates',
                 data: backendData
