@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :markdown_to_html
+  helper_method :authorize
   include SessionsHelper
 
   def current_user
@@ -11,6 +12,11 @@ class ApplicationController < ActionController::Base
     render "public/404" unless current_user.default?
   end
 
-
+  def authorize
+    if !current_user
+      flash[:alert] = "Please Login to View that Page."
+      redirect_to '/'
+    end
+  end
 
 end

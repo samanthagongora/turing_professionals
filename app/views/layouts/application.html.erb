@@ -4,10 +4,12 @@
     <title>TuringProfessionals</title>
     <%= csrf_meta_tags %>
 
+    <%= tag :meta, name: 'google_maps', content: "#{ENV["GOOGLE_API_KEY"]}" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
   </head>
 
   <body>
