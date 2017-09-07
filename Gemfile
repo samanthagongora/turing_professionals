@@ -29,6 +29,9 @@ gem 'toastr-rails'
 gem 'geocoder'
 gem 'kramdown'
 gem 'redis'
+gem "font-awesome-rails"
+gem 'kaminari'
+
 
 group :development, :test do
   gem 'pry'

@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
 
   def index
-    @locations = Location.where.not(latitude: nil, longitude: nil)
+    @locations = Location.all
   end
 
 end

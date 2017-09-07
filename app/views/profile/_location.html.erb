@@ -15,7 +15,7 @@
     <div class="col-md-8">
       <div id="location" style="width: 100%; height: 400px">
         <% current_user.locations.each do |location| %>
-        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_API_KEY"] %>"></script>
         <script>
         function initialize() {
           var location = { lat: <%= location.latitude %>, lng: <%= location.longitude %> };
@@ -41,48 +41,34 @@
 <br>
 <br>
 <br>
-
+<hr>
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <h3 class="text-center">Near By Members</h3>
-      <% for nearby_member in current_user.locations.last.nearbys(50) %>
-        <div class="panel panel-default text-center">
-          <div class="panel-heading preview text-center">
+
+    <div class="col-md-4 text-center">
+      <h3>Closest Members</h3>
+      <% for nearby_member in current_user.locations.last.nearbys(300) %>
             <% nearby_member.users.each do |user| %>
-            <div class="panel-body">
-              <%= link_to user.username, user_path(user) %></br>
-              <%= nearby_member.distance.round(2) %> miles away
+              <p><%= link_to user.username, user_path(user) %></p> <%= nearby_member.distance.round(2) %> Miles Away</p>
               <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-
-
-
+              <%= "No member within 200 miles" if nearby_member.nil? %>
+            <% end %>
 
     </div>
-    <div class="col-md-8">
-      <h3 class="text-center">Near By Companies</h3>
+
+    <div class="col-md-8 text-center">
+      <h3>Closest Companies</h3>
       <% nearby_company = @companies.each do |company| %>
       <%  company.locations.where.not(latitude: nil, longitude: nil) %>
       <% end %>
       <% for nearby_company in current_user.locations.last.nearbys(500) %>
-        <div class="panel panel-default text-center">
-          <div class="panel-heading preview text-center">
-            <% nearby_company.companies.each do |company| %>
-            <div class="panel-body">
-              <%= link_to company.name %></br>
-              <%= nearby_company.distance.round(2) %> miles away
-                <% end %>
+          <% nearby_company.companies.each do |company| %>
+            <p><%= link_to company.name %></p>  <%= nearby_company.distance.round(2) %> Miles Away </p>
               <% end %>
-            </div>
-        </div>
-      </div>
+            <% end %>
     </div>
-
 
   </div>
 </div>
+<br>
+<br>
