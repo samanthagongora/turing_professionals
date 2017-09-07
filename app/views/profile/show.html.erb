@@ -89,6 +89,24 @@
                         <%= f.text_field :github, class: 'form-control' %> <br>
                       </div>
                     </div>
+                    <div class="field form-group">
+                      <%= f.label :about_me, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_area :about_me, class: 'form-control' %> <br>
+                      </div>
+                    </div>
+                    <div class="field form-group">
+                      <%= f.label :interest, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_area :interest, class: 'form-control' %> <br>
+                      </div>
+                    </div>
+                    <div class="field form-group">
+                      <%= f.label :working_on, class: 'control-label' %> <br>
+                      <div class="col-sm-6">
+                        <%= f.text_area :working_on, class: 'form-control' %> <br>
+                      </div>
+                    </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       <%= f.submit 'Submit', class: 'btn btn-primary' %>
@@ -96,6 +114,9 @@
                     <%	end  %>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
