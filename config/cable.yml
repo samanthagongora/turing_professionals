@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:19d469cd86bc30219fdd6fd1bc36e808@angelfish.redistogo.com:11426/
   channel_prefix: turing_professionals_production

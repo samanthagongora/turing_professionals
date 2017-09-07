@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
   resources :users, except: [:destroy]
+  resources :messages
 
   get '/dashboard', to: "dashboard#show"
 
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
 
   get "/filter_companies", to: "filter_companies#index"
   get "/order_companies", to: "order_companies#index"
+
+  get "/filter_members", to: "filter_members#index"
+  get "/order_members", to: "order_members#index"
 
   resources :companies, only: [:index]
   resources :interview_questions, only: [:create]
@@ -32,4 +36,12 @@ Rails.application.routes.draw do
 
   delete '/favorite_users', to: 'favorite_users#destroy'
   post '/favorite_users', to: 'favorite_users#create'
+
+
+  mount ActionCable.server, at: '/cable'
+
+
+  delete '/favorite_companies', to: 'favorite_companies#destroy'
+  post '/favorite_companies', to: 'favorite_companies#create'
+
 end

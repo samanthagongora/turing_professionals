@@ -36,4 +36,10 @@ FactoryGirl.define do
       create(:workplace, employed_user: user)
     end
   end
+
+  trait :with_location do
+    after(:create) do |user|
+      create(:user_location, user: user)
+    end
+  end
 end
