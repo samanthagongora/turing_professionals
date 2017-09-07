@@ -8,6 +8,8 @@ RSpec.describe User, type: :model do
 
   context "relationships" do
     it {should have_many(:locations)}
+    it {should have_many(:technologies)}
+    it {should have_many(:user_technologies)}
     it {should have_many(:messages)}
   end
 
