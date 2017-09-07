@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/technologies/most_popular', to: "technologies/technologies#index"
       get '/workplaces/titles', to: "workplaces/titles#index"
+      get '/user_locations/everywhere', to: "user_locations/user_locations#index"
     end
   end
 
