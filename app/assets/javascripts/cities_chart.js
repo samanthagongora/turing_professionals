@@ -9,7 +9,6 @@ $(document).ready(function(){
        var locations = Object.keys(data)
        var members = Object.values(data)
 
-        console.log(data, locations, members)
         Highcharts.chart('container-cities', {
           chart: {
               type: 'column'
@@ -33,9 +32,9 @@ $(document).ready(function(){
               name: 'Students',
               data: members
           }]
+        });
+      }
+    });
+  }
   });
-}
-});
-}
-});
 });
