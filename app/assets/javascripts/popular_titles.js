@@ -8,7 +8,7 @@ document.addEventListener("turbolinks:load", function() {
         type: 'pie'
     },
     title: {
-        text: 'Browser market shares January, 2015 to May, 2015'
+        text: 'Current Job Titles of Turing Professionals'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -27,28 +27,26 @@ document.addEventListener("turbolinks:load", function() {
         }
     },
     series: [{
-        name: 'Brands',
+        name: 'job titles',
         colorByPoint: true,
         data: [{
             name: 'Microsoft Internet Explorer',
-            y: 56.33
+            y: 10
         }, {
             name: 'Chrome',
-            y: 24.03,
-            sliced: true,
-            selected: true
+            y: 10,
         }, {
             name: 'Firefox',
-            y: 10.38
+            y: 10
         }, {
             name: 'Safari',
-            y: 4.77
+            y: 5
         }, {
             name: 'Opera',
-            y: 0.91
+            y: 1
         }, {
             name: 'Proprietary or Undetectable',
-            y: 0.2
+            y: 1
         }]
     }]
 });

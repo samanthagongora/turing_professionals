@@ -14,7 +14,6 @@ describe 'technologies api' do
 
     expect(response).to be_success
     techs = JSON.parse(response.body)
-    byebug
     expect(techs.count).to eq(10)
     expect(techs.first["name"]).to eq(technologies[2].name)
     expect(techs.last["name"]).to eq(technologies[9].name)
