@@ -8,9 +8,14 @@ RSpec.describe User, type: :model do
 
   context "relationships" do
     it {should have_many(:locations)}
+<<<<<<< HEAD
     it {should have_many(:workplaces)}
     it {should have_many(:favorites)}
     it {should have_many(:user_locations)}
+=======
+    it {should have_many(:technologies)}
+    it {should have_many(:user_technologies)}
+>>>>>>> development
     it {should have_many(:messages)}
   end
 

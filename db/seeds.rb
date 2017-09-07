@@ -1,9 +1,16 @@
 require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
+Faker::UniqueGenerator.clear
 
-technologies = ["JavaScript", "Java", "Python", "TypeScript", "PHP",
-                "Ruby on Rails", "Elixir", "Rust", "Go", "C#", "Swift"]
+
+
+
+job_titles = ["Developer", "Software Engineer", "Junior Developer", "Backend Developer",
+"Senior Developer", "Programmer", "Software Architect", "Frontend Developer"]
+
+technologies = ["JavaScript", "Java", "Python", "TypeScript", "PHP", "Ruby on Rails", "Elixir", "Rust", "Go", "C#", "Swift", "Ruby"]
+
 technologies.each do |tech|
   Technology.create!(name: tech)
 end
@@ -49,37 +56,45 @@ end
   end
 end
 
-
-52.times do |n|
-  user = User.create!(username: Faker::Internet.user_name + ("#{n}"),
-                     password: "password",
-                     image_url: Faker::Avatar.image("50x50"),
-                     first_name: Faker::Name.first_name,
-                     last_name: Faker::Name.last_name,
-                     email: Faker::Internet.email,
-                     about_me: Faker::Lorem.paragraph,
-                     working_on: Faker::Hacker.noun,
-                     interest: Technology.all.sample.name
-                     )
-  Workplace.create!(user_id: user.id,
-                   company: Company.first,
-                   position: Faker::Job.title,
-                   status: 0)
-  user.locations << Location.all[n..n+1]
-end
-
-2.times do |n|
-  user = User.create(username: "username2#{n}",
+50.times do |n|
+  user = User.create(username: Faker::Internet.unique.user_name,
                     password: "password",
                     image_url: Faker::Avatar.image("50x50"),
-                    first_name: Faker::Name.first_name,
+                    cohort: "1705 BE", first_name: Faker::Name.first_name,
                     last_name: Faker::Name.last_name,
                     email: Faker::Internet.email,
                     about_me: Faker::Lorem.paragraph,
                     interest: Technology.all.sample.name,
                     working_on: Faker::App.name)
+
   Workplace.create(user_id: user.id,
-                   company: Company.second,
-                   position: Faker::Job.title, status: 0)
-  user.locations << Location.all[n..n+2]
+                  company: Company.first,
+                  position: job_titles[rand(0..7)],
+                  status: 0)
+
+  user.locations << Location.all[rand(0..9)]
+  4.times do
+    user.technologies << Technology.all[rand(0..10)]
+  end
+  user.technologies << Technology.all[11]
+end
+
+50.times do |n|
+  user = User.create(username: Faker::Internet.unique.user_name,
+                    password: "password",
+                    image_url: Faker::Avatar.image("50x50"),
+                    cohort: "1705 FE",
+                    first_name: Faker::Name.first_name,
+                    last_name: Faker::Name.last_name,
+                    email: Faker::Internet.email,
+                    about_me: Faker::Lorem.paragraph,
+                    interest: Technology.all.sample.name,
+                    working_on: Faker::App.name))
+
+  Workplace.create(user_id: user.id, company: Company.second, position: job_titles[rand(0..7)], status: 0)
+  user.locations << Location.all[rand(0..9)]
+  4.times do
+    user.technologies << Technology.all[rand(1..11)]
+  end
+  user.technologies << Technology.all[0]
 end

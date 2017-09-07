@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get '/technologies/most_popular', to: "technologies/technologies#index"
+      get '/workplaces/titles', to: "workplaces/titles#index"
+    end
+  end
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
@@ -9,6 +16,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: "dashboard#show"
 
   resources :contacts, only: [:create]
+
+  get 'insights', to: 'insights#index'
 
   get '/profile', to: "profile#show"
 
