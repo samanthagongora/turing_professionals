@@ -18,9 +18,9 @@ $(document).on 'turbolinks:load', ->
 submit_message = () ->
   $('#message_content').on 'keydown', (event) ->
     if event.keyCode is 13 && !event.shiftKey
-      $('input').click()
+      $('input#submit').click()
       event.target.value = ""
       event.preventDefault()
 
 scroll_bottom = () ->
-  $('#messages').scrollTop($('#messages')[0].scrollHeight)
+  $('#message-input').scrollTop($('#messages')[1].scrollHeight)
