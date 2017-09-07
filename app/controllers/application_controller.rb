@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     if !current_user
-      flash[:alert] = "Please log in to view that page."
+      flash[:alert] = "Please Login to View that Page."
       redirect_to '/'
     end
   end
