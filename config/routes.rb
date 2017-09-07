@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  resources :users, except: [:destroy]
+  resources :users, except: [:destroy, :index]
+  get '/members', to: 'users#index'
   resources :messages
 
   get '/dashboard', to: "dashboard#show"
