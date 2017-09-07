@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170904232641) do
-
+ActiveRecord::Schema.define(version: 20170906201818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,8 +74,6 @@ ActiveRecord::Schema.define(version: 20170904232641) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -150,12 +146,15 @@ ActiveRecord::Schema.define(version: 20170904232641) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "password_digest"
+    t.bigint "location_id"
     t.integer "status", default: 0
-    t.integer "program_type"
-    t.index ["location_id"], name: "index_users_on_location_id"
+    t.string "census_token"
+    t.string "linkedin"
     t.string "about_me"
     t.string "interest"
     t.string "working_on"
+    t.integer "program_type"
+    t.index ["location_id"], name: "index_users_on_location_id"
   end
 
   create_table "workplaces", force: :cascade do |t|
