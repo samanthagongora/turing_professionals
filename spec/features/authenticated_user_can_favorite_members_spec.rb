@@ -30,14 +30,14 @@ RSpec.feature "User can favorite and unfavorite a member", js: true do
 
     find("#header > a > span").click
 
-    within("#header > a") do
+    within("#header") do
       expect(page).to_not have_css(".glyphicon-star-empty")
     end
     expect(user_1.favorite_users).to eq([user_2])
 
     find("#header > a > span").click
 
-    within("#header > a") do
+    within("#header") do
       expect(page).to have_css(".glyphicon-star-empty")
     end
     expect(user_1.reload.favorite_users).to be_empty
