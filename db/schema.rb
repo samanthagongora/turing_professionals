@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20170906061227) do
     t.string "working_on"
     t.integer "program_type"
     t.index ["location_id"], name: "index_users_on_location_id"
+
   end
 
   create_table "workplaces", force: :cascade do |t|
@@ -180,7 +181,6 @@ ActiveRecord::Schema.define(version: 20170906061227) do
   add_foreign_key "user_locations", "users"
   add_foreign_key "user_technologies", "technologies"
   add_foreign_key "user_technologies", "users"
-  add_foreign_key "users", "locations"
   add_foreign_key "workplaces", "companies"
   add_foreign_key "workplaces", "users"
 end

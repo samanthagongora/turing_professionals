@@ -25,9 +25,12 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'database_cleaner'
 gem 'toastr-rails'
+gem 'database_cleaner'
+gem 'toastr-rails'
 gem 'kramdown'
 gem 'redis'
-
+gem 'geocoder'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'pry'

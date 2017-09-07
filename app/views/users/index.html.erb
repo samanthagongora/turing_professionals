@@ -70,15 +70,6 @@
 
           <%= link_to 'Chat', messages_path, class: 'btn btn-info btn-xs' %>
 
-          <% if user.locations %>
-          <p>
-            <% user.locations.each do |location| %>
-            <%= location.city  %></br>
-          <%= location.state %></br>
-        <% end %>
-      </p>
-      <% end %>
-
       <h3><%= link_to "#{user.first_name} #{user.last_name}", user_path(user.id) %></h3>
       <% if user.locations.any? %>
       Location:
