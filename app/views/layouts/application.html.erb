@@ -16,7 +16,9 @@
 
 
     <%= render partial: 'layouts/navbar' %>
-    <%= render partial: 'shared/flash_message' %>
+    <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %> alert-success"><h3 class="flash_header"><%= sanitize(value) %> </h3></div>
+  <% end %>
     <div class="container">
 
       <%= yield %>
