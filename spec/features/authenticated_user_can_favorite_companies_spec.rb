@@ -4,6 +4,9 @@ RSpec.feature "User can favorite and unfavorite a company", js: true do
   scenario "when visits company index" do
     company_1, company_2, company_3 = create_list(:company, 3)
     user = create(:user)
+    location = create(:location)
+    user_location = create(:user_location, user_id: user.id, location_id: location.id)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit companies_path

@@ -17,7 +17,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="nav navbar-nav navbar-right">
         <% if current_user %>
+
           <li><%= link_to "Members", members_path %></li>
+          <li><%= link_to "Member's Locations", locations_path %></li>
           <li><%= link_to "Companies", companies_path %></li>
           <li><%= link_to "Insights", insights_path %></li>
           <li class="dropdown">
