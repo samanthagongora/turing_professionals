@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy]
   resources :messages, only: [:index, :create]
 
+  resources :users, except: [:destroy, :index]
+  get '/members', to: 'users#index'
+
+
   get '/dashboard', to: "dashboard#show"
 
   resources :contacts, only: [:create]
