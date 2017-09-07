@@ -11,6 +11,8 @@ RSpec.describe User, type: :model do
     it {should have_many(:workplaces)}
     it {should have_many(:favorites)}
     it {should have_many(:user_locations)}
+    it {should have_many(:technologies)}
+    it {should have_many(:user_technologies)}
     it {should have_many(:messages)}
   end
 
@@ -32,6 +34,5 @@ RSpec.describe User, type: :model do
       params = {location_ids: [loc_1.id, loc_3.id], company_ids: [co_2.id, co_3.id]}
       expect(User.filter(params).to_a).to include user_1, user_2
     end
-
   end
 end

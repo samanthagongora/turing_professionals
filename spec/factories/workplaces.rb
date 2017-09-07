@@ -3,6 +3,6 @@ FactoryGirl.define do
     employed_user
     company
     position "MyString"
-    status 1
+    status 0
   end
 end

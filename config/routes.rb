@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get '/technologies/most_popular', to: "technologies/technologies#index"
+      get '/workplaces/titles', to: "workplaces/titles#index"
+    end
+  end
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
@@ -9,6 +16,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: "dashboard#show"
 
   resources :contacts, only: [:create]
+
+  get 'insights', to: 'insights#index'
 
   get '/profile', to: "profile#show"
 
@@ -26,7 +35,6 @@ Rails.application.routes.draw do
   get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'
 
   root 'welcome#index'
-  get '/:company', to: 'companies#show', as: :company
 
   namespace :admin do
     get '/dashboard', to: "dashboard#show"
@@ -43,5 +51,6 @@ Rails.application.routes.draw do
 
   delete '/favorite_companies', to: 'favorite_companies#destroy'
   post '/favorite_companies', to: 'favorite_companies#create'
+  get '/:company', to: 'companies#show', as: :company
 
 end
