@@ -14,7 +14,7 @@ $(document).ready(function(){
              type: 'column'
          },
          title: {
-             text: 'Technologies by Number of Marketing Companies Using'
+             text: 'Marketing'
          },
          xAxis: {
              categories: technologies,

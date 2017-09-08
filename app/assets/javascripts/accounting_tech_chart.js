@@ -13,7 +13,7 @@ $(document).ready(function(){
              type: 'column'
          },
          title: {
-             text: 'Technologies by Number of Accounting Companies Using'
+             text: 'Accounting'
          },
          xAxis: {
              categories: technologies,

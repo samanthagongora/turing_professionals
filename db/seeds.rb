@@ -65,7 +65,7 @@ end
                     cohort: "1705 BE", first_name: Faker::Name.first_name,
                     last_name: Faker::Name.last_name,
                     email: Faker::Internet.email,
-                    about_me: Faker::Lorem.paragraph,
+                    about_me: Faker::Hipster.paragraph(2, false, 4) ,
                     interest: Technology.all.sample.name,
                     working_on: Faker::App.name)
 

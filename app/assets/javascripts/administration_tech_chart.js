@@ -14,7 +14,7 @@ $(document).ready(function(){
              type: 'column'
          },
          title: {
-             text: 'Technologies by Number of Administration Companies Using'
+             text: 'Administration'
          },
          xAxis: {
              categories: technologies,
