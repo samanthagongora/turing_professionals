@@ -1,6 +1,6 @@
 class FilterMembersController < ApplicationController
   def index
-    @member_index_presenter = MemberIndexPresenter.new({filter: filter_params})
+    @member_index_presenter = MemberIndexPresenter.new(({filter: filter_params} if params[:filter]) || {})
     render "users/index"
   end
 

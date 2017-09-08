@@ -4,24 +4,25 @@
     <title>TuringProfessionals</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
-    <%#= google_webfonts_init({
-        google: ['Roboto Salb', 'Roboto']
-        }) %>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <%= tag :meta, name: 'google_maps', content: "#{ENV["GOOGLE_API_KEY"]}" %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
   </head>
 
   <body>
 
 
     <%= render partial: 'layouts/navbar' %>
-    <%= render partial: 'shared/flash_message' %>
+    <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %> alert-success"><h3 class="flash_header"><%= sanitize(value) %> </h3></div>
+  <% end %>
     <div class="container">
 
       <%= yield %>
     </div>
   </body>
+  <%= javascript_include_tag 'application' %>
 </html>

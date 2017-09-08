@@ -8,7 +8,7 @@ RSpec.feature "User visits member index" do
     visit dashboard_path
     click_on "Members"
 
-    expect(current_path).to eq("/users")
+    expect(current_path).to eq("/members")
     expect(page).to have_css(".thumbnail", count: 3)
     within (".col-xs-6.col-sm-4.user-card-#{user_1.id}") do
       expect(page).to have_content(user_1.image_url)
@@ -20,7 +20,7 @@ RSpec.feature "User visits member index" do
       expect(page).to have_link(user_1.workplaces.first.company.name)
       expect(page).to have_content(user_1.cohort)
       expect(page).to_not have_css('.glyphicon-star-empty')
-      expect(page).to_not have_link('Your Profile')
+      expect(page).to have_link('Your Profile')
     end
 
     within (".user-card-#{user_2.id}") do
