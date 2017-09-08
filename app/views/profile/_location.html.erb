@@ -52,7 +52,7 @@
               <p><%= link_to user.username, user_path(user) %></p> <%= nearby_member.distance.round(2) %> Miles Away</p>
               <% end %>
               <%= "No member within 200 miles" if nearby_member.nil? %>
-            <% end %>
+      <% end %>
 
     </div>
 
@@ -65,9 +65,9 @@
           <% nearby_company.companies.each do |company| %>
             <p><%= link_to company.name %></p>  <%= nearby_company.distance.round(2) %> Miles Away </p>
               <% end %>
-            <% end %>
+      <% end %>
     </div>
-    <% end %>
+  <% end %>
 
   </div>
 </div>

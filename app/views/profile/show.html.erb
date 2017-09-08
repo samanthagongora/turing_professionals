@@ -174,18 +174,5 @@
 </section>
 
 
-<div class="container">
-  <div class="col-md-2"></div>
-    <div class="row">
-      <div class="col-lg-8">
-        <h3 class="card-title">Location</h3>
-          <%= image_tag "map_placeholder.png", size: '500x400'  %></br>
-          <% current_user.locations.each do |location| %>
-          <%= location.city %></br>
-          <%= location.state %></br>
-          <% end %>
-      </div>
-    </div>
-    <div class="col-md-2"></div>
-</div>
+<%= render partial: "location", :object => [@locations, @companies] %>
 
