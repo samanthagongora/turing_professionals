@@ -14,7 +14,7 @@ $(document).ready(function(){
              type: 'column'
          },
          title: {
-             text: 'Technologies by Number of Construction Companies Using'
+             text: 'Construction'
          },
          xAxis: {
              categories: technologies,
