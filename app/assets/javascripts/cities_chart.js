@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function(){
+
 
 $(document).ready(function(){
   if($('div').is('.insights')){
@@ -37,4 +37,3 @@ $(document).ready(function(){
     });
   }
   });
-});
