@@ -100,3 +100,15 @@ end
   end
   user.technologies << Technology.all[0]
 end
+
+User.create(username: "admin",
+            password: "admin",
+            image_url: Faker::Avatar.image("50x50"),
+            cohort: "1705 FE",
+            first_name: Faker::Name.first_name,
+            last_name: Faker::Name.last_name,
+            email: Faker::Internet.email,
+            about_me: Faker::Lorem.paragraph,
+            interest: Technology.all.sample.name,
+            working_on: Faker::App.name,
+            role: "admin")
