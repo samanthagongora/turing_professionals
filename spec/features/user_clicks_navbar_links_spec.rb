@@ -32,7 +32,9 @@ RSpec.feature "User clicks navbar links and" do
       # And I click my username in the navbar
       click_link("#{user_1.first_name}" + " " + "#{user_1.last_name}")
       # And I click “My Profile”
-      click_link("See Profile")
+      within(".my-items") do
+        click_link("My Profile")
+      end
       # I am sent to my personal profile page
       expect(current_path).to eq profile_path
     end

@@ -3,7 +3,7 @@ DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 Faker::UniqueGenerator.clear
 
-
+industries = ["Hospitality", "Accounting", "Administration", "Education", "Construction", "Manufacturing", "Marketing", "IT"]
 
 
 job_titles = ["Developer", "Software Engineer", "Junior Developer", "Backend Developer",
@@ -15,8 +15,8 @@ technologies.each do |tech|
   Technology.create!(name: tech)
 end
 
-10.times do
-  Industry.create!(name: Faker::Job.field)
+industries.each do |industry|
+  Industry.create!(name: industry)
 end
 
 us_states =
@@ -45,7 +45,9 @@ end
 10.times do |n|
   co = Company.create!(name: Faker::Company.name, website: Faker::Internet.url,
                       image_url: Faker::Company.logo)
-  co.industries << Industry.all[n..n+3]
+  4.times do
+    co.industries << Industry.all[rand(0..7)]
+  end
   co.locations << Location.all[n..n+3]
   co.contacts.create(name: Faker::Friends.character, title: Faker::Job.title,
                      email: Faker::Internet.email)
