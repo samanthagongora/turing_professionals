@@ -12,9 +12,12 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
+  resources :users, except: [:destroy]
+  resources :messages, only: [:index, :create]
+
   resources :users, except: [:destroy, :index]
   get '/members', to: 'users#index'
-  resources :messages
+
 
   get '/dashboard', to: "dashboard#show"
 
@@ -48,12 +51,9 @@ Rails.application.routes.draw do
   delete '/favorite_users', to: 'favorite_users#destroy'
   post '/favorite_users', to: 'favorite_users#create'
 
-
-  mount ActionCable.server, at: '/cable'
-
-
   delete '/favorite_companies', to: 'favorite_companies#destroy'
   post '/favorite_companies', to: 'favorite_companies#create'
   get '/:company', to: 'companies#show', as: :company
 
+  mount ActionCable.server, at: '/cable'
 end

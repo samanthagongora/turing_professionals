@@ -2,8 +2,6 @@
 @import 'bootstrap';
 @import 'images';
 
-@import "pages/user_profile_page";
-
 @import 'company-show';
 @import 'company-index';
 
@@ -11,6 +9,10 @@
 
 @import "chat";
 
+
+@import "user_profile";
+
 @import "location";
 
-@import "font-awesome";
+//@import "font-awesome";
+
