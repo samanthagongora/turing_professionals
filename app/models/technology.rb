@@ -21,11 +21,16 @@ class Technology < ApplicationRecord
   end
 
   def self.by_industry_and_company(query)
-    includes(:industries)
+    results = self.includes(:industries)
     .where("industries.name = ?", query)
     .references(:industries)
     .joins(:companies)
     .group("technologies.name")
     .count(:companies)
+    # new_results = []
+    # results.each do |key, value|
+    #   new_results << {name: key, companies_count: value}
+    # end
+    # new_results
   end
 end
