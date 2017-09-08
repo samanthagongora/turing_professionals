@@ -64,11 +64,11 @@
       <div class="col-md-8 text-center">
       <h2 class = "page-header"><%= link_to company.name, company_path(company: company.slug) %>
         <% if current_user.favorite_companies.include? company %>
-          <%= link_to favorite_companies_path, data: {params: {favorite_company_id: company.id}.to_param, remote: true, method: :delete}, class: "pull-right" do %>
+          <%= link_to favorite_companies_path, data: {params: {favorite_company_id: company.id}.to_param, remote: true, method: :delete}, class: "pull-right favorite-star" do %>
             <span class="glyphicon glyphicon-star"></span>
           <% end %>
         <% else %>
-          <%= link_to favorite_companies_path, data: {params: {favorite_company_id: company.id}.to_param, remote: true, method: :post}, class: "pull-right" do %>
+          <%= link_to favorite_companies_path, data: {params: {favorite_company_id: company.id}.to_param, remote: true, method: :post}, class: "pull-right favorite-star" do %>
             <span class="glyphicon glyphicon-star-empty"></span>
           <% end %>
         <% end %>

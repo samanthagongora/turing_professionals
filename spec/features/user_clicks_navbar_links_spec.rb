@@ -5,6 +5,9 @@ RSpec.feature "User clicks navbar links and" do
     scenario "can access all the pages" do
       # As a registered, authenticated user
       user_1, user_2, user_3 = create_list(:user, 3)
+      location = create(:location)
+      user_location = create(:user_location, user_id: user_1.id, location_id: location.id)
+
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
       # When I am on any page in the app
       visit "/"
@@ -15,7 +18,7 @@ RSpec.feature "User clicks navbar links and" do
       # And I click “Members” in the navbar
       click_link("Members")
       # I am sent to the members index page
-      expect(current_path).to eq users_path
+      expect(current_path).to eq members_path
       # And I click “Companies” in the navbar
       click_link("Companies")
       # I am sent to the companies index page

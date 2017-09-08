@@ -3,6 +3,8 @@ require 'rails_helper'
 feature 'User visits profile page and clicks update' do
   scenario 'they see their updated information' do
       user = create(:user)
+      location = create(:location)
+      user_location = create(:user_location, user_id: user.id, location_id: location.id)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -30,7 +32,6 @@ feature 'User visits profile page and clicks update' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(new_user)
 
       visit profile_path
-
       expect(page).to have_content("FirstName")
       expect(page).to have_content("LastName")
       expect(page).to have_content("Email@example.com")
