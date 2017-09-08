@@ -25,6 +25,26 @@ $(document).ready(function(){
                  text: 'Number of Companies'
              }
          },
+         colors: [
+          '#283044',
+          '#216869',
+          '#70798C',
+          '#7FEFBD',
+          '#000000',
+          '#C2BBF0',
+          '#3590F3',
+          '#8FB8ED',
+          '#B8336A',
+          '#E0BAD7',
+          '#5F634F',
+          '#DF2935'
+        ],
+
+        plotOptions: {
+            series: {
+                colorByPoint: true
+            }
+        },
          legend: {
              enabled: false
          },
