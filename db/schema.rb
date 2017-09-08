@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20170906061227) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -146,7 +148,6 @@ ActiveRecord::Schema.define(version: 20170906061227) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "password_digest"
-    t.bigint "location_id"
     t.integer "status", default: 0
     t.string "about_me"
     t.string "interest"
