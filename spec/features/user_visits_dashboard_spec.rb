@@ -16,7 +16,7 @@ feature "user visits dashboard" do
 
     expect(page).to have_content(co_1.name)
     expect(page).to_not have_content(co_2.name)
-    expect(page).to have_content(user_1.username)
+    expect(page).to have_content(user_1.username.capitalize)
     expect(page).to have_content(user_2.username)
     expect(page).to_not have_content(user_3.username)
     expect(page).to have_css(".my-companies")

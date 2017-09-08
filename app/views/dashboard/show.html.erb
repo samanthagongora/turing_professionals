@@ -1,110 +1,71 @@
 <div class='container user-dashboard-page'>
+  <h1><%= current_user.username.capitalize %>'s Dashboard</h1>
 
-<!-- heading with username and page description -->
-  <div class = "container">
-    <div class = "row well">
-      <div class="row text-center">
-        <h2> <%= current_user.username %>'s Dashboard </h2>
-      </div>
-    </div>
+  <div class="table-responsive">
+    <table class="table text-center">
+      <tbody>
+        <tr>
+          <td class="my-companies">
+            <i class='glyphicon glyphicon-briefcase'></i>
+            <h3>Favorite Companies</h3>
+            <hr>
+            <p><%= link_to "See All Companies", companies_path %></p>
+
+            <%  @favorited_companies.each do |company| %>
+            <p>
+              <%= company.name %></p>
+            <% end %>
+          </td>
+          <td class="my-connections">
+            <i class='glyphicon glyphicon-user'></i>
+            <h3>Favorite Members</h3>
+            <hr>
+
+            <% @favorite_members.each do |member| %>
+            <p>
+              <%= link_to member.username,user_path(member) %></p>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="my-items">
+            <i class='glyphicon glyphicon-pencil'></i>
+            <h3>My Items</h3>
+            <hr>
+
+            <p><%= link_to "My Profile", profile_path %></p>
+          </td>
+          <td class="my-locations">
+            <i class='glyphicon glyphicon-globe'></i>
+            <h3>Locations</h3>
+            <hr>
+
+            <p><%= link_to "My Profile", user_path(current_user) %></p>
+          </td>
+        </tr>
+        <tr>
+          <td class="my-lifestyle">
+            <i class='glyphicon glyphicon-headphones'></i>
+            <h3>Lifestyle</h3>
+            <hr>
+            <p><%= link_to "My Profile", user_path(current_user) %></p>
+          </td>
+          <td class="my-comapnies">
+            <% if current_user.companies %>
+            <i class='glyphicon glyphicon-headphones'></i>
+            <h3>My Workplaces</h3>
+            <hr>
+            <p><%= link_to "My Profile", user_path(current_user) %></p>
+            <p>
+              <% @companies.each do |c| %>
+            </p>
+            <p>
+              <%= c.name %>
+            </p>
+            <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <div class='container'>
-    <div class="row well">
-      <div class="row text-center">
-
-
-          <!-- DISPLAY 1 -->
-          <div class='col-md-6 my-companies'>
-            <div class='row text-center'>
-              <div class="thumbnail">
-                <i class='glyphicon glyphicon-briefcase'></i>
-                  <h3>Favorite Companies</h3>
-                    <%  @favorited_companies.each do |company| %>
-                    <p> <%= company.name %></p>
-                    <% end %>
-                <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
-              </div>
-            </div>
-          </div>
-
-          <!-- DISPLAY 2 -->
-          <div class='col-md-6 my-connections'>
-            <div class='row text-center'>
-              <div class="thumbnail">
-                <i class='glyphicon glyphicon-user'></i>
-                  <h3>Favorite Members</h2>
-                    <div class="caption">
-                      <% @favorite_members.each do |member| %>
-                      <p> <%= link_to member.username,user_path(member) %></p>
-                      <!-- <p> starred on: <%#= member.created_at %></p> -->
-                      <% end %>
-                    </div>
-                  <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
-                </div>
-              </div>
-            </div>
-
-            <!-- DISPLAY 3 -->
-            <div class='col-md-6 my-items'>
-              <div class='row text-center'>
-                <div class="thumbnail">
-                  <i class='glyphicon glyphicon-pencil'></i>
-                    <h3>My Items</h2>
-                      <p><%= link_to "See Profile", profile_path %></p>
-                    <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
-                </div>
-              </div>
-            </div>
-
-            <!-- DISPLAY 4 Conversations glyphicon-comment-->
-
-
-            <!-- DISPLAY 5 -->
-            <div class='col-md-6 my-locations'>
-              <div class='row text-center'>
-                <div class="thumbnail">
-                  <i class='glyphicon glyphicon-globe'></i>
-                    <h3>Locations</h2>
-                      <p><%= link_to "Profile", user_path(current_user) %></p>
-                    <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
-                </div>
-              </div>
-            </div>
-
-            <!--  DISPLAY 6-->
-            <div class='col-md-6 my-lifestyle'>
-              <div class='row text-center'>
-                <div class="thumbnail">
-                  <i class='glyphicon glyphicon-headphones'></i>
-                    <h3>Lifestyle</h2>
-                      <p><%= link_to "Profile", user_path(current_user) %></p>
-                    <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Display My Workplace  -->
-          <% if current_user.companies %>
-            <div class='col-md-6 my-workplaces'>
-              <div class='row text-center'>
-                <div class="thumbnail">
-                  <i class='glyphicon glyphicon-headphones'></i>
-                    <h3>My Workplaces</h2>
-                      <p> <% @companies.each do |c| %> </p>
-                        <p> <%= c.name %> </p>
-                      <% end %>
-                    <!-- <button type = 'button' class='btn btn-primary'>See All</button> -->
-                </div>
-              </div>
-            </div>
-          <% end %>
-
-        <!-- container  -->
-
-
-      </div>
-    </div>
-  </div>
-</div>
-    <!-- <div class="thumbnail"> could be used instead of row well class to provide borner without background color-->
