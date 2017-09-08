@@ -14,7 +14,7 @@ $(document).ready(function(){
              type: 'column'
          },
          title: {
-             text: 'Technologies by Number of Manufacturing Companies Using'
+             text: 'Manufacturing'
          },
          xAxis: {
              categories: technologies,

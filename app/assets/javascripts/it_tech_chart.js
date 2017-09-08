@@ -14,7 +14,7 @@ $(document).ready(function(){
              type: 'column'
          },
          title: {
-             text: 'Technologies by Number of IT Companies Using'
+             text: 'IT'
          },
          xAxis: {
              categories: technologies,

@@ -14,7 +14,7 @@ $(document).ready(function(){
              type: 'column'
          },
          title: {
-             text: 'Technologies by Number of Hospitality Companies Using'
+             text: 'Hospitality'
          },
          xAxis: {
              categories: technologies,

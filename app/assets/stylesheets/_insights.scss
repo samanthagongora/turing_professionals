@@ -1,7 +1,24 @@
-.chart {
-    height: 200px;
+.insights-subtitle {
+  background-color: #A1A6B4;
+  margin: 20px;
+  padding: 10px;
+  color: white;
+  border-radius: 50px;
 }
 
-.spacer {
-    height: 20px;
+.top-charts{
+  background-color: #F8F7FF;
+}
+
+.bottom-charts {
+  background-color: #F8F7FF;
+}
+
+.chart {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.tech-ind-chart {
+  height: 300px;
 }

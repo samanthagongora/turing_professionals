@@ -14,7 +14,7 @@ $(document).ready(function(){
              type: 'column'
          },
          title: {
-             text: 'Technologies by Number of Education Companies Using'
+             text: 'Education'
          },
          xAxis: {
              categories: technologies,
